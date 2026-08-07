@@ -1,6 +1,6 @@
-# DevOps Interview Questions
+# DevOps Interview-Questions
 
-A collection of AWS, Kubernetes, Docker, Terraform, Linux, Jenkins, Git, and CI/CD interview questions.
+**A collection of AWS, Kubernetes, Docker, Terraform, Linux, Jenkins, Git, and CI/CD interview questions.**
 
 ## Contents
 
