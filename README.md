@@ -14,4 +14,6 @@
 
 ## Contributing
 
-Please read CONTRIBUTING.md before submitting a Pull Request.
+We welcome contributions!
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a Pull Request.
