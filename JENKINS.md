@@ -5,7 +5,6 @@
 **Answer:**
 
 CI : Developers frequently merge code into a shared repository, and Jenkins automatically builds and tests it.
-
 CD : After successful testing, the application is automatically delivered or deployed to the required environment.
 
 ## 2\. What is a Jenkinsfile?
@@ -13,7 +12,6 @@ CD : After successful testing, the application is automatically delivered or dep
 **Answer:**
 
 Jenkinsfile is a text file that contains the Jenkins Pipeline code written in Groovy. It is usually stored in the
-
 application's Git repository and defines the steps to build, test, and deploy the application.
 
 ## 3\. What is a Jenkins Plugin?
@@ -39,7 +37,6 @@ Jenkinsfile, we reference the credential using its ID instead of hardcoding the 
 **Answer:**
 
 A Jenkins webhook is an HTTP notification sent by GitHub or GitLab to Jenkins when an event, such as a code
-
 push or pull request, occurs. Jenkins receives the webhook and automatically triggers the pipeline.
 
 ## 6\. What happens if a Jenkins build fails?
