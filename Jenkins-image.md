@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="./external/3-Tier-app-k8s-digram.jpg" alt="LEMP Diagram" width="800">
+  <img src="./image/1_Jenkins.jpg" alt="LEMP Diagram" width="800">
 </p>
