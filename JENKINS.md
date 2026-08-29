@@ -4,8 +4,8 @@
 
 **Answer:**
 
-CI : Developers frequently merge code into a shared repository, and Jenkins automatically builds and tests it.
-CD : After successful testing, the application is automatically delivered or deployed to the required environment.
+- CI : Developers frequently merge code into a shared repository, and Jenkins automatically builds and tests it.
+- CD : After successful testing, the application is automatically delivered or deployed to the required environment.
 
 ## 2\. What is a Jenkinsfile?
 
@@ -19,7 +19,6 @@ application's Git repository and defines the steps to build, test, and deploy th
 **Answer:**
 
 A Jenkins Plugin is an extension/software, Plugins allow Jenkins to communicate with external tools such as Git,
-
 Docker, Kubernetes, Maven, and Slack. They are installed and managed from the Jenkins Plugin Manager.
 
 ## 4\. How do you store credentials securely in Jenkins?
@@ -27,7 +26,6 @@ Docker, Kubernetes, Maven, and Slack. They are installed and managed from the Je
 **Answer:**
 
 I store sensitive information such as passwords, API tokens, and SSH keys in Jenkins Credentials Manager. In the
-
 Jenkinsfile, we reference the credential using its ID instead of hardcoding the secret.
 
 **Store a credential in**: Manage Jenkins → Credentials → Add Credentials.
@@ -57,14 +55,11 @@ Jenkins Agent means the machine/node where Jenkins actually executes your pipeli
 
 **Answer:**
 
-**agent any:** Jenkins allocates any available agent/node to run the entire pipeline or stage.
-
+- **agent any:** Jenkins allocates any available agent/node to run the entire pipeline or stage.
 _agent any = automatically use any available agent_
 
-**agent none:** Jenkins does not allocate a global agent. Each stage must define its own agent (or manage execution
-
+- **agent none:** Jenkins does not allocate a global agent. Each stage must define its own agent (or manage execution
 differently), allowing different stages to run on different agents.
-
 _agent none = no agent for the whole pipeline, so stages specify their own agents._
 
 # 9\. Why do we use a worker node?
@@ -72,7 +67,6 @@ _agent none = no agent for the whole pipeline, so stages specify their own agent
 **Answer:**
 
 We use Jenkins worker nodes/agents to execute pipeline jobs and reduce the workload on the Jenkins Controller.
-
 They also allow us to run jobs in different environments.
 
 # 10\. How do you integrate an agent/worker node with Jenkins Controller?
