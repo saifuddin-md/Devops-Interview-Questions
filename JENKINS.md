@@ -1,6 +1,6 @@
-Jenkins & CI/CD Interview Questions and Answers
+## Jenkins & CI/CD Interview Questions and Answers
 
-# 1\. What is CI/CD?
+## 1\. What is CI/CD?
 
 **Answer:**
 
@@ -8,7 +8,7 @@ CI : Developers frequently merge code into a shared repository, and Jenkins auto
 
 CD : After successful testing, the application is automatically delivered or deployed to the required environment.
 
-# 2\. What is a Jenkinsfile?
+## 2\. What is a Jenkinsfile?
 
 **Answer:**
 
@@ -16,7 +16,7 @@ Jenkinsfile is a text file that contains the Jenkins Pipeline code written in Gr
 
 application's Git repository and defines the steps to build, test, and deploy the application.
 
-# 3\. What is a Jenkins Plugin?
+## 3\. What is a Jenkins Plugin?
 
 **Answer:**
 
@@ -24,7 +24,7 @@ A Jenkins Plugin is an extension/software, Plugins allow Jenkins to communicate 
 
 Docker, Kubernetes, Maven, and Slack. They are installed and managed from the Jenkins Plugin Manager.
 
-# 4\. How do you store credentials securely in Jenkins?
+## 4\. How do you store credentials securely in Jenkins?
 
 **Answer:**
 
@@ -34,7 +34,7 @@ Jenkinsfile, we reference the credential using its ID instead of hardcoding the 
 
 **Store a credential in**: Manage Jenkins → Credentials → Add Credentials.
 
-# 5\. What is a Jenkins webhook?
+## 5\. What is a Jenkins webhook?
 
 **Answer:**
 
@@ -42,7 +42,7 @@ A Jenkins webhook is an HTTP notification sent by GitHub or GitLab to Jenkins wh
 
 push or pull request, occurs. Jenkins receives the webhook and automatically triggers the pipeline.
 
-# 6\. What happens if a Jenkins build fails?
+## 6\. What happens if a Jenkins build fails?
 
 **Answer:**
 
@@ -50,7 +50,7 @@ When a Jenkins build fails, Jenkins marks it as Failed. Based on the pipeline co
 
 execution, retry the failed step, send notifications,.
 
-# 7\. What is Jenkins Agent?
+## 7\. What is Jenkins Agent?
 
 **Answer:**
 
