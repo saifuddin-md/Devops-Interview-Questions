@@ -1,6 +1,7 @@
 ### 1. What is Docker?
 
 **Answer:**
+
 Docker is a containerization platform that packages an application and its dependencies into a standardized unit called a container. Containers are isolated, portable, and lightweight compared with traditional virtual machines.
 
 ### 2. What is a Docker container?
@@ -8,14 +9,10 @@ Docker is a containerization platform that packages an application and its depen
 **Answer:**
 A container is a running instance of a Docker image. It provides an isolated environment in which an application and its dependencies can run.
 
-###What is a Docker image?**
-
-**Answer:**
-A Docker image is a read-only template used to create containers. It contains application code, dependencies, libraries, and configuration.
-
 ### 3. What is a Dockerfile?**
 
 **Answer:**
+
 A Dockerfile is a text file containing instructions used to build a Docker image.
 
 ### 4. Explain common Dockerfile instructions.**
@@ -110,6 +107,12 @@ docker inspect <container_id>
 - network
 - command
 - container state
+
+### 13. What is a Docker image?**
+
+**Answer:**
+
+A Docker image is a read-only template used to create containers. It contains application code, dependencies, libraries, and configuration.
 
 **Q. How do you check Docker resource usage?**
 
