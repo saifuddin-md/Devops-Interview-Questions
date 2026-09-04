@@ -1,10 +1,10 @@
-**Q. What is Docker?**
+### 1. What is Docker?
 
 **Answer:**
 Docker is a containerization platform that packages an application and its dependencies into a standardized unit called a container. Containers are isolated, portable, and lightweight compared with traditional virtual machines.
 
 
-**Q. What is a Docker container?**
+### 2. What is a Docker container?
 
 **Answer:**
 A container is a running instance of a Docker image. It provides an isolated environment in which an application and its dependencies can run.
@@ -37,12 +37,30 @@ A Dockerfile is a text file containing instructions used to build a Docker image
 
 **Q. What is the difference between CMD and ENTRYPOINT?**
 
+**Answer:**
+CMD and ENTRYPOINT are both used to define what runs when a Docker container starts. The main difference is that CMD provides a default command or arguments, and it can be replaced with a different value/command when we run the container. but ENTRYPOINT generally can not be replaced by normal command-line arguments. 
+
+We can also combine them—ENTRYPOINT defines the executable and CMD provides the default arguments.
+
+**Example:**
+if I have ENTRYPOINT ["python"] and CMD ["app.py"], the container runs python app.py by default. 
+If I run the container with test.py, it runs python test.py. So, ENTRYPOINT is the fixed executable, while CMD provides the default arguments.
 
 **Q. What is the difference between COPY and ADD?**
 
 **Answer:**
 - Both can copy files into an image.
 - ADD has additional behavior, including automatic extraction of local tar archives.
+
+### Whst is Docker Layering?
+
+**Answer:**
+Docker layering is a mechanism where a Docker image is made up of multiple read-only and reusable layers. Each instruction in a Dockerfile typically creates a new layer. When a container runs, Docker adds a writable layer on top of these image layers. The main advantage is that Docker can cache and reuse unchanged layers, which makes image builds faster and reduces storage and download size.”
+
+
+Example:
+If my Dockerfile has `FROM`, `RUN`, and `COPY` instructions, each creates a layer. If I only change the application code in the final `COPY` step, Docker can reuse the previous layers instead of rebuilding everything. This is why Docker layering improves build performance.
+
 
 **Q. What is Docker Hub?**
 
@@ -252,12 +270,6 @@ EXPOSE 5000
 CMD \["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "--access-logfile", "-", "--error-logfile", "-", "EmpApp:app"]
 
 ```
-
-
-
-
-
-
 
 **Q. What is a multi-stage Docker build?**
 
