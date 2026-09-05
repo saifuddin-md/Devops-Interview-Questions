@@ -38,29 +38,23 @@ If I run the container with test.py, it runs python test.py. So, ENTRYPOINT is t
 
 ### 6 . What is the difference between COPY and ADD?
 
-**Answer:**
+- **Answer:**
 - Both can copy files into an image.
 - ADD has additional behavior, including automatic extraction of local tar archives.
 
 ### 7. Whst is Docker Layering?
 
-**Answer:**
+- **Answer:** Docker layering is a mechanism where a Docker image is made up of multiple read-only and reusable layers. Each instruction in a Dockerfile typically creates a new layer. When a container runs, Docker adds a writable layer on top of these image layers. The main advantage is that Docker can cache and reuse unchanged layers, which makes image builds faster and reduces storage and download size.
 
-Docker layering is a mechanism where a Docker image is made up of multiple read-only and reusable layers. Each instruction in a Dockerfile typically creates a new layer. When a container runs, Docker adds a writable layer on top of these image layers. The main advantage is that Docker can cache and reuse unchanged layers, which makes image builds faster and reduces storage and download size.
-
-**Example:**
-
-If my Dockerfile has `FROM`, `RUN`, and `COPY` instructions, each creates a layer. If I only change the application code in the final `COPY` step, Docker can reuse the previous layers instead of rebuilding everything. This is why Docker layering improves build performance.
+- **Example:** If my Dockerfile has `FROM`, `RUN`, and `COPY` instructions, each creates a layer. If I only change the application code in the final `COPY` step, Docker can reuse the previous layers instead of rebuilding everything. This is why Docker layering improves build performance.
 
 ### 8. What is Docker Hub?
 
-**Answer:**
-Docker Hub is a container image registry where images can be stored and shared.
-
+- **Answer:** Docker Hub is a container image registry where images can be stored and shared.
 
 ### 9. How do you check container logs?
 
-**Answer:**
+- **Answer:**
 ````bash
 docker logs <container_id>
 docker logs -f <container_id>
@@ -69,11 +63,10 @@ docker logs -t <container_id>
 
 ### 10. Why can 'docker exec -it -u appuser container bash' work even when 'appuser' has '/sbin/nologin' as its shell?
 
-**Answer:**
-Because docker exec directly starts bash as appuser. It doesn't perform a normal Linux login, so Docker doesn't 
+- **Answer:** Because docker exec directly starts bash as appuser. It doesn't perform a normal Linux login, so Docker doesn't 
 use the user's configured login shell.
 
-- /sbin/nologin prevents the user from getting an interactive (like ssh) login shell.
+- **/sbin/nologin** prevents the user from getting an interactive (like ssh) login shell.
 
 ```bash
 docker exec -it <container> bash   # directly starts bash
@@ -82,7 +75,8 @@ docker exec -it -u appuser <container> bash
 
 ### 11. How do you enter a running container?
 
-**Answer:**
+- **Answer:**
+- 
 ````bash
 docker exec -it <container_id> /bin/bash
 docker exec -it <container_id> /bin/sh
@@ -90,119 +84,102 @@ docker exec -it <container_id> /bin/sh
 
 ### 12. How do you inspect a container?
 
-**Answer:**
+- **Answer:**
 
 ````bash
 docker inspect <container_id>
 ````
 **This provides detailed configuration information such as:**
-
+```text
 - IP address
 - mounts
 - environment
 - network
 - command
 - container state
+```
 
-### 13. What is a Docker image?**
+### 13. What is a Docker image?
 
-**Answer:**
+- **Answer:** A Docker image is a read-only template used to create containers. It contains application code, dependencies, libraries, and configuration.
 
-A Docker image is a read-only template used to create containers. It contains application code, dependencies, libraries, and configuration.
+### 14. How do you check Docker resource usage?
 
-**Q. How do you check Docker resource usage?**
-
-**Answer:**
+- **Answer:**
 ````bash
 docker stats
 ````
 
-**Q. How do you see Docker disk usage?**
+### 15. How do you see Docker disk usage?**
 
-**Answer:**
+- **Answer:**
 ````bash
 docker system df            # How to see total Docker disk usage
 docker system prune -a      # This deletes all unused images/containers/networks.
 ````
 
-**Q. How do you inspect the layers of a Docker image and identify which commands are creating large layers?**
+### 16. How do you inspect the layers of a Docker image and identify which commands are creating large layers?
 
-**Answer:**
+- **Answer:**
 ````bash
 docker history <image-name>
 ````
 
-**This shows:**
+- **This shows:**
 
-* Which command created each layer
-* The size of each layer
-* When the layer was created
+```text
+- * Which command created each layer
+- * The size of each layer
+- * When the layer was created
+```
 
-It is useful for finding large layers and optimizing the Dockerfile.
+- It is useful for finding large layers and optimizing the Dockerfile.
 
-**Q. Difference between EXPOSE and -p?**  
 
-**Answer:**
+### 17. Difference between EXPOSE and -p?
 
-EXPOSE documents which port the application uses inside the container. It does not publish the port to the host. -p actually maps and publishes a host port to a container port, making the application accessible from outside the container.
+**Answer:** EXPOSE documents which port the application uses inside the container. It does not publish the port to the host. -p actually maps and publishes a host port to a container port, making the application accessible from outside the container.
 
-**Q. What are Docker volumes and bind mounts?**
+### 18. What are Docker volumes and bind mounts?**
 
-**Answer:**
-A Docker volume is storage managed by Docker and is commonly used for persistent application or database data.
-A bind mount maps a specific file or directory from the host into the container and is commonly used during development when we want changes on the host to be reflected inside the container.
+- **Answer:**
+- A Docker volume is storage managed by Docker and is commonly used for persistent application or database data.
+- A Bind mount maps a specific file or directory from the host into the container and is commonly used during development when we want changes on the host to be reflected inside the container.
 
-**1.** Docker Volume: (Managed by Docker)
+**1.** **Docker Volume:** (*Managed by Docker*)
 
 ```bash
 docker run -v myvolume:/data myapp
 ```
 
-**2.** Bind Mount: (Managed by us)
+**2.** **Bind Mount:** (*Managed by us*)
 
 ```bash
 docker run -v /home/user/app:/app myapp      # Maps a specific host path to the container.
 ``` 
 
-**Q. Why use Docker Compose?**
+### 19. Why use Docker Compose?
 
-**Answer:**
-Docker Compose is used to manage multiple Docker containers as one application. like frontend, backend, database. Instead of running each container manually, we define services, networks, volumes, and environment variables in a Compose yaml file and manage them using commands like docker compose up and docker compose down.
+- **Answer:** Docker Compose is used to manage multiple Docker containers as one application. like frontend, backend, database. Instead of running each container manually, we define services, networks, volumes, and environment variables in a Compose yaml file and manage them using commands like docker compose up and docker compose down.
 
-Without Compose, we might have to manually create networks, containers, volumes, environment variables, ports, etc.
-
-
-**Q. How do you reduce Docker image size?**
-
-**Answer:**
-
-1.: Use Lightweight Base Images: using light base images like slim and alpine.
-
-&#x20;
-
-2.: Combine RUN Commands: Each RUN instruction creates a new layer. Combining them reduces the 
-
-&#x20;   number of layers.
+- Without Compose, we might have to manually create networks, containers, volumes, environment variables, ports, etc.
 
 
-3\. Avoid Installing Recommended Packages: we Can avoid unnecessary packages from being installed. 
+### 20. How do you reduce Docker image size?
 
-&#x20;  using --no-install-recommends command.
+- **Answer:**
 
+**1.: Use Lightweight Base Images:** using light base images like slim and alpine.
 
-4.: Remove Package Cache: Package managers store cache which increases image size. We should remove 
+**2.: Combine RUN Commands:** Each RUN instruction creates a new layer. Combining them reduces the number of layers.
 
-&#x20;   it in the same layer., using rm -rf /var/lib/apt/list/\*.
+**3. Avoid Installing Recommended Packages:** we Can avoid unnecessary packages from being installed, using --no-install-recommends command.
 
+**4.: Remove Package Cache:** Package managers store cache which increases image size. We should remove it in the same layer., using ```bashrm -rf /var/lib/apt/list/*```
 
+**5.: Scan and Optimize Images:** we can use trivy and slim toolkit do reduce image size.
 
-5.: Scan and Optimize Images: we can use trivy and slim toolkit do reduce image size.
-
-
-
-6.: Use Multi-Stage Builds: This removes build tools from the final image. Only the built application 
-
-&#x20;   goes to final image.
+**6.: Use Multi-Stage Builds:** This removes build tools from the final image. Only the built application goes to final image.
 
 
 
