@@ -159,7 +159,8 @@ docker run -v /home/user/app:/app myapp      # Maps a specific host path to the 
 
 ### 19. Why use Docker Compose?
 
-- **Answer:** Docker Compose is used to manage multiple Docker containers as one application. like frontend, backend, database. Instead of running each container manually, we define services, networks, volumes, and environment variables in a Compose yaml file and manage them using commands like docker compose up and docker compose down.
+- **Answer:**
+Docker Compose is used to manage multiple Docker containers as one application. like frontend, backend, database. Instead of running each container manually, we define services, networks, volumes, and environment variables in a Compose yaml file and manage them using commands like docker compose up and docker compose down.
 
 - Without Compose, we might have to manually create networks, containers, volumes, environment variables, ports, etc.
 
@@ -212,7 +213,8 @@ CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "--access-logfile", "-", "--er
 
 ### 21. What is .dockerignore?
 
-- **Answer:** .dockerignore prevents unnecessary files from being sent into the Docker build context.
+- **Answer:**
+.dockerignore prevents unnecessary files from being sent into the Docker build context.
 
 - **Example:**
 - 
