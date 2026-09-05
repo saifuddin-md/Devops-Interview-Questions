@@ -6,12 +6,11 @@
 
 - **Answer:** A container is a running instance of a Docker image. It provides an isolated environment in which an application and its dependencies can run.
 
-### 3. What is a Dockerfile?**
+### 3. What is a Dockerfile?
 
 - **Answer:** A Dockerfile is a text file containing instructions used to build a Docker image.
 
-### 4. Explain common Dockerfile instructions.**
-
+### 4. Explain common Dockerfile instructions.
 - **Answer:**
 ```text
 - FROM → specifies the base image
@@ -61,7 +60,7 @@ docker logs -f <container_id>
 docker logs -t <container_id>
 ````
 
-### 10. Why can 'docker exec -it -u appuser container bash' work even when 'appuser' has '/sbin/nologin' as its shell?
+### 10. Why can `docker exec -it -u appuser container bash` work even when `appuser` has `/sbin/nologin` as its shell?
 
 - **Answer:** Because docker exec directly starts bash as appuser. It doesn't perform a normal Linux login, so Docker doesn't 
 use the user's configured login shell.
@@ -110,7 +109,7 @@ docker inspect <container_id>
 docker stats
 ````
 
-### 15. How do you see Docker disk usage?**
+### 15. How do you see Docker disk usage?
 
 - **Answer:**
 ````bash
@@ -140,7 +139,7 @@ docker history <image-name>
 
 **Answer:** EXPOSE documents which port the application uses inside the container. It does not publish the port to the host. -p actually maps and publishes a host port to a container port, making the application accessible from outside the container.
 
-### 18. What are Docker volumes and bind mounts?**
+### 18. What are Docker volumes and bind mounts?
 
 - **Answer:**
 - A Docker volume is storage managed by Docker and is commonly used for persistent application or database data.
@@ -251,7 +250,7 @@ docker run --memory=512m myapp          # Set a memory limit if appropriate
 
 - **Example:**
 
-**a>. Check the MongoDB environment variable:**
+**Check the MongoDB environment variable:**
 
 **Inside the backend container:**
 ````bash
