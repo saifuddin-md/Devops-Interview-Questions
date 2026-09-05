@@ -210,26 +210,6 @@ EXPOSE 5000
 CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "--access-logfile", "-", "--error-logfile", "-", "EmpApp:app"]
 ```
 
-**Q. What is a multi-stage Docker build?**
-
-**Answer:**
-A multi-stage build uses multiple FROM statements so that build dependencies can be separated from the final runtime image.
-
-**Example:**
-````bash
-FROM golang:1.24 AS builder
-WORKDIR /app
-
-COPY . .
-RUN go build -o app
-FROM alpine:latest
-
-COPY --from=builder /app/app /app
-CMD \["/app"]
-````
-
-- The final image contains the compiled application rather than the complete Go build environment.
-
 
 ### 21. What is .dockerignore?
 
@@ -284,7 +264,7 @@ curl mongo:27017
 
 ### 24. A Docker build is very slow. How do you troubleshoot it?
 
-- **Answer:** I would inspect the \*\*Dockerfile and build context\*\* first. I’d run the build with detailed output to identify which layer is slow:
+- **Answer:** I would inspect the `Dockerfile and build context` first. I’d run the build with detailed output to identify which layer is slow:
 
 ```bash
 docker build --progress=plain .
@@ -292,25 +272,43 @@ docker build --progress=plain .
 
 **Then I’d check:**
 
-\* \*\*Large build context\*\* — make sure `.dockerignore` excludes things like `.git`, `node\_modules`, build artifacts, and logs.
+- Large build context — make sure `.dockerignore` excludes things like `.git`, `node\_modules`, build artifacts, and logs.
 
-\* \*\*Docker layer caching\*\* — check whether frequently changing files are copied before expensive dependency-install steps.
+- Docker layer caching — check whether frequently changing files are copied before expensive dependency-install steps.
 
-\* \*\*Slow `RUN` commands\*\* — identify whether package installation, compilation, or downloads are taking the most time.
+- Slow `RUN` commands — identify whether package installation, compilation, or downloads are taking the most time.
 
-\* \*\*Cache invalidation\*\* — order the Dockerfile so stable dependencies are installed before frequently changing application code.
+- Cache invalidation — order the Dockerfile so stable dependencies are installed before frequently changing application code.
 
-\* \*\*Docker/host resources\*\* — check CPU, memory, disk I/O, and network performance if the Dockerfile itself looks reasonable.
-
-
-The goal is to identify the \*\*specific slow layer\*\* first, then optimize that part rather than guessing.
+- Docker/host resources — check CPU, memory, disk I/O, and network performance if the Dockerfile itself looks reasonable.
 
 
+- The goal is to identify the `specific slow layer` first, then optimize that part rather than guessing.
 
-**Q. A container is running, but the application is unhealthy. What would you check?**
+### 25. What is a multi-stage Docker build?
 
-*I'd check:*
+- **Answer:** A multi-stage build uses multiple FROM statements so that build dependencies can be separated from the final runtime image.
 
+- **Example:**
+````bash
+FROM golang:1.24 AS builder
+WORKDIR /app
+
+COPY . .
+RUN go build -o app
+FROM alpine:latest
+
+COPY --from=builder /app/app /app
+CMD \["/app"]
+````
+
+- The final image contains the compiled application rather than the complete Go build environment.
+
+
+
+### 26. A container is running, but the application is unhealthy. What would you check?
+
+- **I'd check:**
 
 ```bash
 
@@ -320,13 +318,13 @@ docker inspect <container>
 docker logs --tail 200 <container\_name>
 ```
 
-I'd enter the container:
+- **I'd enter the container:**
 
 ```bash 
 docker exec -it <container\_name> sh
 ```
 
-**Then:**
+- **Then:**
 
 Verify the application is actually listening
 
@@ -334,13 +332,11 @@ Verify the application is actually listening
 docker exec <container\_name> netstat -lntp
 ```
 
-**Q. How would you troubleshoot a production container that keeps restarting?**
+### 27. How would you troubleshoot a production container that keeps restarting?
 
-**Answer:**
+- **Answer:** First I would check docker ps -a, then docker logs <container> to see the application error. I would use docker inspect to check the exit code, OOM status, error, and container state.
 
-First I would check docker ps -a, then docker logs <container> to see the application error. I would use docker inspect to check the exit code, OOM status, error, and container state.
-
-**Example:**
+- **Example:**
 
 ```bash
 docker ps -a
@@ -348,19 +344,19 @@ docker logs <container>
 docker inspect <container>
 ```
 
-**Q. How do you copy a file from a container to the host?**
+### 28. How do you copy a file from a container to the host?
 
-**Answer:**
+- **Answer:**
 
 ```bash 
 docker cp <container\_id>:/app/log.txt ./log.txt
 ```
 
-**Q. How do you check why a container was killed?**
+### 29. How do you check why a container was killed?
 
-**Answer:**
+- **Answer:**
 
-**Check:**  
+- **Check:**  
 
 ```bash
 docker inspect <container\_id>
@@ -368,15 +364,15 @@ docker inspect <container\_id>
 
 Look at the container state and exit information.
 
-**Example:**
+- **Example:**
 
 ```bash
 docker inspect --format='ExitCode={{.State.ExitCode}} OOMKilled={{.State.OOMKilled}}' <container>
 ```
 
-If OOMKilled=true, the container was killed because of an out-of-memory condition.
+If `OOMKilled=true`, the container was killed because of an out-of-memory condition.
 
-**Then investigate:**
+- **Then investigate:**
 
 ```bash
 docker stats
@@ -385,21 +381,20 @@ and the host's available memory/system logs as appropriate.
 
 
 
-**Q. What are Docker security best practices?**
+### 30. What are Docker security best practices?
 
-**Answer:**
-Important practices include:
+- **Answer:** Important practices include:
 
-* Don't run applications as root unnecessarily.
-* Use trusted/minimal base images.
-* Scan images for vulnerabilities.
-* Don't store secrets in Dockerfiles.
-* Keep images and dependencies updated.
-* Use .dockerignore.
-* Limit container resources where appropriate.
-* Use read-only filesystems where practical.
-* Minimize Linux capabilities.
-* Don't expose unnecessary ports.
-* Pin/verify important image versions or digests in controlled environments.
-* Use least-privilege access to registries and deployment systems.
+- Don't run applications as root unnecessarily.
+- Use trusted/minimal base images.
+- Scan images for vulnerabilities.
+- Don't store secrets in Dockerfiles.
+- Keep images and dependencies updated.
+- Use .dockerignore.
+- Limit container resources where appropriate.
+- Use read-only filesystems where practical.
+- Minimize Linux capabilities.
+- Don't expose unnecessary ports.
+- Pin/verify important image versions or digests in controlled environments.
+- Use least-privilege access to registries and deployment systems.
 
