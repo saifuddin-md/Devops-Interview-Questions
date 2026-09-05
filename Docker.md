@@ -398,3 +398,33 @@ and the host's available memory/system logs as appropriate.
 - Pin/verify important image versions or digests in controlled environments.
 - Use least-privilege access to registries and deployment systems.
 
+### 31. How can we migrate a running Docker container from Server A to Server B while preserving its application and data?
+
+- **Answer:** To migrate a running Docker container from Server A to Server B while preserving both the application and its data, I would first identify where the application's persistent data is stored.
+
+For the application, I can move the Docker image by pushing it to a Docker registry and pulling it on Server B, Or by using `docker save` and `docker load`.
+
+- Move the Docker image and run it on Server B:
+  
+- **On Server A, save the image:**
+- 
+```bash
+docker save -o myimage.tar myimage:latest
+```
+- **Copy it to Server B:**
+- 
+```bash
+scp myimage.tar user@serverB:/tmp/
+```
+
+- **On Server B, load the image:**
+
+```bash
+docker load -i /tmp/myimage.tar
+```
+
+- **Then run it:**
+
+```bash
+docker run -d myimage:latest
+```
