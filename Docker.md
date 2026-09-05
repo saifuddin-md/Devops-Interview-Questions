@@ -169,81 +169,45 @@ docker run -v /home/user/app:/app myapp      # Maps a specific host path to the 
 
 - **Answer:**
 
-- **(1). Use Lightweight Base Images:** using light base images like slim and alpine.
+- **1. Use Lightweight Base Images:** using light base images like slim and alpine.
 
-- **(2). Combine RUN Commands:** Each RUN instruction creates a new layer. Combining them reduces the number of layers.
+- **2. Combine RUN Commands:** Each RUN instruction creates a new layer. Combining them reduces the number of layers.
 
-- **(3). Avoid Installing Recommended Packages:** we Can avoid unnecessary packages from being installed,
+- **3. Avoid Installing Recommended Packages:** we Can avoid unnecessary packages from being installed,
   using `--no-install-recommends` command.
 
-- **(4). Remove Package Cache:** Package managers store cache which increases image size. We should remove it in the same layer, 
+- **4. Remove Package Cache:** Package managers store cache which increases image size. We should remove it in the same layer, 
   using ```rm -rf /var/lib/apt/list/*```
 
-- **(5). Scan and Optimize Images:** we can use trivy and slim toolkit do reduce image size.
+- **5. Scan and Optimize Images:** we can use trivy and slim toolkit do reduce image size.
 
-- **(6). Use Multi-Stage Builds:** This removes build tools from the final image. Only the built application goes to final image.
+- **6. Use Multi-Stage Builds:** This removes build tools from the final image. Only the built application goes to final image.
 
--**(7). Use .dockerignore:** Avoid copying unnecessary files.
+- **7. Use .dockerignore:** Avoid copying unnecessary files.
 
-
-
-**Example:**
+- **Example:**
+  
 ```bash 
-
 FROM python:3.11-slim
-
 ENV PYTHONDONTWRITEBYTECODE=1
-
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-RUN apt-get update \&\& apt-get install -y --no-install-recommends \\
-
-default-mysql-client \\
-
-&#x20;   \&\& rm -rf /var/lib/apt/lists/\*
-
-
+RUN apt-get update && apt-get install -y --no-install-recommends default-mysql-client && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
-
-
-RUN python -m pip install --upgrade pip \\
-
-&#x20;\&\& python -m pip install --no-cache-dir -r requirements.txt
-
-
+RUN python -m pip install --upgrade pip && python -m pip install --no-cache-dir -r requirements.txt
 
 ARG UID=10001
-
-RUN adduser \\
-
-&#x20;   --disabled-password \\
-
-&#x20;   --gecos "" \\
-
-&#x20;   --home "/nonexistent" \\
-
-&#x20;   --shell "/sbin/nologin" \\
-
-&#x20;   --no-create-home \\
-
-&#x20;   --uid "${UID}" \\
-
-&#x20;   appuser
-
-
+RUN adduser --disabled-password --gecos ""  --home "/nonexistent" --shell "/sbin/nologin" --no-create-home --uid "${UID}" appuser
 
 COPY --chown=appuser:appuser . .
 
 USER appuser
-
 EXPOSE 5000
-
-CMD \["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "--access-logfile", "-", "--error-logfile", "-", "EmpApp:app"]
-
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "--access-logfile", "-", "--error-logfile", "-", "EmpApp:app"]
 ```
 
 **Q. What is a multi-stage Docker build?**
@@ -264,15 +228,15 @@ COPY --from=builder /app/app /app
 CMD \["/app"]
 ````
 
-* The final image contains the compiled application rather than the complete Go build environment.
+- The final image contains the compiled application rather than the complete Go build environment.
 
 
-**Q. What is .dockerignore?**
+### 21. What is .dockerignore?
 
-**Answer:**
-.dockerignore prevents unnecessary files from being sent into the Docker build context.
+- **Answer:** .dockerignore prevents unnecessary files from being sent into the Docker build context.
 
-**Example:**
+- **Example:**
+- 
 ````text
 .git
 node\_modules
@@ -281,36 +245,33 @@ node\_modules
 README.md
 ````
 
-**Q. Your container is consuming too much memory. What do you do?**
+### 22. Your container is consuming too much memory. What do you do?
 
-**Answer:**
+- **Answer:** I would first run docker stats to identify the container using too much memory. Then I would enter the container and use top or ps aux --sort=-%mem to find the process consuming the memory. I’d check the logs and application for issues like memory leaks, excessive caching, or too many workers. Finally, I’d set an appropriate memory limit and monitor the container.
 
-I would first run docker stats to identify the container using too much memory. Then I would enter the container and use top or ps aux --sort=-%mem to find the process consuming the memory. I’d check the logs and application for issues like memory leaks, excessive caching, or too many workers. Finally, I’d set an appropriate memory limit and monitor the container.
-
+- **Check memory usage:**
 ````bash
-docker stats   # Check memory usage
+docker stats   
 
 docker exec -it <container> sh
 
 ps aux --sort=-%mem
 
-docker inspect <container>    # Check the container's limit
+docker inspect <container>              # Check the container's limit
 
-docker logs <container>       # docker logs <container>
+docker logs <container>                 # docker logs <container>
 
-docker run --memory=512m myapp # Set a memory limit if appropriate
+docker run --memory=512m myapp          # Set a memory limit if appropriate
 ````
 
 
-**Q. A container cannot connect to a database. What would you check?**
+### 23. A container cannot connect to a database. What would you check?
 
-**Answer:**
+- **Answer:** First, I would check MONGO\_URI using printenv. Then I'd enter the backend container with docker exec and test connectivity to mongo:27017 using telnet. I'd also verify that mongo resolves correctly and that both containers are on the same Docker network. Finally, I'd check the MongoDB and backend logs and verify that MongoDB is actually running and ready to accept connections.
 
-First, I would check MONGO\_URI using printenv. Then I'd enter the backend container with docker exec and test connectivity to mongo:27017 using telnet. I'd also verify that mongo resolves correctly and that both containers are on the same Docker network. Finally, I'd check the MongoDB and backend logs and verify that MongoDB is actually running and ready to accept connections.
+- **Example:**
 
-**Example:**
-
-**a.** Check the MongoDB environment variable:-
+**a>. Check the MongoDB environment variable:**
 
 **Inside the backend container:**
 ````bash
@@ -321,10 +282,9 @@ printenv | grep MONGO        # mongo can be Docker service/hostname, while MONGO
 curl mongo:27017
 ````
 
-**Q. A Docker build is very slow. How do you troubleshoot it?**
+### 24. A Docker build is very slow. How do you troubleshoot it?
 
-**Answer:**
-I would inspect the \*\*Dockerfile and build context\*\* first. I’d run the build with detailed output to identify which layer is slow:
+- **Answer:** I would inspect the \*\*Dockerfile and build context\*\* first. I’d run the build with detailed output to identify which layer is slow:
 
 ```bash
 docker build --progress=plain .
