@@ -169,17 +169,17 @@ docker run -v /home/user/app:/app myapp      # Maps a specific host path to the 
 
 - **Answer:**
 
-**1.: Use Lightweight Base Images:** using light base images like slim and alpine.
+**(1). Use Lightweight Base Images:** using light base images like slim and alpine.
 
-**2.: Combine RUN Commands:** Each RUN instruction creates a new layer. Combining them reduces the number of layers.
+**(2). Combine RUN Commands:** Each RUN instruction creates a new layer. Combining them reduces the number of layers.
 
-**3. Avoid Installing Recommended Packages:** we Can avoid unnecessary packages from being installed, using --no-install-recommends command.
+**(3). Avoid Installing Recommended Packages:** we Can avoid unnecessary packages from being installed, using `--no-install-recommends` command.
 
-**4.: Remove Package Cache:** Package managers store cache which increases image size. We should remove it in the same layer., using ```bashrm -rf /var/lib/apt/list/*```
+**(4). Remove Package Cache:** Package managers store cache which increases image size. We should remove it in the same layer., using ```rm -rf /var/lib/apt/list/*```
 
-**5.: Scan and Optimize Images:** we can use trivy and slim toolkit do reduce image size.
+**(5). Scan and Optimize Images:** we can use trivy and slim toolkit do reduce image size.
 
-**6.: Use Multi-Stage Builds:** This removes build tools from the final image. Only the built application goes to final image.
+**(6). Use Multi-Stage Builds:** This removes build tools from the final image. Only the built application goes to final image.
 
 
 
