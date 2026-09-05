@@ -4,19 +4,16 @@
 
 ### 2. What is a Docker container?
 
-**Answer:**
-
-A container is a running instance of a Docker image. It provides an isolated environment in which an application and its dependencies can run.
+- **Answer:** A container is a running instance of a Docker image. It provides an isolated environment in which an application and its dependencies can run.
 
 ### 3. What is a Dockerfile?**
 
-**Answer:**
-
-A Dockerfile is a text file containing instructions used to build a Docker image.
+- **Answer:** A Dockerfile is a text file containing instructions used to build a Docker image.
 
 ### 4. Explain common Dockerfile instructions.**
 
-**Answer:**
+- **Answer:**
+```text
 - FROM → specifies the base image
 - WORKDIR → sets the working directory
 - COPY → copies files into the image
@@ -28,15 +25,14 @@ A Dockerfile is a text file containing instructions used to build a Docker image
 - ENV → sets environment variables
 - ARG → build-time variable
 - USER → specifies the user to run as
+```
 
 ### 5. What is the difference between CMD and ENTRYPOINT?
 
-**Answer:**
-CMD and ENTRYPOINT are both used to define what runs when a Docker container starts. The main difference is that CMD provides a default command or arguments, and it can be replaced with a different value/command when we run the container. but ENTRYPOINT generally can not be replaced by normal command-line arguments. 
+- **Answer:** CMD and ENTRYPOINT are both used to define what runs when a Docker container starts. The main difference is that CMD provides a default command or arguments, and it can be replaced with a different value/command when we run the container. but ENTRYPOINT generally can not be replaced by normal command-line arguments. 
+- We can also combine them—ENTRYPOINT defines the executable and CMD provides the default arguments.
 
-We can also combine them—ENTRYPOINT defines the executable and CMD provides the default arguments.
-
-**Example:**
+- **Example:**
 if I have ENTRYPOINT ["python"] and CMD ["app.py"], the container runs python app.py by default. 
 If I run the container with test.py, it runs python test.py. So, ENTRYPOINT is the fixed executable, while CMD provides the default arguments.
 
