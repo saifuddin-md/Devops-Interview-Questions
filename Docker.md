@@ -75,7 +75,7 @@ docker exec -it -u appuser <container> bash
 ### 11. How do you enter a running container?
 
 - **Answer:**
-- 
+  
 ````bash
 docker exec -it <container_id> /bin/bash
 docker exec -it <container_id> /bin/sh
@@ -137,7 +137,7 @@ docker history <image-name>
 
 ### 17. Difference between EXPOSE and -p?
 
-**Answer:** EXPOSE documents which port the application uses inside the container. It does not publish the port to the host. -p actually maps and publishes a host port to a container port, making the application accessible from outside the container.
+- **Answer:** EXPOSE documents which port the application uses inside the container. It does not publish the port to the host. -p actually maps and publishes a host port to a container port, making the application accessible from outside the container.
 
 ### 18. What are Docker volumes and bind mounts?
 
@@ -304,7 +304,6 @@ CMD \["/app"]
 - The final image contains the compiled application rather than the complete Go build environment.
 
 
-
 ### 26. A container is running, but the application is unhealthy. What would you check?
 
 - **I'd check:**
@@ -377,7 +376,6 @@ If `OOMKilled=true`, the container was killed because of an out-of-memory condit
 docker stats
 ```
 and the host's available memory/system logs as appropriate.
-
 
 
 ### 30. What are Docker security best practices?
