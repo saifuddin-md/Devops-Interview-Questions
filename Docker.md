@@ -1,8 +1,6 @@
 ### 1. What is Docker?
 
-- **Answer:**
-  
-Docker is a containerization platform that packages an application and its dependencies into a standardized unit called a container. Containers are isolated, portable, and lightweight compared with traditional virtual machines.
+- **Answer:** Docker is a containerization platform that packages an application and its dependencies into a standardized unit called a container. Containers are isolated, portable, and lightweight compared with traditional virtual machines.
 
 ### 2. What is a Docker container?
 
