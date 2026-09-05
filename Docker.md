@@ -1,11 +1,12 @@
 ### 1. What is Docker?
 
-#### Answer:
+- **Answer:**
 Docker is a containerization platform that packages an application and its dependencies into a standardized unit called a container. Containers are isolated, portable, and lightweight compared with traditional virtual machines.
 
 ### 2. What is a Docker container?
 
 **Answer:**
+
 A container is a running instance of a Docker image. It provides an isolated environment in which an application and its dependencies can run.
 
 ### 3. What is a Dockerfile?**
@@ -49,11 +50,12 @@ If I run the container with test.py, it runs python test.py. So, ENTRYPOINT is t
 ### 7. Whst is Docker Layering?
 
 **Answer:**
+
 Docker layering is a mechanism where a Docker image is made up of multiple read-only and reusable layers. Each instruction in a Dockerfile typically creates a new layer. When a container runs, Docker adds a writable layer on top of these image layers. The main advantage is that Docker can cache and reuse unchanged layers, which makes image builds faster and reduces storage and download size.
 
 **Example:**
-If my Dockerfile has `FROM`, `RUN`, and `COPY` instructions, each creates a layer. If I only change the application code in the final `COPY` step, Docker can reuse the previous layers instead of rebuilding everything. This is why Docker layering improves build performance.
 
+If my Dockerfile has `FROM`, `RUN`, and `COPY` instructions, each creates a layer. If I only change the application code in the final `COPY` step, Docker can reuse the previous layers instead of rebuilding everything. This is why Docker layering improves build performance.
 
 ### 8. What is Docker Hub?
 
