@@ -22,15 +22,15 @@ Additional Resources
 
 ### Beginner Level
 
-1. What is Kubernetes?
+**1. What is Kubernetes?**
 
 Kubernetes (K8s) is an open-source container orchestration platform that automates the deployment, scaling, networking, and management of containerized applications.
 
-2. What is a Pod?
+**2. What is a Pod?**
 
 A Pod is the smallest deployable unit in Kubernetes. A Pod can contain one or more containers that share the same network namespace and can share storage volumes.
 
-3. What is a Node?
+**3. What is a Node?**
 
 A Node is a physical or virtual machine that runs Kubernetes workloads (Pods).
 
@@ -42,7 +42,7 @@ Container runtime
 
 kube-proxy (where applicable)
 
-4. What is a Cluster?
+**4. What is a Cluster?**
 
 A Kubernetes cluster is a collection of machines managed by Kubernetes.
 
@@ -52,7 +52,7 @@ Control plane nodes — manage the cluster
 
 Worker nodes — run application workloads
 
-5. What is a Deployment?
+**5. What is a Deployment?**
 
 A Deployment manages a set of Pods through ReplicaSets.
 
@@ -68,13 +68,13 @@ Declarative updates
 
 Replica management
 
-6. What is a ReplicaSet?
+**6. What is a ReplicaSet?**
 
 A ReplicaSet ensures that a specified number of Pod replicas are running at any given time.
 
 For example, if a ReplicaSet is configured with three replicas, Kubernetes attempts to maintain three matching Pods.
 
-7. What is a Namespace?
+**7. What is a Namespace?**
 
 A Namespace provides logical isolation within a Kubernetes cluster.
 
@@ -90,7 +90,7 @@ ConfigMaps
 
 Secrets
 
-8. What is a Service?
+**8. What is a Service?**
 
 A Service provides a stable network endpoint for accessing a group of Pods.
 
@@ -98,7 +98,7 @@ Because Pods are ephemeral and their IP addresses can change, Services provide s
 
 Types of Kubernetes Services
 
-9. What is kubectl?
+**9. What is kubectl?**
 
 `kubectl is the Kubernetes command-line tool used to communicate with the Kubernetes API server and manage cluster resources.`
 
@@ -111,9 +111,9 @@ Examples:
 
 ### Intermediate Level
 
-10. What is the Difference Between a Pod and a Deployment
+**10. What is the Difference Between a Pod and a Deployment**
 
-11. What is etcd?
+**11. What is etcd?**
 
 etcd is a distributed, consistent key-value store used by Kubernetes to store cluster state and configuration.
 
@@ -129,7 +129,7 @@ Metadata
 
 Protecting and backing up etcd is critical for cluster recovery.
 
-12. What is kubelet?
+**12. What is kubelet?**
 
 kubelet is the primary node agent.
 
@@ -143,7 +143,7 @@ Monitors containers
 
 Reports node and Pod status
 
-13. What is kube-proxy?
+**13. What is kube-proxy?**
 
 kube-proxy is a node-level component responsible for implementing Service networking rules.
 
@@ -151,7 +151,7 @@ It helps route traffic destined for Kubernetes Services to the appropriate backe
 
 Modern Kubernetes networking can use alternatives to kube-proxy, depending on the cluster’s networking implementation.
 
-14. What is a ConfigMap?
+**14. What is a ConfigMap?**
 
 A ConfigMap stores non-sensitive configuration data as key-value pairs.
 
@@ -175,7 +175,7 @@ data:
   APP_ENV: production
   LOG_LEVEL: info
 
-15. What is a Secret?
+**15. What is a Secret?**
 
 A Secret stores sensitive information such as:
 
@@ -189,9 +189,9 @@ Credentials
 
 Kubernetes Secrets are Base64-encoded by default, but Base64 encoding is not encryption. Appropriate encryption-at-rest and access controls should be used for sensitive environments.
 
-16. What is the Difference Between ConfigMap and Secret
+**16. What is the Difference Between ConfigMap and Secret**
 
-17. What are Labels and Selectors?
+**17. What are Labels and Selectors?**
 
 Labels are key-value pairs attached to Kubernetes resources to identify and organize them.
 
@@ -208,7 +208,7 @@ For example, a Service can select Pods using:
 selector:
   app: nginx
 
-18. What is a DaemonSet?
+**18. What is a DaemonSet?**
 
 A DaemonSet ensures that a copy of a Pod runs on every node, or on a selected subset of nodes.
 
@@ -224,7 +224,7 @@ Security agents
 
 ### Advanced Level
 
-19. What is a StatefulSet?
+**19. What is a StatefulSet?**
 
 A StatefulSet manages stateful applications that require:
 
@@ -246,7 +246,7 @@ Message queues
 
 Stateful applications
 
-20. What is a Job?
+**20. What is a Job?**
 
 A Job creates Pods that run a task until it successfully completes.
 
@@ -260,7 +260,7 @@ One-time scripts
 
 Data processing tasks
 
-21. What is a CronJob?
+**21. What is a CronJob?**
 
 A CronJob creates Jobs according to a schedule, similar to Linux cron.
 
@@ -270,7 +270,7 @@ schedule: "0 2 * * *"
 
 This could be used to run a task every day at 2:00 AM.
 
-22. What is a Persistent Volume (PV)?
+**22. What is a Persistent Volume (PV)?**
 
 A PersistentVolume (PV) is a cluster-level storage resource.
 
@@ -282,7 +282,7 @@ Statically provisioned
 
 It represents storage that can be consumed by workloads through PersistentVolumeClaims.
 
-23. What is a PersistentVolumeClaim (PVC)?
+**23. What is a PersistentVolumeClaim (PVC)?**
 
 A PersistentVolumeClaim (PVC) is a request for storage made by a workload.
 
@@ -307,9 +307,9 @@ spec:
     requests:
       storage: 10Gi
 
-24. What is  the Difference Between PV and PVC
+**24. What is  the Difference Between PV and PVC**
 
-25. What is a StorageClass?
+**25. What is a StorageClass?**
 
 A StorageClass defines how storage should be dynamically provisioned.
 
@@ -331,7 +331,7 @@ metadata:
   name: fast-storage
 provisioner: example.com/fast
 
-26. What is a Taint?
+**26. What is a Taint?**
 
 A taint is applied to a node to prevent Pods from being scheduled there unless they have a matching toleration.
 
@@ -339,7 +339,7 @@ Example:
 
 `kubectl taint nodes node1 dedicated=database:NoSchedule`
 
-27. What is a Toleration?
+**27. What is a Toleration?**
 
 A toleration allows a Pod to be scheduled onto a node with a matching taint.
 
@@ -353,7 +353,7 @@ tolerations:
 
 A toleration allows a Pod to tolerate a taint; it does not by itself force the Pod onto that node.
 
-28. What is Node Affinity?
+**28. What is Node Affinity?**
 
 Node affinity defines rules that influence which nodes a Pod can be scheduled on based on node labels.
 
@@ -371,7 +371,7 @@ affinity:
 
 ### Scenario-Based Questions
 
-29. A Pod is stuck in Pending state. How do you troubleshoot?
+**29. A Pod is stuck in Pending state. How do you troubleshoot?**
 
 Start by inspecting the Pod:
 
@@ -405,7 +405,7 @@ Useful commands:
 `kubectl describe nodes`
 `kubectl get events --sort-by=.lastTimestamp`
 
-30. A Pod is in CrashLoopBackOff. What do you do?
+**30. A Pod is in CrashLoopBackOff. What do you do?**
 
 CrashLoopBackOff usually means the container starts, exits or crashes, and Kubernetes repeatedly attempts to restart it with increasing delays.
 
@@ -447,7 +447,7 @@ d. Startup Issues:                             # Check liveness/readiness probe 
 
 e. Networking Issues:                    # Can't connect to database/service
 
-31. How do you scale a Deployment?
+**31. How do you scale a Deployment?**
 
 `kubectl scale deployment nginx --replicas=5`
 
@@ -456,7 +456,7 @@ Verify:
 `kubectl get deployment nginx`
 `kubectl get pods`
 
-32. How do you perform a rolling update?
+**32. How do you perform a rolling update?**
 
 Update the container image:
 
@@ -466,7 +466,7 @@ Check the rollout:
 
 `kubectl rollout status deployment/nginx`
 
-33. How do you roll back a Deployment?
+**33. How do you roll back a Deployment?**
 
 `kubectl rollout undo deployment/nginx`
 
@@ -474,11 +474,11 @@ View rollout history:
 
 `kubectl rollout history deployment/nginx`
 
-34. How do you check rollout status?
+**34. How do you check rollout status?**
 
 `kubectl rollout status deployment/nginx`
 
-35. How do you expose a Deployment?
+**35. How do you expose a Deployment?**
 
 For example, to expose the Deployment through a LoadBalancer Service:
 
@@ -490,7 +490,7 @@ Check the Service:
 
 `kubectl get service nginx`
 
-36. How do you view cluster events?
+**36. How do you view cluster events?**
 
 `kubectl get events`
 
@@ -502,7 +502,7 @@ For a particular namespace:
 
 `kubectl get events -n <namespace> --sort-by=.lastTimestamp`
 
-37. How do you check node health?
+**37. How do you check node health?**
 
 `kubectl get nodes`
 
@@ -514,7 +514,7 @@ Check resource usage:
 
 `kubectl top nodes`
 
-38. How do you debug Kubernetes networking issues?
+**38. How do you debug Kubernetes networking issues?**
 
 Follow a systematic approach:
 
@@ -547,7 +547,7 @@ Check the CNI/networking layer
 
 Verify that the cluster’s CNI plugin and related components are healthy.
 
-39. If there are 2 pods in different namespaces (ns1 & ns2), how can they communicate? How would you test it?
+**39. If there are 2 pods in different namespaces (ns1 & ns2), how can they communicate? How would you test it?**
 
 Yes. Pods in different Kubernetes namespaces can communicate with each other by default. A namespace is a logical boundary for organizing resources, not a network boundary.
 
@@ -565,13 +565,13 @@ Test Pod-to-Pod connectivity
 
 curl http://<pod-ip-in-ns2>:8080
 
-40. What is a PodDisruptionBudget?
+**40. What is a PodDisruptionBudget?**
 
-A PodDisruptionBudget (PDB) is a Kubernetes resource that limits the number of Pods of a deployment that can be down simultaneously from voluntary disruptions. It ensures application availability during: Node maintenance, Cluster upgrades and Manual Pod deletions.
+A PodDisruptionBudget (PDB) is a Kubernetes resource that limits the number of Pods of a deployment that can be down simultaneously from voluntary disruptions. It ensures application availability during: Node maintenance, Cluster upgrades and Manual Pod deletions.
 
 Key Points:
 
-Specifies minAvailable or maxUnavailable
+Specifies minAvailable or maxUnavailable
 
 Prevents voluntary disruptions from breaking application SLAs
 
@@ -597,7 +597,7 @@ matchLabels:
 
 app: my-app
 
-41. How do you integrate Kubernetes with Jenkins or pipelines?
+**41. How do you integrate Kubernetes with Jenkins or pipelines?**
 
 I integrated Jenkins with Kubernetes using ServiceAccount, and RBAC. First, I created a ServiceAccount for Jenkins, then Configure RBAC, then I Stored Kubernetes ServiceAccount token in Jenkins Credentials, then I used withKubeConfig block in pipeline to access Kubernetes, and then I used kubectl commands to deploy and manage Kubernetes resources.
 
@@ -605,11 +605,11 @@ I also have worked with the GitOps architecture using GitHub Actions and Argo CD
 
 GitHub Actions handled the CI part, such as building the application, running tests, performing SonarQube and Trivy scans, building Docker image, and pushing it to a container registry. After that, GitHub Actions updates the K8s manifest in a Git repository with new Docker image tag. Argo CD was connected to that GitOps repository and continuously monitored it. When Argo CD detected the new image tag, it compared the desired state in Git with the actual state in Kubernetes and synchronized the application to the Kubernetes cluster.
 
-42. What is the base configuration required to connect pipeline with EKS?
+**42. What is the base configuration required to connect pipeline with EKS?**
 
 To connect a CI/CD pipeline with EKS, we mainly need AWS credentials, an EKS cluster, kubectl, and proper IAM permissions. The pipeline needs to authenticate with AWS, get the EKS cluster credentials using aws eks update-kubeconfig, and then use kubectl to deploy the application.
 
-43.  What recent issue did you face in Kubernetes/EKS?
+**43.  What recent issue did you face in Kubernetes/EKS?**
 
 Here are a few more easy answers you can use in an interview:
 
@@ -645,11 +645,11 @@ Root Cause: The EKS worker nodes did not have enough CPU or memory resources ava
 
 Solution: “We checked the resource usage and increased the cluster capacity by adding more worker nodes or resources. After that, the pods were scheduled successfully.”
 
-44. How many nodes were there in your cluster?
+**44. How many nodes were there in your cluster?**
 
 “We had 3 worker nodes in our EKS cluster. We used them to run the application pods. The cluster was configured with auto-scaling, so additional nodes could be added when the workload increased.”
 
-45. What was your strategy to manage/upgrade 35 nodes?
+**45. What was your strategy to manage/upgrade 35 nodes?**
 
 “We used a Canary and Rolling Update strategy with Blue/Green node groups. Instead of upgrading all 35 nodes at once, we created a new node group with the upgraded AMI/version alongside the existing node group.
 
@@ -863,7 +863,7 @@ Pro Tips
 
 ✅ Practice writing Kubernetes YAML manifests.
 
-✅ Understand imperative vs. declarative management.
+✅ Understand imperative vs. declarative management.
 
 ✅ Learn how Kubernetes components interact with each other.
 
@@ -939,7 +939,7 @@ Common kubectl commands
 
 YAML manifest structure
 
-Imperative vs. declarative management
+Imperative vs. declarative management
 
 
 
@@ -1066,3 +1066,4 @@ Imperative vs. declarative management
 | Intermediate | ConfigMaps, Secrets, Ingress, Labels, Selectors, DaemonSets, etcd, kubelet |
 
 | Advanced | StatefulSets, Jobs, CronJobs, PV/PVC, StorageClasses, Scheduling, Taints, Tolerations, Affinity |
+
