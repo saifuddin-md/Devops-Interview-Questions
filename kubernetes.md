@@ -135,67 +135,20 @@ ConfigMaps
 ·      
 Secrets
 
-### **8. What is a Service?**
+## **8. What is a Service?**
 
-A **Service** provides a stable network endpoint for accessing a
-group of Pods.
+A **Service** provides a stable network endpoint for accessing a group of Pods.
 
-Because Pods are ephemeral and their IP addresses can change,
-Services provide stable connectivity and DNS-based discovery.
+Because Pods are ephemeral and their IP addresses can change, Services provide stable connectivity and DNS-based discovery.
 
 ### Types of Kubernetes Services
 
-|      |
-| ---- |
-
-Service Type
-
-|      |
-| ---- |
-
-Description
-
-|     |
-| --- |
-
-**ClusterIP**
-
-|     |
-| --- |
-
-Exposes the Service internally within the cluster. This is the
-&#x20; default type.
-
-|     |
-| --- |
-
-**NodePort**
-
-|     |
-| --- |
-
-Exposes the Service on a static port on each node’s IP address.
-
-|     |
-| --- |
-
-**LoadBalancer**
-
-|     |
-| --- |
-
-Exposes the Service externally through a cloud/provider load
-&#x20; balancer when supported.
-
-|     |
-| --- |
-
-**ExternalName**
-
-|     |
-| --- |
-
-Maps a Service to an external DNS name using a CNAME record.
+| Service Type | Description |
+|---|---|
+| **ClusterIP** | Exposes the Service internally within the cluster. This is the default type. |
+| **NodePort** | Exposes the Service on a static port on each node’s IP address. |
+| **LoadBalancer** | Exposes the Service externally through a cloud/provider load balancer when supported. |
+| **ExternalName** | Maps a Service to an external DNS name using a CNAME record. |
 
 ### **9. What is kubectl?**
 
