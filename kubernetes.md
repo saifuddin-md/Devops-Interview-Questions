@@ -83,17 +83,11 @@ A cluster generally consists of:
 A **Deployment** manages a set of Pods through **ReplicaSets**.
 
 It provides features such as:
-
-·      
-Rolling updates
-·      
-Rollbacks
-·      
-Scaling
-·      
-Declarative updates
-·      
-Replica management
+- Rolling updates
+- Rollbacks
+- Scaling
+- Declarative updates
+- Replica management
 
 ### **6. What is a ReplicaSet?**
 
@@ -150,57 +144,14 @@ kubectl apply -f app.yaml
 
 ## **Intermediate Level**
 
-### **10. What is the Difference Between a Pod and a Deployment**
+## **10. What is the Difference Between a Pod and a Deployment?**
 
-|      |
-| ---- |
-
-**Pod**
-
-|      |
-| ---- |
-
-**Deployment**
-
-|     |
-| --- |
-
-Runs one or more containers
-
-|     |
-| --- |
-
-Manages Pods
-
-|     |
-| --- |
-
-Can be created directly
-
-|     |
-| --- |
-
-Creates and manages ReplicaSets
-
-|     |
-| --- |
-
-Does not provide built-in rollout management
-
-|     |
-| --- |
-
-Supports rolling updates and rollbacks
-
-|     |
-| --- |
-
-Not normally used directly for production workloads
-
-|     |
-| --- |
-
-Commonly used for stateless applications
+| **Pod** | **Deployment** |
+|---|---|
+| Runs one or more containers | Manages Pods |
+| Can be created directly | Creates and manages ReplicaSets |
+| Does not provide built-in rollout management | Supports rolling updates and rollbacks |
+| Not normally used directly for production workloads | Commonly used for stateless applications |
 
 ### ** **
 
