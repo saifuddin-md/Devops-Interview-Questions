@@ -131,7 +131,7 @@ Because Pods are ephemeral and their IP addresses can change, Services provide s
 Kubernetes API server and manage cluster resources.
 
 **Examples:**
-
+```bash
 kubectl get pods
 
 kubectl get nodes
@@ -139,7 +139,7 @@ kubectl get nodes
 kubectl describe pod \<pod-name>
 
 kubectl apply -f app.yaml
-
+```
 ---
 
 ## **Intermediate Level**
@@ -232,15 +232,10 @@ Command-line arguments
 *Example:*
 ```yaml
 apiVersion: v1
-
 kind: ConfigMap
-
 metadata:
-
   name: app-config
-
 data:
-
   APP\_ENV: production
 
   LOG\_LEVEL: info
