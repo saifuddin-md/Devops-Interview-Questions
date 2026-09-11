@@ -179,10 +179,10 @@ recovery.
 
 It runs on every worker node and:
 
-•	Communicates with the Kubernetes API server
-•	Ensures assigned Pods are running
-•	Monitors containers
-•	Reports node and Pod status
+-Communicates with the Kubernetes API server
+-	Ensures assigned Pods are running
+-	Monitors containers
+-	Reports node and Pod status
 
 ### **13. What is kube-proxy?**
 
