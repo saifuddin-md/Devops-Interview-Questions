@@ -327,197 +327,105 @@ A **PersistentVolume (PV)** is a cluster-level storage resource.
 
 A PV can be:
 
-·      
-Dynamically provisioned
-
-·      
-Statically provisioned
+- Dynamically provisioned
+- Statically provisioned
 
 It represents storage that can be consumed by workloads through
 PersistentVolumeClaims.
 
 ### **23. What is a PersistentVolumeClaim (PVC)?**
 
-A **PersistentVolumeClaim (PVC)** is a request for storage made
-by a workload.
+A **PersistentVolumeClaim (PVC)** is a request for storage made by a workload.
 
 *A PVC can specify requirements such as:*
-
-·      
-Storage capacity
-
-·      
-Access modes
-
-·      
-Storage class
+   
+- Storage capacity 
+- Access modes     
+- Storage class
 
 ***Example:***
-
+```yaml
 apiVersion: v1
-
-kind:
-PersistentVolumeClaim
-
+kind: PersistentVolumeClaim
 metadata:
-
   name: app-storage
-
 spec:
-
   accessModes:
-
     - ReadWriteOnce
-
   resources:
-
     requests:
-
       storage: 10Gi
+```
 
 ### **24. What is  the Difference Between PV and PVC**
 
-|      |
-| ---- |
+| **PV** | **PVC** |
+|---|---|
+| Represents actual storage | Represents a request for storage |
+| Cluster-level resource | Namespace-scoped resource |
+| Can be statically or dynamically provisioned | Used by workloads to request storage |
+| Provides storage capacity | Specifies storage requirements |
 
-**PV**
-
-|      |
-| ---- |
-
-**PVC**
-
-|     |
-| --- |
-
-Represents actual storage
-
-|     |
-| --- |
-
-Represents a request for storage
-
-|     |
-| --- |
-
-Cluster-level resource
-
-|     |
-| --- |
-
-Namespace-scoped resource
-
-|     |
-| --- |
-
-Can be statically or dynamically provisioned
-
-|     |
-| --- |
-
-Used by workloads to request storage
-
-|     |
-| --- |
-
-Provides storage capacity
-
-|     |
-| --- |
-
-Specifies storage requirements
-
-### ** **
 
 ### **25. What is a StorageClass?**
 
-A **StorageClass** defines how storage should be dynamically
-provisioned.
+A **StorageClass** defines how storage should be dynamically provisioned.
 
 It can specify:
-
-·      
-Storage provisioner
-
-·      
-Parameters
-
-·      
-Reclaim policy
-
-·      
-Volume binding mode
-
-
+    
+- Storage provisioner 
+- Parameters  
+- Reclaim policy
+- Volume binding mode
 
 ***Example:***
-
-apiVersion:
-storage.k8s.io/v1
-
+```yaml
+apiVersion: storage.k8s.io/v1
 kind: StorageClass
-
 metadata:
-
   name: fast-storage
-
 provisioner: example.com/fast
+```
 
 ### **26. What is a Taint?**
 
-A **taint** is applied to a node to prevent Pods from being
-scheduled there unless they have a matching toleration.
+A **taint** is applied to a node to prevent Pods from being scheduled there unless they have a matching toleration.
 
 ***Example:***
-
-kubectl taint nodes node1
-dedicated=database\:NoSchedule
+```bash
+kubectl taint nodes node1 dedicated=database\:NoSchedule
+```
 
 ### **27. What is a Toleration?**
 
-A **toleration**
-allows a Pod to be scheduled onto a node with a matching taint.
+A **toleration** allows a Pod to be scheduled onto a node with a matching taint.
 
 ***Example:***
-
+```yaml
 tolerations:
-
   - key: dedicated
-
     operator: Equal
-
     value: database
-
     effect: NoSchedule
-
-A toleration allows a Pod to tolerate a taint; it does not by itself
-force the Pod onto that node.
+```
+A toleration allows a Pod to tolerate a taint; it does not by itself force the Pod onto that node.
 
 ### **28. What is Node Affinity?**
 
-**Node affinity** defines rules that
-influence which nodes a Pod can be scheduled on based on node labels.
+**Node affinity** defines rules that influence which nodes a Pod can be scheduled on based on node labels.
 
-Example:
-
+**Example:**
+```yaml
 affinity:
-
   nodeAffinity:
-
     requiredDuringSchedulingIgnoredDuringExecution:
-
       nodeSelectorTerms:
-
         - matchExpressions:
-
             - key: disktype
-
               operator: In
-
               values:
-
                 - ssd
-
+```
 ---
 
 ## **Scenario-Based Questions**
@@ -525,75 +433,54 @@ affinity:
 ### **29. A Pod is stuck in Pending state. How do you troubleshoot?**
 
 Start by inspecting the Pod:
-
-kubectl describe pod \<pod-name>
-
+```bash
+kubectl describe pod <pod-name>
+```
 ***Then check:***
-
-·      
-Scheduler events
-
-·      
-Node availability
-
-·      
-CPU and memory resources
-
-·      
-Resource requests
-
-·      
-Taints and tolerations
-
-·      
-Node selectors and affinity
-rules
-
-·      
-PVC binding status
-
-·      
-Namespace quotas
-
-·      
-Scheduling constraints
+    
+- Scheduler events
+- Node availability
+- CPU and memory resources
+- Resource requests   
+- Taints and tolerations
+- Node selectors and affinity rules    
+- PVC binding status    
+- Namespace quotas   
+- Scheduling constraints
 
 ***Useful commands:***
+```bash
+kubectl get pod <pod-name> -o wide
 
-kubectl get pod \<pod-name> -o wide
-
-kubectl describe pod \<pod-name>
+kubectl describe pod <pod-name>
 
 kubectl get nodes
 
 kubectl describe nodes
 
 kubectl get events --sort-by=.lastTimestamp
+```
 
 ### **30. A Pod is in CrashLoopBackOff. What do you do?**
 
-**CrashLoopBackOff** usually means the
-container starts, exits or crashes, and Kubernetes repeatedly attempts to
-restart it with increasing delays.
+**CrashLoopBackOff** usually means the container starts, exits or crashes, and Kubernetes repeatedly attempts to restart it with increasing delays.
 
 #### **1. Check the pod logs**
-
+```bash
 kubectl logs \<pod-name>
-
-**For a specific
-container:**
-
+```
+**For a specific container:**
+```bash
 kubectl logs \<pod-name> -c \<container-name>
-
-**If the container has
-restarted, check its previous logs:**
-
+```
+**If the container has restarted, check its previous logs:**
+```bash
 kubectl logs \<pod-name> --previous
-
+```
 #### **2. Describe the Pod**
-
+```bash
 kubectl describe pod \<pod-name>
-
+```
 **Look at:**
 
 #### ·        **Last State**: Why did it crash? (Exit code, OOMKilled)
@@ -608,21 +495,15 @@ kubectl describe pod \<pod-name>
 
 #### **3. Verify Common causes**
 
-**a. Image Issues:                               ** *# Verify image exists* or accessible 
+**a. Image Issues:** *# Verify image exists* or accessible 
 
-**b. Resource
-Limits:                        ** # *Check resource requests/limits and if
-OOMKilled*
+**b. Resource Limits:** # *Check resource requests/limits and if OOMKilled*
 
-**c. Configuration
-Issues:              ** # Verify ConfigMaps and Secrets exist or environment variables
+**c. Configuration Issues:** # Verify ConfigMaps and Secrets exist or environment variables
 
-**d. Startup
-Issues:                            ** # Check liveness/readiness probe
-configuration
+**d. Startup Issues:** # Check liveness/readiness probe configuration
 
-**e. Networking
-Issues:                   ** # Can't connect to database/service
+**e. Networking Issues:** # Can't connect to database/service
 
 ### **31. How do you scale a Deployment?**
 
