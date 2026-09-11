@@ -217,7 +217,7 @@ data:
   APP_ENV: production
   LOG_LEVEL: info
 ```
-#### Important: data stores configuration as text. Passwords and other sensitive information should be stored in a Kubernetes Secret, not a ConfigMap.
+**Notes:** data stores configuration as text. Passwords and other sensitive information should be stored in a Kubernetes Secret, not a ConfigMap.
 
 ### **15. What is a Secret?**
 
@@ -225,7 +225,7 @@ A **Secret** stores sensitive information such as:
      
 - Passwords  
 - API tokens   
--TLS certificates  
+- TLS certificates  
 - Credentials
 - 
 #### *Example:*
@@ -246,8 +246,6 @@ controls should be used for sensitive environments.
 
 ### **16. What is the Difference Between ConfigMap and Secret**
 
-## **16. What is the Difference Between ConfigMap and Secret?**
-
 | **Feature** | **ConfigMap** | **Secret** |
 |---|---|---|
 | **Intended use** | Non-sensitive configuration | Sensitive configuration |
@@ -259,46 +257,32 @@ controls should be used for sensitive environments.
 
 ### **17. What are Labels and Selectors?**
 
-**Labels** are key-value pairs attached to
-Kubernetes resources to identify and organize them.
+**Labels** are key-value pairs attached to Kubernetes resources to identify and organize them.
 
 ***Example:***
-
+```yaml
 labels:
-
   app: nginx
-
   environment: production
+```
 
-**Selectors** are used to identify resources
-with matching labels.
+**Selectors** are used to identify resources with matching labels.
 
 ***Example***, a Service can select Pods
 using:
-
+```yaml
 selector:
-
   app: nginx
-
+```
 ### **18. What is a DaemonSet?**
 
-A **DaemonSet** ensures that a copy of a Pod runs on every node,
-or on a selected subset of nodes.
+A **DaemonSet** ensures that a copy of a Pod runs on every node, or on a selected subset of nodes.
 
-Common use cases include:
-
-·      
-Log collection agents
-
-·      
-Monitoring agents
-
-·      
-Node-level networking
-components
-
-·      
-Security agents
+Common use cases include:   
+- Log collection agents  
+- Monitoring agents 
+- Node-level networking components
+- Security agents
 
 ---
 
@@ -306,67 +290,40 @@ Security agents
 
 ### **19. What is a StatefulSet?**
 
-A **StatefulSet** manages stateful applications that require:
+A StatefulSet manages stateful applications that require:
+-	Stable network identities and Pod names 
+-	Persistent storage 
+-	Ordered deployment and termination 
 
-·      
-Stable network identities
+Common use cases include Databases, distributed systems, and message queues.
 
-·      
-Stable Pod names
+**tip:** A Deployment is generally used for stateless applications, while a StatefulSet is used when Pods need stable identities or persistent storage.
 
-·      
-Persistent storage
-
-·      
-Ordered deployment or
-termination in applicable configurations
-
-Common use cases include:
-
-·      
-Databases
-
-·      
-Distributed systems
-
-·      
-Message queues
-
-·      
-Stateful applications
 
 ### **20. What is a Job?**
 
 A **Job** creates Pods that run a task until it successfully
 completes.
 
-Example use cases:
-
-·      
-Database migrations
-
-·      
-Batch processing
-
-·      
-One-time scripts
-
-·      
-Data processing tasks
+**Example use cases:**
+      
+- Database migrations
+    
+- Batch processing
+   
+- One-time scripts
+   
+- Data processing tasks
 
 ### **21. What is a CronJob?**
 
-A **CronJob** creates Jobs according to a schedule, similar to
-Linux cron.
+A **CronJob** creates Jobs according to a schedule, similar to Linux cron.
 
-Example:
+**Example:**
 
-schedule:
-"0
-2 \* \* \*"
+schedule: "0 2 \* \* \*"
 
-This could be used to
-run a task every day at 2:00 AM.
+This could be used to run a task every day at 2:00 AM.
 
 ### **22. What is a Persistent Volume (PV)?**
 
