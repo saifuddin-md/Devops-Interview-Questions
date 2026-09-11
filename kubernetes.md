@@ -483,141 +483,120 @@ kubectl describe pod \<pod-name>
 ```
 **Look at:**
 
-#### ·        **Last State**: Why did it crash? (Exit code, OOMKilled)
-
-#### ·        **Events**: Scheduling, pulling image, starting issues
-
-#### ·        **Restart Count**: How many times has it restarted?
-
-#### ·        **Conditions**: Are all containers ready?
-
-#### ** **
+- **Last State**: Why did it crash? (Exit code, OOMKilled)
+- **Events**: Scheduling, pulling image, starting issues
+- **Restart Count**: How many times has it restarted?
+- **Conditions**: Are all containers ready?
 
 #### **3. Verify Common causes**
 
-**a. Image Issues:** *# Verify image exists* or accessible 
-
-**b. Resource Limits:** # *Check resource requests/limits and if OOMKilled*
-
-**c. Configuration Issues:** # Verify ConfigMaps and Secrets exist or environment variables
-
-**d. Startup Issues:** # Check liveness/readiness probe configuration
-
-**e. Networking Issues:** # Can't connect to database/service
+- **a. Image Issues:**              # *Verify image exists* or accessible*
+- **b. Resource Limits:**           # *Check resource requests/limits and if OOMKilled*
+- **c. Configuration Issues:**      # *Verify ConfigMaps and Secrets exist or environment variables*
+- **d. Startup Issues:**            # *Check liveness/readiness probe configuration*
+- **e. Networking Issues:**         # *Can't connect to database/service*
 
 ### **31. How do you scale a Deployment?**
-
+```bash
 kubectl scale deployment nginx --replicas=5
-
+```
 **Verify:**
-
+```bash
 kubectl get deployment nginx
 
 kubectl get pods
-
+```
 ### **32. How do you perform a rolling update?**
 
 **Update the container image:**
-
+```bash
 kubectl set image deployment/nginx nginx=nginx:1.27
-
+```
 **Check the rollout:**
-
+```bash
 kubectl rollout status deployment/nginx
-
+```
 ### **33. How do you roll back a Deployment?**
-
+```bash
 kubectl rollout undo deployment/nginx
-
+```
 **View rollout history:**
-
+```bash
 kubectl rollout history deployment/nginx
+```
 
 ### **34. How do you check rollout status?**
-
+```bash
 kubectl rollout status deployment/nginx
-
+```
 ### **35. How do you expose a Deployment?**
 
-***Example****,* to expose the Deployment through a LoadBalancer Service:
-
-kubectl expose deployment
-nginx \\
-
-  --type=LoadBalancer \\
-
-  --port=80
-
+***Example** **,* to expose the Deployment through a LoadBalancer Service:
+```bash
+kubectl expose deployment nginx --type=LoadBalancer --port=80
+```
 ***Check the Service:***
-
+```bash
 kubectl get service nginx
-
+```
 ### **36. How do you view cluster events?**
-
+```bash
 kubectl get events
-
+```
 ***For events sorted chronologically:***
-
+```bash
 kubectl get events --sort-by=.lastTimestamp
-
+```
 ***For a particular namespace:***
-
+```bash
 kubectl get events -n \<namespace> --sort-by=.lastTimestamp
-
+```
 ### **37. How do you check node health?**
-
+```bash
 kubectl get nodes
-
+```
 ***For detailed information:***
-
+```bash
 kubectl describe node \<node-name>
-
+```
 ***Check resource usage:***
-
+```bash
 kubectl top nodes
-
+```
 ### **38. How do you debug Kubernetes networking issues?**
 
 Follow a systematic approach:
 
 1. **Check Pods**
-
-   
+```bash  
 kubectl get pods -o wide
-
+```
 2. **Check the Service**
-
-    kubectl get service \<service-name>
-
+```bash  
+kubectl get service \<service-name>
 kubectl describe service \<service-name>
-
+```
 3. **Check EndpointSlices**
 
-   
+```bash  
 kubectl get endpointslices
-
+```
 4. **Check DNS resolution**
 
              
-Test DNS from a temporary/debug
-Pod.
+Test DNS from a temporary/debug Pod.
 
 5. **Check NetworkPolicies**
-
-   
+```bash  
 kubectl get networkpolicies
-
+```
 6. **Test connectivity**
-
-             
-Use tools such as curl, wget, nslookup, or dig from an appropriate debugging
-container.
+        
+Use tools such as curl, wget, nslookup, or dig from an appropriate debugging container.
 
 7. **Check the CNI/networking layer**
-
-             
-Verify that the cluster’s CNI
-plugin and related components are healthy.
+         
+Verify that the cluster’s CNI plugin and related components are healthy.
 
 **39. If there are 2 pods in different namespaces (ns1 &
 ns2), how can they communicate? How would you test it?**
@@ -629,23 +608,19 @@ is a logical boundary for organizing resources, not a network boundary.
 I would you test it:
 
 **Get the Pod IPs:**
+```bash  
+kubectl get pod \<pod-in-ns1> -n ns1 -o wide
 
-kubectl get pod \<pod-in-ns1> -n ns1 -o
-wide
-
-kubectl get pod \<pod-in-ns2> -n ns2 -o
-wide
-
-**Test Pod-to-Pod
-connectivity**
-
-kubectl exec -it \<pod-in-ns1> -n ns1 –
-sh
+kubectl get pod \<pod-in-ns2> -n ns2 -o wide
+```
+**Test Pod-to-Pod connectivity**
+```bash  
+kubectl exec -it \<pod-in-ns1> -n ns1 –sh
 
 curl http\://\<pod-ip-in-ns2>:8080
+```
 
-**40. What
-is a PodDisruptionBudget?**
+### **40. What is a PodDisruptionBudget?**
 
 A **PodDisruptionBudget (PDB)** is a Kubernetes resource
 that limits the number of Pods of a deployment that can be down simultaneously
