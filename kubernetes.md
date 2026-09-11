@@ -8,12 +8,9 @@ troubleshooting, and frequently used kubectl commands**.
 
 ## Table of Contents
 
-- [1. Advanced File & Text Commands](#1-advanced-file--text-commands)
 - [1. *Beginner Level*](#Beginner-Level)
 
-2.       
-[*Intermediate
-Level*](#X06d02fd1002fd8b8146b67ae6c721b0fbc80fd3)
+2. [*Intermediate Level*](#Intermediate-Level)
 
 3.       
 [*Advanced
