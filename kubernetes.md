@@ -86,16 +86,12 @@ It provides features such as:
 
 ·      
 Rolling updates
-
 ·      
 Rollbacks
-
 ·      
 Scaling
-
 ·      
 Declarative updates
-
 ·      
 Replica management
 
@@ -104,7 +100,7 @@ Replica management
 A **ReplicaSet** ensures that a specified number of Pod replicas
 are running at any given time.
 
-**Example**: If a ReplicaSet is configured
+*Example*: If a ReplicaSet is configured
 with three replicas, Kubernetes attempts to maintain three matching Pods.
 
 ### **7. What is a Namespace?**
