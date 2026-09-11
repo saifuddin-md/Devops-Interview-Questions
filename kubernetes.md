@@ -222,115 +222,39 @@ data:
 ### **15. What is a Secret?**
 
 A **Secret** stores sensitive information such as:
+     
+- Passwords  
+- API tokens   
+-TLS certificates  
+- Credentials
+- 
+#### *Example:*
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+stringData:
+  DB_USERNAME: admin
+  DB_PASSWORD: password
+```
 
-·      
-Passwords
-
-·      
-API tokens
-
-·      
-TLS certificates
-
-·      
-Credentials
-
-Kubernetes Secrets are Base64-encoded by default, but **Base64
+Notes: Kubernetes Secrets are Base64-encoded by default, but **Base64
 encoding is not encryption**. Appropriate encryption-at-rest and access
 controls should be used for sensitive environments.
 
 ### **16. What is the Difference Between ConfigMap and Secret**
 
-|      |
-| ---- |
+## **16. What is the Difference Between ConfigMap and Secret?**
 
-**Feature**
-
-|      |
-| ---- |
-
-**ConfigMap**
-
-|      |
-| ---- |
-
-**Secret**
-
-|     |
-| --- |
-
-**Intended use**
-
-|     |
-| --- |
-
-Non-sensitive configuration
-
-|     |
-| --- |
-
-Sensitive configuration
-
-|     |
-| --- |
-
-**Typical data**
-
-|     |
-| --- |
-
-URLs, feature flags, settings
-
-|     |
-| --- |
-
-Passwords, tokens, certificates
-
-|     |
-| --- |
-
-**Default representation**
-
-|     |
-| --- |
-
-Plain text
-
-|     |
-| --- |
-
-Base64-encoded
-
-|     |
-| --- |
-
-**Encryption**
-
-|     |
-| --- |
-
-Not inherently encrypted
-
-|     |
-| --- |
-
-Can be encrypted at rest when configured
-
-|     |
-| --- |
-
-**Access**
-
-|     |
-| --- |
-
-Controlled through RBAC
-
-|     |
-| --- |
-
-Should be tightly restricted
-
+| **Feature** | **ConfigMap** | **Secret** |
+|---|---|---|
+| **Intended use** | Non-sensitive configuration | Sensitive configuration |
+| **Typical data** | URLs, feature flags, settings | Passwords, tokens, certificates |
+| **Default representation** | Plain text | Base64-encoded |
+| **Encryption** | Not inherently encrypted | Can be encrypted at rest when configured |
+| **Access** | Controlled through RBAC | Should be tightly restricted |
 ### ** **
 
 ### **17. What are Labels and Selectors?**
