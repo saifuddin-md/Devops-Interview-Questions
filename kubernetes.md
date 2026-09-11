@@ -10,7 +10,7 @@ troubleshooting, and frequently used kubectl commands**.
 
 1.       
 [*Beginner
-Level*](#X3b58ec263dc30b8ade6e883411bd2215917dab7)
+Level*](#-Beginner-Level)
 
 2.       
 [*Intermediate
