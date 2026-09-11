@@ -1,583 +1,1047 @@
-## Kubernetes Interview Preparation Guide
+# **Kubernetes Interview Preparation Guide**
 
-A comprehensive Kubernetes interview preparation guide covering beginner to advanced concepts, scenario-based questions, troubleshooting, and frequently used kubectl commands.
+A comprehensive Kubernetes interview preparation guide
+covering **beginner to advanced concepts, scenario-based questions,
+troubleshooting, and frequently used kubectl commands**.
 
-### Table of Contents
+---
 
-Beginner Level
+## Table of Contents
 
-Intermediate Level
+1.       
+[*Beginner
+Level*](#X3b58ec263dc30b8ade6e883411bd2215917dab7)
 
-Advanced Level
+2.       
+[*Intermediate
+Level*](#X06d02fd1002fd8b8146b67ae6c721b0fbc80fd3)
 
-Scenario-Based Questions
+3.       
+[*Advanced
+Level*](#X6b9b34952dd6c54d2bcdd9b48600a484d523d8d)
 
-Frequently Asked Commands
+4.       
+[*Scenario-Based
+Questions*](#X1d767dff697d5b8fc38c8feb8326587f3c7e146)
 
-Interview Tips
+5.       
+[*Frequently
+Asked Commands*](#Xff1a27ef8bf3a8cf9e8dfb52f08914d77da6559)
 
-Summary
+6.       
+[*Interview
+Tips*](#Xbe2a1dd97ec48b7a349d24ca7566a1674562bb4)
 
-Additional Resources
+7.       
+[*Summary*](#X0f571a2aad1207ade151e2d09b14f9e7d52220c)
 
-### Beginner Level
+8.       
+[*Additional
+Resources*](#Xb671819c724f1aebc490dd6521d4168e661ca01)
 
-**1. What is Kubernetes?**
+---
 
-Kubernetes (K8s) is an open-source container orchestration platform that automates the deployment, scaling, networking, and management of containerized applications.
+## **Beginner Level**
 
-**2. What is a Pod?**
+### **1. What is Kubernetes?**
 
-A Pod is the smallest deployable unit in Kubernetes. A Pod can contain one or more containers that share the same network namespace and can share storage volumes.
+**Kubernetes (K8s)** is an open-source
+container orchestration platform that automates the deployment, scaling,
+networking, and management of containerized applications.
 
-**3. What is a Node?**
+### **2. What is a Pod?**
 
-A Node is a physical or virtual machine that runs Kubernetes workloads (Pods).
+A **Pod** is the smallest deployable unit in Kubernetes. A Pod
+can contain one or more containers that share the same network namespace and
+can share storage volumes.
+
+### **3. What is a Node?**
+
+A **Node** is a physical or virtual machine that runs Kubernetes
+workloads (Pods).
 
 A node typically contains:
 
+·      
 kubelet
 
+·      
 Container runtime
 
+·      
 kube-proxy (where applicable)
 
-**4. What is a Cluster?**
+### **4. What is a Cluster?**
 
-A Kubernetes cluster is a collection of machines managed by Kubernetes.
+A **Kubernetes cluster** is a collection of machines managed by
+Kubernetes.
 
 A cluster generally consists of:
 
-Control plane nodes — manage the cluster
+·      
+**Control plane nodes** — manage the cluster
 
-Worker nodes — run application workloads
+·      
+**Worker nodes** — run application workloads
 
-**5. What is a Deployment?**
+### **5. What is a Deployment?**
 
-A Deployment manages a set of Pods through ReplicaSets.
+A **Deployment** manages a set of Pods through **ReplicaSets**.
 
 It provides features such as:
 
+·      
 Rolling updates
 
+·      
 Rollbacks
 
+·      
 Scaling
 
+·      
 Declarative updates
 
+·      
 Replica management
 
-**6. What is a ReplicaSet?**
+### **6. What is a ReplicaSet?**
 
-A ReplicaSet ensures that a specified number of Pod replicas are running at any given time.
+A **ReplicaSet** ensures that a specified number of Pod replicas
+are running at any given time.
 
-For example, if a ReplicaSet is configured with three replicas, Kubernetes attempts to maintain three matching Pods.
+**Example**: If a ReplicaSet is configured
+with three replicas, Kubernetes attempts to maintain three matching Pods.
 
-**7. What is a Namespace?**
+### **7. What is a Namespace?**
 
-A Namespace provides logical isolation within a Kubernetes cluster.
+A **Namespace** provides logical isolation within a Kubernetes
+cluster.
 
 Namespaces can be used to organize and separate resources such as:
 
+·      
 Pods
 
+·      
 Deployments
 
+·      
 Services
 
+·      
 ConfigMaps
 
+·      
 Secrets
 
-**8. What is a Service?**
+### **8. What is a Service?**
 
-A Service provides a stable network endpoint for accessing a group of Pods.
+A **Service** provides a stable network endpoint for accessing a
+group of Pods.
 
-Because Pods are ephemeral and their IP addresses can change, Services provide stable connectivity and DNS-based discovery.
+Because Pods are ephemeral and their IP addresses can change,
+Services provide stable connectivity and DNS-based discovery.
 
-Types of Kubernetes Services
+### Types of Kubernetes Services
 
-**9. What is kubectl?**
+|      |
+| ---- |
 
-`kubectl is the Kubernetes command-line tool used to communicate with the Kubernetes API server and manage cluster resources.`
+Service Type
 
-Examples:
+|      |
+| ---- |
 
-`kubectl get pods`
-`kubectl get nodes`
-`kubectl describe pod <pod-name>`
-`kubectl apply -f app.yaml`
+Description
 
-### Intermediate Level
+|     |
+| --- |
 
-**10. What is the Difference Between a Pod and a Deployment**
+**ClusterIP**
 
-**11. What is etcd?**
+|     |
+| --- |
 
-etcd is a distributed, consistent key-value store used by Kubernetes to store cluster state and configuration.
+Exposes the Service internally within the cluster. This is the
+&#x20; default type.
 
-Examples of information stored in etcd include:
+|     |
+| --- |
 
+**NodePort**
+
+|     |
+| --- |
+
+Exposes the Service on a static port on each node’s IP address.
+
+|     |
+| --- |
+
+**LoadBalancer**
+
+|     |
+| --- |
+
+Exposes the Service externally through a cloud/provider load
+&#x20; balancer when supported.
+
+|     |
+| --- |
+
+**ExternalName**
+
+|     |
+| --- |
+
+Maps a Service to an external DNS name using a CNAME record.
+
+### **9. What is kubectl?**
+
+**kubectl** is the Kubernetes command-line tool used to communicate with the
+Kubernetes API server and manage cluster resources.
+
+**Examples:**
+
+kubectl get pods
+
+kubectl get nodes
+
+kubectl describe pod \<pod-name>
+
+kubectl apply -f app.yaml
+
+---
+
+## **Intermediate Level**
+
+### **10. What is the Difference Between a Pod and a Deployment**
+
+|      |
+| ---- |
+
+**Pod**
+
+|      |
+| ---- |
+
+**Deployment**
+
+|     |
+| --- |
+
+Runs one or more containers
+
+|     |
+| --- |
+
+Manages Pods
+
+|     |
+| --- |
+
+Can be created directly
+
+|     |
+| --- |
+
+Creates and manages ReplicaSets
+
+|     |
+| --- |
+
+Does not provide built-in rollout management
+
+|     |
+| --- |
+
+Supports rolling updates and rollbacks
+
+|     |
+| --- |
+
+Not normally used directly for production workloads
+
+|     |
+| --- |
+
+Commonly used for stateless applications
+
+### ** **
+
+### **11. What is etcd?**
+
+**etcd** is a distributed, consistent
+key-value store used by Kubernetes to store cluster state and configuration.
+
+Examples of information stored in **etcd** include:
+
+·      
 Kubernetes resource definitions
 
+·      
 Cluster configuration
 
+·      
 Desired state
 
+·      
 Metadata
 
-Protecting and backing up etcd is critical for cluster recovery.
+Protecting and backing up **etcd** is critical for cluster
+recovery.
 
-**12. What is kubelet?**
+### ** **
 
-kubelet is the primary node agent.
+### **12. What is kubelet?**
+
+**kubelet** is the primary node agent.
 
 It runs on every worker node and:
 
-Communicates with the Kubernetes API server
+·      
+Communicates with the
+Kubernetes API server
 
-Ensures assigned Pods are running
+·      
+Ensures assigned Pods are
+running
 
+·      
 Monitors containers
 
+·      
 Reports node and Pod status
 
-**13. What is kube-proxy?**
+### **13. What is kube-proxy?**
 
-kube-proxy is a node-level component responsible for implementing Service networking rules.
+**kube-proxy** is a node-level component
+responsible for implementing Service networking rules.
 
-It helps route traffic destined for Kubernetes Services to the appropriate backend Pods.
+It helps route traffic destined for Kubernetes Services to the
+appropriate backend Pods.
 
-Modern Kubernetes networking can use alternatives to kube-proxy, depending on the cluster’s networking implementation.
+Modern Kubernetes networking can use alternatives to kube-proxy, depending on the cluster’s
+networking implementation.
 
-**14. What is a ConfigMap?**
+### **14. What is a ConfigMap?**
 
-A ConfigMap stores non-sensitive configuration data as key-value pairs.
+A **ConfigMap** stores non-sensitive configuration data as
+key-value pairs.
 
 Examples:
 
+·      
 Application configuration
 
+·      
 Environment variables
 
+·      
 Configuration files
 
+·      
 Command-line arguments
 
-Example:
+**Example:**
 
 apiVersion: v1
+
 kind: ConfigMap
+
 metadata:
-  name: app-config
+
+  name: app-config
+
 data:
-  APP_ENV: production
-  LOG_LEVEL: info
 
-**15. What is a Secret?**
+  APP\_ENV: production
 
-A Secret stores sensitive information such as:
+  LOG\_LEVEL: info
 
+### **15. What is a Secret?**
+
+A **Secret** stores sensitive information such as:
+
+·      
 Passwords
 
+·      
 API tokens
 
+·      
 TLS certificates
 
+·      
 Credentials
 
-Kubernetes Secrets are Base64-encoded by default, but Base64 encoding is not encryption. Appropriate encryption-at-rest and access controls should be used for sensitive environments.
+Kubernetes Secrets are Base64-encoded by default, but **Base64
+encoding is not encryption**. Appropriate encryption-at-rest and access
+controls should be used for sensitive environments.
 
-**16. What is the Difference Between ConfigMap and Secret**
+### **16. What is the Difference Between ConfigMap and Secret**
 
-**17. What are Labels and Selectors?**
+|      |
+| ---- |
 
-Labels are key-value pairs attached to Kubernetes resources to identify and organize them.
+**Feature**
 
-Example:
+|      |
+| ---- |
+
+**ConfigMap**
+
+|      |
+| ---- |
+
+**Secret**
+
+|     |
+| --- |
+
+**Intended use**
+
+|     |
+| --- |
+
+Non-sensitive configuration
+
+|     |
+| --- |
+
+Sensitive configuration
+
+|     |
+| --- |
+
+**Typical data**
+
+|     |
+| --- |
+
+URLs, feature flags, settings
+
+|     |
+| --- |
+
+Passwords, tokens, certificates
+
+|     |
+| --- |
+
+**Default representation**
+
+|     |
+| --- |
+
+Plain text
+
+|     |
+| --- |
+
+Base64-encoded
+
+|     |
+| --- |
+
+**Encryption**
+
+|     |
+| --- |
+
+Not inherently encrypted
+
+|     |
+| --- |
+
+Can be encrypted at rest when configured
+
+|     |
+| --- |
+
+**Access**
+
+|     |
+| --- |
+
+Controlled through RBAC
+
+|     |
+| --- |
+
+Should be tightly restricted
+
+### ** **
+
+### **17. What are Labels and Selectors?**
+
+**Labels** are key-value pairs attached to
+Kubernetes resources to identify and organize them.
+
+***Example:***
 
 labels:
-  app: nginx
-  environment: production
 
-Selectors are used to identify resources with matching labels.
+  app: nginx
 
-For example, a Service can select Pods using:
+  environment: production
+
+**Selectors** are used to identify resources
+with matching labels.
+
+***Example***, a Service can select Pods
+using:
 
 selector:
-  app: nginx
 
-**18. What is a DaemonSet?**
+  app: nginx
 
-A DaemonSet ensures that a copy of a Pod runs on every node, or on a selected subset of nodes.
+### **18. What is a DaemonSet?**
+
+A **DaemonSet** ensures that a copy of a Pod runs on every node,
+or on a selected subset of nodes.
 
 Common use cases include:
 
+·      
 Log collection agents
 
+·      
 Monitoring agents
 
-Node-level networking components
+·      
+Node-level networking
+components
 
+·      
 Security agents
 
-### Advanced Level
+---
 
-**19. What is a StatefulSet?**
+## **Advanced Level**
 
-A StatefulSet manages stateful applications that require:
+### **19. What is a StatefulSet?**
 
+A **StatefulSet** manages stateful applications that require:
+
+·      
 Stable network identities
 
+·      
 Stable Pod names
 
+·      
 Persistent storage
 
-Ordered deployment or termination in applicable configurations
+·      
+Ordered deployment or
+termination in applicable configurations
 
 Common use cases include:
 
+·      
 Databases
 
+·      
 Distributed systems
 
+·      
 Message queues
 
+·      
 Stateful applications
 
-**20. What is a Job?**
+### **20. What is a Job?**
 
-A Job creates Pods that run a task until it successfully completes.
+A **Job** creates Pods that run a task until it successfully
+completes.
 
 Example use cases:
 
+·      
 Database migrations
 
+·      
 Batch processing
 
+·      
 One-time scripts
 
+·      
 Data processing tasks
 
-**21. What is a CronJob?**
+### **21. What is a CronJob?**
 
-A CronJob creates Jobs according to a schedule, similar to Linux cron.
+A **CronJob** creates Jobs according to a schedule, similar to
+Linux cron.
 
 Example:
 
-schedule: "0 2 * * *"
+schedule:
+"0
+2 \* \* \*"
 
-This could be used to run a task every day at 2:00 AM.
+This could be used to
+run a task every day at 2:00 AM.
 
-**22. What is a Persistent Volume (PV)?**
+### **22. What is a Persistent Volume (PV)?**
 
-A PersistentVolume (PV) is a cluster-level storage resource.
+A **PersistentVolume (PV)** is a cluster-level storage resource.
 
 A PV can be:
 
+·      
 Dynamically provisioned
 
+·      
 Statically provisioned
 
-It represents storage that can be consumed by workloads through PersistentVolumeClaims.
+It represents storage that can be consumed by workloads through
+PersistentVolumeClaims.
 
-**23. What is a PersistentVolumeClaim (PVC)?**
+### **23. What is a PersistentVolumeClaim (PVC)?**
 
-A PersistentVolumeClaim (PVC) is a request for storage made by a workload.
+A **PersistentVolumeClaim (PVC)** is a request for storage made
+by a workload.
 
-A PVC can specify requirements such as:
+*A PVC can specify requirements such as:*
 
+·      
 Storage capacity
 
+·      
 Access modes
 
+·      
 Storage class
 
-Example:
+***Example:***
 
 apiVersion: v1
-kind: PersistentVolumeClaim
+
+kind:
+PersistentVolumeClaim
+
 metadata:
-  name: app-storage
+
+  name: app-storage
+
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
 
-**24. What is  the Difference Between PV and PVC**
+  accessModes:
 
-**25. What is a StorageClass?**
+    - ReadWriteOnce
 
-A StorageClass defines how storage should be dynamically provisioned.
+  resources:
+
+    requests:
+
+      storage: 10Gi
+
+### **24. What is  the Difference Between PV and PVC**
+
+|      |
+| ---- |
+
+**PV**
+
+|      |
+| ---- |
+
+**PVC**
+
+|     |
+| --- |
+
+Represents actual storage
+
+|     |
+| --- |
+
+Represents a request for storage
+
+|     |
+| --- |
+
+Cluster-level resource
+
+|     |
+| --- |
+
+Namespace-scoped resource
+
+|     |
+| --- |
+
+Can be statically or dynamically provisioned
+
+|     |
+| --- |
+
+Used by workloads to request storage
+
+|     |
+| --- |
+
+Provides storage capacity
+
+|     |
+| --- |
+
+Specifies storage requirements
+
+### ** **
+
+### **25. What is a StorageClass?**
+
+A **StorageClass** defines how storage should be dynamically
+provisioned.
 
 It can specify:
 
+·      
 Storage provisioner
 
+·      
 Parameters
 
+·      
 Reclaim policy
 
+·      
 Volume binding mode
 
-Example:
 
-apiVersion: storage.k8s.io/v1
+
+***Example:***
+
+apiVersion:
+storage.k8s.io/v1
+
 kind: StorageClass
+
 metadata:
-  name: fast-storage
+
+  name: fast-storage
+
 provisioner: example.com/fast
 
-**26. What is a Taint?**
+### **26. What is a Taint?**
 
-A taint is applied to a node to prevent Pods from being scheduled there unless they have a matching toleration.
+A **taint** is applied to a node to prevent Pods from being
+scheduled there unless they have a matching toleration.
 
-Example:
+***Example:***
 
-`kubectl taint nodes node1 dedicated=database:NoSchedule`
+kubectl taint nodes node1
+dedicated=database\:NoSchedule
 
-**27. What is a Toleration?**
+### **27. What is a Toleration?**
 
-A toleration allows a Pod to be scheduled onto a node with a matching taint.
+A **toleration**
+allows a Pod to be scheduled onto a node with a matching taint.
 
-Example:
+***Example:***
 
 tolerations:
-  - key: dedicated
-    operator: Equal
-    value: database
-    effect: NoSchedule
 
-A toleration allows a Pod to tolerate a taint; it does not by itself force the Pod onto that node.
+  - key: dedicated
 
-**28. What is Node Affinity?**
+    operator: Equal
 
-Node affinity defines rules that influence which nodes a Pod can be scheduled on based on node labels.
+    value: database
+
+    effect: NoSchedule
+
+A toleration allows a Pod to tolerate a taint; it does not by itself
+force the Pod onto that node.
+
+### **28. What is Node Affinity?**
+
+**Node affinity** defines rules that
+influence which nodes a Pod can be scheduled on based on node labels.
 
 Example:
 
 affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: disktype
-              operator: In
-              values:
-                - ssd
 
-### Scenario-Based Questions
+  nodeAffinity:
 
-**29. A Pod is stuck in Pending state. How do you troubleshoot?**
+    requiredDuringSchedulingIgnoredDuringExecution:
+
+      nodeSelectorTerms:
+
+        - matchExpressions:
+
+            - key: disktype
+
+              operator: In
+
+              values:
+
+                - ssd
+
+---
+
+## **Scenario-Based Questions**
+
+### **29. A Pod is stuck in Pending state. How do you troubleshoot?**
 
 Start by inspecting the Pod:
 
-`kubectl describe pod <pod-name>`
+kubectl describe pod \<pod-name>
 
-Then check:
+***Then check:***
 
+·      
 Scheduler events
 
+·      
 Node availability
 
+·      
 CPU and memory resources
 
+·      
 Resource requests
 
+·      
 Taints and tolerations
 
-Node selectors and affinity rules
+·      
+Node selectors and affinity
+rules
 
+·      
 PVC binding status
 
+·      
 Namespace quotas
 
+·      
 Scheduling constraints
 
-Useful commands:
+***Useful commands:***
 
-`kubectl get pod <pod-name> -o wide`
-`kubectl describe pod <pod-name>`
-`kubectl get nodes`
-`kubectl describe nodes`
-`kubectl get events --sort-by=.lastTimestamp`
+kubectl get pod \<pod-name> -o wide
 
-**30. A Pod is in CrashLoopBackOff. What do you do?**
+kubectl describe pod \<pod-name>
 
-CrashLoopBackOff usually means the container starts, exits or crashes, and Kubernetes repeatedly attempts to restart it with increasing delays.
+kubectl get nodes
 
-1. Check the pod logs
+kubectl describe nodes
 
-`kubectl logs <pod-name>`
+kubectl get events --sort-by=.lastTimestamp
 
-For a specific container:
+### **30. A Pod is in CrashLoopBackOff. What do you do?**
 
-`kubectl logs <pod-name> -c <container-name>`
+**CrashLoopBackOff** usually means the
+container starts, exits or crashes, and Kubernetes repeatedly attempts to
+restart it with increasing delays.
 
-If the container has restarted, check its previous logs:
+#### **1. Check the pod logs**
 
-`kubectl logs <pod-name> --previous`
+kubectl logs \<pod-name>
 
-2. Describe the Pod
+**For a specific
+container:**
 
-`kubectl describe pod <pod-name>`
+kubectl logs \<pod-name> -c \<container-name>
 
-Look at:
+**If the container has
+restarted, check its previous logs:**
 
-Last State: Why did it crash? (Exit code, OOMKilled)
+kubectl logs \<pod-name> --previous
 
-Events: Scheduling, pulling image, starting issues
+#### **2. Describe the Pod**
 
-Restart Count: How many times has it restarted?
+kubectl describe pod \<pod-name>
 
-Conditions: Are all containers ready?
+**Look at:**
 
-3. Verify Common causes
+#### ·        **Last State**: Why did it crash? (Exit code, OOMKilled)
 
-a. Image Issues:                                # Verify image exists or accessible
+#### ·        **Events**: Scheduling, pulling image, starting issues
 
-b. Resource Limits:                         # Check resource requests/limits and if OOMKilled
+#### ·        **Restart Count**: How many times has it restarted?
 
-c. Configuration Issues:               # Verify ConfigMaps and Secrets exist or environment variables
+#### ·        **Conditions**: Are all containers ready?
 
-d. Startup Issues:                             # Check liveness/readiness probe configuration
+#### ** **
 
-e. Networking Issues:                    # Can't connect to database/service
+#### **3. Verify Common causes**
 
-**31. How do you scale a Deployment?**
+**a. Image Issues:                               ** *# Verify image exists* or accessible 
 
-`kubectl scale deployment nginx --replicas=5`
+**b. Resource
+Limits:                        ** # *Check resource requests/limits and if
+OOMKilled*
 
-Verify:
+**c. Configuration
+Issues:              ** # Verify ConfigMaps and Secrets exist or environment variables
 
-`kubectl get deployment nginx`
-`kubectl get pods`
+**d. Startup
+Issues:                            ** # Check liveness/readiness probe
+configuration
 
-**32. How do you perform a rolling update?**
+**e. Networking
+Issues:                   ** # Can't connect to database/service
 
-Update the container image:
+### **31. How do you scale a Deployment?**
 
-`kubectl set image deployment/nginx nginx=nginx:1.27`
+kubectl scale deployment nginx --replicas=5
 
-Check the rollout:
+**Verify:**
 
-`kubectl rollout status deployment/nginx`
+kubectl get deployment nginx
 
-**33. How do you roll back a Deployment?**
+kubectl get pods
 
-`kubectl rollout undo deployment/nginx`
+### **32. How do you perform a rolling update?**
 
-View rollout history:
+**Update the container image:**
 
-`kubectl rollout history deployment/nginx`
+kubectl set image deployment/nginx nginx=nginx:1.27
 
-**34. How do you check rollout status?**
+**Check the rollout:**
 
-`kubectl rollout status deployment/nginx`
+kubectl rollout status deployment/nginx
 
-**35. How do you expose a Deployment?**
+### **33. How do you roll back a Deployment?**
 
-For example, to expose the Deployment through a LoadBalancer Service:
+kubectl rollout undo deployment/nginx
 
-`kubectl expose deployment nginx \`
-  --type=LoadBalancer \
-  --port=80
+**View rollout history:**
 
-Check the Service:
+kubectl rollout history deployment/nginx
 
-`kubectl get service nginx`
+### **34. How do you check rollout status?**
 
-**36. How do you view cluster events?**
+kubectl rollout status deployment/nginx
 
-`kubectl get events`
+### **35. How do you expose a Deployment?**
 
-For events sorted chronologically:
+***Example****,* to expose the Deployment through a LoadBalancer Service:
 
-`kubectl get events --sort-by=.lastTimestamp`
+kubectl expose deployment
+nginx \\
 
-For a particular namespace:
+  --type=LoadBalancer \\
 
-`kubectl get events -n <namespace> --sort-by=.lastTimestamp`
+  --port=80
 
-**37. How do you check node health?**
+***Check the Service:***
 
-`kubectl get nodes`
+kubectl get service nginx
 
-For detailed information:
+### **36. How do you view cluster events?**
 
-`kubectl describe node <node-name>`
+kubectl get events
 
-Check resource usage:
+***For events sorted chronologically:***
 
-`kubectl top nodes`
+kubectl get events --sort-by=.lastTimestamp
 
-**38. How do you debug Kubernetes networking issues?**
+***For a particular namespace:***
+
+kubectl get events -n \<namespace> --sort-by=.lastTimestamp
+
+### **37. How do you check node health?**
+
+kubectl get nodes
+
+***For detailed information:***
+
+kubectl describe node \<node-name>
+
+***Check resource usage:***
+
+kubectl top nodes
+
+### **38. How do you debug Kubernetes networking issues?**
 
 Follow a systematic approach:
 
-Check Pods
+1. **Check Pods**
 
-`kubectl get pods -o wide`
+   
+kubectl get pods -o wide
 
-Check the Service
+2. **Check the Service**
 
-`kubectl get service <service-name>`
-`kubectl describe service <service-name>`
+    kubectl get service \<service-name>
 
-Check EndpointSlices
+kubectl describe service \<service-name>
 
-`kubectl get endpointslices`
+3. **Check EndpointSlices**
 
-Check DNS resolution
+   
+kubectl get endpointslices
 
-Test DNS from a temporary/debug Pod.
+4. **Check DNS resolution**
 
-Check NetworkPolicies
+             
+Test DNS from a temporary/debug
+Pod.
 
-`kubectl get networkpolicies`
+5. **Check NetworkPolicies**
 
-Test connectivity
+   
+kubectl get networkpolicies
 
-Use tools such as curl, wget, nslookup, or dig from an appropriate debugging container.
+6. **Test connectivity**
 
-Check the CNI/networking layer
+             
+Use tools such as curl, wget, nslookup, or dig from an appropriate debugging
+container.
 
-Verify that the cluster’s CNI plugin and related components are healthy.
+7. **Check the CNI/networking layer**
 
-**39. If there are 2 pods in different namespaces (ns1 & ns2), how can they communicate? How would you test it?**
+             
+Verify that the cluster’s CNI
+plugin and related components are healthy.
 
-Yes. Pods in different Kubernetes namespaces can communicate with each other by default. A namespace is a logical boundary for organizing resources, not a network boundary.
+**39. If there are 2 pods in different namespaces (ns1 &
+ns2), how can they communicate? How would you test it?**
+
+Yes. Pods in different
+Kubernetes namespaces can communicate with each other by default. A namespace
+is a logical boundary for organizing resources, not a network boundary.
 
 I would you test it:
 
-Get the Pod IPs:
+**Get the Pod IPs:**
 
-`kubectl get pod <pod-in-ns1> -n ns1 -o wide`
+kubectl get pod \<pod-in-ns1> -n ns1 -o
+wide
 
-`kubectl get pod <pod-in-ns2> -n ns2 -o wide`
+kubectl get pod \<pod-in-ns2> -n ns2 -o
+wide
 
-Test Pod-to-Pod connectivity
+**Test Pod-to-Pod
+connectivity**
 
-`kubectl exec -it <pod-in-ns1> -n ns1 – sh`
+kubectl exec -it \<pod-in-ns1> -n ns1 –
+sh
 
-curl http://<pod-ip-in-ns2>:8080
+curl http\://\<pod-ip-in-ns2>:8080
 
-**40. What is a PodDisruptionBudget?**
+**40. What
+is a PodDisruptionBudget?**
 
-A PodDisruptionBudget (PDB) is a Kubernetes resource that limits the number of Pods of a deployment that can be down simultaneously from voluntary disruptions. It ensures application availability during: Node maintenance, Cluster upgrades and Manual Pod deletions.
+A **PodDisruptionBudget (PDB)** is a Kubernetes resource
+that limits the number of Pods of a deployment that can be down simultaneously
+from voluntary disruptions. It ensures application availability during: **Node
+maintenance, Cluster upgrades and Manual Pod deletions.**
 
-Key Points:
+**Key Points:**
 
-Specifies minAvailable or maxUnavailable
+- Specifies **minAvailable** or **maxUnavailable**
+- Prevents      voluntary disruptions from breaking application SLAs
+- Does      not protect against involuntary disruptions (node failures, crashes)
 
-Prevents voluntary disruptions from breaking application SLAs
-
-Does not protect against involuntary disruptions (node failures, crashes)
-
-Example:
+***Example:***
 
 apiVersion: policy/v1
 
@@ -585,485 +1049,924 @@ kind: PodDisruptionBudget
 
 metadata:
 
-name: app-pdb
+  name: app-pdb
 
 spec:
 
-minAvailable: 2
+  minAvailable: 2
 
-selector:
+  selector:
 
-matchLabels:
+    matchLabels:
 
-app: my-app
+      app: my-app
 
-**41. How do you integrate Kubernetes with Jenkins or pipelines?**
+**41. How do you
+integrate Kubernetes with Jenkins or pipelines?**
 
-I integrated Jenkins with Kubernetes using ServiceAccount, and RBAC. First, I created a ServiceAccount for Jenkins, then Configure RBAC, then I Stored Kubernetes ServiceAccount token in Jenkins Credentials, then I used withKubeConfig block in pipeline to access Kubernetes, and then I used kubectl commands to deploy and manage Kubernetes resources.
+I integrated Jenkins with Kubernetes using **ServiceAccount**, and **RBAC**.
+First, I created a ServiceAccount for Jenkins, then Configure RBAC, then I
+Stored Kubernetes **ServiceAccount token** in Jenkins Credentials, then I
+used **withKubeConfig** block in pipeline to access Kubernetes, and then I used **kubectl** commands to deploy and manage Kubernetes resources.
 
-I also have worked with the GitOps architecture using GitHub Actions and Argo CD.
+I also have worked with the GitOps architecture using GitHub Actions and
+Argo CD.
 
-GitHub Actions handled the CI part, such as building the application, running tests, performing SonarQube and Trivy scans, building Docker image, and pushing it to a container registry. After that, GitHub Actions updates the K8s manifest in a Git repository with new Docker image tag. Argo CD was connected to that GitOps repository and continuously monitored it. When Argo CD detected the new image tag, it compared the desired state in Git with the actual state in Kubernetes and synchronized the application to the Kubernetes cluster.
+GitHub Actions handled the CI part, such as building the application,
+running tests, performing SonarQube and Trivy scans, building Docker image, and
+pushing it to a container registry. After that, GitHub Actions updates the **K8s
+manifest** in a Git repository with new Docker image **tag**. Argo CD was
+connected to that GitOps repository and continuously monitored it. When Argo CD
+detected the new image tag, it compared the desired state in Git with the
+actual state in Kubernetes and synchronized the application to the Kubernetes
+cluster.
 
-**42. What is the base configuration required to connect pipeline with EKS?**
 
-To connect a CI/CD pipeline with EKS, we mainly need AWS credentials, an EKS cluster, kubectl, and proper IAM permissions. The pipeline needs to authenticate with AWS, get the EKS cluster credentials using aws eks update-kubeconfig, and then use kubectl to deploy the application.
 
-**43.  What recent issue did you face in Kubernetes/EKS?**
+**42. What
+is the base configuration required to connect pipeline with EKS?**
 
-Here are a few more easy answers you can use in an interview:
+To connect a CI/CD
+pipeline with EKS, we mainly need AWS credentials, an EKS cluster, kubectl, and
+proper IAM permissions. The pipeline needs to authenticate with AWS, get the
+EKS cluster credentials using aws eks update-kubeconfig, and then use kubectl
+to deploy the application.
 
-1. Pod Issue: Pod Not Starting
 
-Issue: “I faced an issue where a pod was not starting.”
 
-Root Cause: There was a configuration problem, such as an incorrect environment variable or configuration value.
 
-Solution: “I checked the pod logs and events, identified the configuration issue, fixed it, and redeployed the application.”
 
-2. ImagePullBackOff
+**43.
+ What recent issue did you face in Kubernetes/EKS?**
 
-Issue: “I faced an ImagePullBackOff issue in EKS.”
+Here are a
+few more **easy answers** you can use in an interview:
 
-Root Cause: The container image name, image tag, or registry configuration was incorrect, so Kubernetes could not pull the image.
+### **1. Pod Issue: Pod Not Starting**
 
-Solution: “I checked the pod events using kubectl describe pod, corrected the image or registry configuration, and redeployed the application. After that, the pod started successfully.”
+·      
+**Issue:** “I faced an issue where a pod was not starting.”
 
-3. CrashLoopBackOff
+·      
+**Root Cause:** There was a
+configuration problem, such as an incorrect environment variable or
+configuration value.
 
-Issue: “One application pod was continuously restarting with CrashLoopBackOff.”
+·      
+**Solution:** “I checked the pod
+logs and events, identified the configuration issue, fixed it, and redeployed
+the application.”
 
-Root Cause: The application had a configuration issue and was failing during startup.
+### **2. ImagePullBackOff**
 
-Solution: “I checked the application logs using kubectl logs, identified the configuration problem, fixed it, and restarted the deployment. After that, the pod was running normally.”
+·      
+**Issue:** “I faced an **`ImagePullBackOff`****
+**issue in EKS.”
 
-3. Node Resource Issue
+·      
+**Root Cause:** The container image
+name, image tag, or registry configuration was incorrect, so Kubernetes could
+not pull the image.
 
-Issue: “Some pods were not getting scheduled and remained in the Pending state.”
+·      
+**Solution:** “I checked the pod
+events using **`kubectl describe pod`**,
+corrected the image or registry configuration, and redeployed the application.
+After that, the pod started successfully.”
 
-Root Cause: The EKS worker nodes did not have enough CPU or memory resources available.
+### **3. CrashLoopBackOff**
 
-Solution: “We checked the resource usage and increased the cluster capacity by adding more worker nodes or resources. After that, the pods were scheduled successfully.”
+·      
+**Issue:** “One application pod was
+continuously restarting with **`CrashLoopBackOff`**.”
 
-**44. How many nodes were there in your cluster?**
+·      
+**Root Cause:** The application had
+a configuration issue and was failing during startup.
 
-“We had 3 worker nodes in our EKS cluster. We used them to run the application pods. The cluster was configured with auto-scaling, so additional nodes could be added when the workload increased.”
+·      
+**Solution:** “I checked the
+application logs using **`kubectl
+logs`**, identified the configuration problem, fixed it, and
+restarted the deployment. After that, the pod was running normally.”
 
-**45. What was your strategy to manage/upgrade 35 nodes?**
+3\.
+Node Resource Issue
 
-“We used a Canary and Rolling Update strategy with Blue/Green node groups. Instead of upgrading all 35 nodes at once, we created a new node group with the upgraded AMI/version alongside the existing node group.
+·       **Issue:** “Some pods
+were not getting scheduled and remained in the Pending state.”
 
-First, we moved a small number of workloads to the new nodes and monitored them. We used taints, tolerations, and node selectors to control which workloads ran on the new nodes.
+·       **Root Cause:** The EKS
+worker nodes did not have enough CPU or memory resources available.
 
-We monitored pod startup time, application errors, latency, and queue depth. If everything was stable, we gradually moved more workloads to the new node group.
+·       **Solution:** “We checked
+the resource usage and increased the cluster capacity by adding more worker
+nodes or resources. After that, the pods were scheduled successfully.”
 
-Once all workloads were running properly on the new nodes, we removed the old node group. This reduced the risk of downtime during the upgrade.”
+**44.
+How many nodes were there in your cluster?**
 
-Easy explanation of each term
+“We had 3 worker nodes in
+our EKS cluster. We used them to run the application pods. The cluster was
+configured with auto-scaling, so additional nodes could be added when the
+workload increased.”
 
-1. Blue/Green Node Groups
+**45.
+What was your strategy to manage/upgrade 35 nodes?**
 
-Blue = old node group
+“We used a **Canary
+and Rolling Update strategy with Blue/Green node groups**. Instead of
+upgrading all 35 nodes at once, we created a new node group with the upgraded
+AMI/version alongside the existing node group.
 
-Green = new upgraded node group
+First, we
+moved a small number of workloads to the new nodes and monitored them. We used **taints,
+tolerations, and node selectors** to control which workloads ran on the new
+nodes.
 
-Both run at the same time during the migration.
+We monitored
+pod startup time, application errors, latency, and queue depth. If everything
+was stable, we gradually moved more workloads to the new node group.
 
-2.Canary
-We first move a small number of workloads to the new nodes.
+Once all
+workloads were running properly on the new nodes, we removed the old node
+group. This reduced the risk of downtime during the upgrade.”
+
+**Easy explanation of each term**
+
+**1.
+Blue/Green Node Groups**
+
+·       
+**Blue** = old node
+group 
+
+·       
+**Green** = new
+upgraded node group 
+
+·       
+Both run at the same time during the migration. 
+
+**2.Canary**
+
+We first move a **small number of workloads** to the new nodes.
+
 If there is no issue, we continue.
 
-3.Rolling Update
-We gradually move workloads from old nodes to new nodes instead of doing everything at once.
+**3.Rolling Update**
 
-4.Taints&Tolerations
+We gradually move workloads from old nodes to new nodes instead of doing
+everything at once.
+
+**4.Taints &
+Tolerations**
+
 Used to control which pods are allowed to run on specific nodes.
 
-5. Node Selectors
+**5. Node
+Selectors**
+
 Used to tell Kubernetes: “Run this particular workload on these new nodes.”
 
-6. Monitoring
+**6.
+Monitoring**
+
 We check:
 
-Pod startup time
+·       
+Pod startup time 
 
-Error rate
+·       
+Error rate 
 
-Application latency
+·       
+Application latency 
 
-Queue depth
+·       
+Queue depth 
 
-CPU/memory usage
+·       
+CPU/memory usage 
 
-### Frequently Asked Commands
 
-### Interview Tips
 
-Key Topics to Master
+---
 
-1. Kubernetes Architecture
+## **Frequently Asked Commands**
 
-Understand the major components of the control plane and worker nodes.
+|      |
+| ---- |
 
-Control Plane:
+Command
 
+|      |
+| ---- |
+
+Description
+
+|     |
+| --- |
+
+kubectl get
+&#x20; pods
+
+|     |
+| --- |
+
+List Pods
+
+|     |
+| --- |
+
+kubectl get
+&#x20; pods -A
+
+|     |
+| --- |
+
+List Pods
+&#x20; across all namespaces
+
+|     |
+| --- |
+
+kubectl get
+&#x20; deployments
+
+|     |
+| --- |
+
+List
+&#x20; Deployments
+
+|     |
+| --- |
+
+kubectl get
+&#x20; services
+
+|     |
+| --- |
+
+List Services
+
+|     |
+| --- |
+
+kubectl get
+&#x20; nodes
+
+|     |
+| --- |
+
+List Nodes
+
+|     |
+| --- |
+
+kubectl get
+&#x20; namespaces
+
+|     |
+| --- |
+
+List
+&#x20; Namespaces
+
+|     |
+| --- |
+
+kubectl
+&#x20; describe pod \<pod-name>
+
+|     |
+| --- |
+
+Show detailed
+&#x20; Pod information
+
+|     |
+| --- |
+
+kubectl
+&#x20; describe node \<node-name>
+
+|     |
+| --- |
+
+Show detailed
+&#x20; Node information
+
+|     |
+| --- |
+
+kubectl logs
+&#x20; \<pod-name>
+
+|     |
+| --- |
+
+View Pod logs
+
+|     |
+| --- |
+
+kubectl logs
+&#x20; \<pod-name> --previous
+
+|     |
+| --- |
+
+View logs
+&#x20; from the previous container instance
+
+|     |
+| --- |
+
+kubectl exec
+&#x20; -it \<pod-name> -- /bin/sh
+
+|     |
+| --- |
+
+Open a shell
+&#x20; inside a running container
+
+|     |
+| --- |
+
+kubectl apply
+&#x20; -f app.yaml
+
+|     |
+| --- |
+
+Create or
+&#x20; update resources from a manifest
+
+|     |
+| --- |
+
+kubectl delete
+&#x20; -f app.yaml
+
+|     |
+| --- |
+
+Delete
+&#x20; resources defined in a manifest
+
+|     |
+| --- |
+
+kubectl scale
+&#x20; deployment app --replicas=3
+
+|     |
+| --- |
+
+Scale a
+&#x20; Deployment
+
+|     |
+| --- |
+
+kubectl rollout
+&#x20; status deployment/app
+
+|     |
+| --- |
+
+Check rollout
+&#x20; status
+
+|     |
+| --- |
+
+kubectl rollout
+&#x20; history deployment/app
+
+|     |
+| --- |
+
+View
+&#x20; Deployment rollout history
+
+|     |
+| --- |
+
+kubectl rollout
+&#x20; undo deployment/app
+
+|     |
+| --- |
+
+Roll back a
+&#x20; Deployment
+
+|     |
+| --- |
+
+kubectl top
+&#x20; pods
+
+|     |
+| --- |
+
+Display Pod
+&#x20; resource usage
+
+|     |
+| --- |
+
+kubectl top
+&#x20; nodes
+
+|     |
+| --- |
+
+Display Node
+&#x20; resource usage
+
+|     |
+| --- |
+
+kubectl get
+&#x20; events
+
+|     |
+| --- |
+
+View cluster
+&#x20; events
+
+|     |
+| --- |
+
+kubectl get
+&#x20; events --sort-by=.lastTimestamp
+
+|     |
+| --- |
+
+Sort events
+&#x20; by timestamp
+
+|     |
+| --- |
+
+kubectl get
+&#x20; namespaces
+
+|     |
+| --- |
+
+List all
+&#x20; Namespaces
+
+|     |
+| --- |
+
+kubectl get svc
+
+|     |
+| --- |
+
+List Services
+
+|     |
+| --- |
+
+kubectl get
+&#x20; endpointslices
+
+|     |
+| --- |
+
+List
+&#x20; EndpointSlices
+
+|     |
+| --- |
+
+kubectl get
+&#x20; networkpolicies
+
+|     |
+| --- |
+
+List
+&#x20; NetworkPolicies
+
+---
+
+## **Interview Tips**
+
+### Key Topics to Master
+
+#### **1. Kubernetes Architecture**
+
+Understand the
+major components of the control plane and worker nodes.
+
+**Control Plane:**
+
+·      
 API Server
 
+·      
 etcd
 
+·      
 Scheduler
 
+·      
 Controller Manager
 
-Worker Node:
+**Worker Node:**
 
+·      
 kubelet
 
+·      
 Container runtime
 
+·      
 kube-proxy where applicable
 
-Be prepared to explain how a request flows through these components.
+Be prepared to
+explain how a request flows through these components.
 
-2. Pod Lifecycle
+#### **2. Pod Lifecycle**
 
-Understand the major Pod phases:
+Understand the major Pod
+phases:
 
 Pending → Running → Succeeded
-                  ↘ Failed
+
+                 
+↘ Failed
 
 Also understand:
 
+·      
 Container restarts
 
+·      
 CrashLoopBackOff
 
+·      
 Image pull failures
 
+·      
 Probe failures
 
+·      
 Termination states
 
-3. Networking
+#### **3. Networking**
 
-Understand how the following work together:
+Understand how the following
+work together:
 
+·      
 Pod networking
 
+·      
 Services
 
+·      
 Cluster DNS
 
+·      
 Ingress
 
+·      
 NetworkPolicies
 
+·      
 CNI plugins
 
-Be prepared to explain how traffic travels from an external client to an application Pod.
+Be prepared to explain how
+traffic travels from an external client to an application Pod.
 
-4. Troubleshooting
+#### **4. Troubleshooting**
 
 Practice using:
 
-`kubectl describe`
-`kubectl logs`
-`kubectl get events`
-`kubectl get pods`
-`kubectl get nodes`
-`kubectl exec`
+kubectl describe
 
-Learn to troubleshoot common conditions such as:
+kubectl logs
 
+kubectl get events
+
+kubectl get pods
+
+kubectl get nodes
+
+kubectl exec
+
+Learn to troubleshoot
+common conditions such as:
+
+·      
 Pending
 
+·      
 CrashLoopBackOff
 
+·      
 ImagePullBackOff
 
+·      
 ErrImagePull
 
+·      
 ContainerCreating
 
+·      
 OOMKilled
 
+·      
 Readiness probe failures
 
+·      
 Liveness probe failures
 
-5. Storage
+#### **5. Storage**
 
 Understand:
 
+·      
 PersistentVolumes (PV)
 
+·      
 PersistentVolumeClaims (PVC)
 
+·      
 StorageClasses
 
+·      
 Dynamic provisioning
 
+·      
 Static provisioning
 
+·      
 Access modes
 
+·      
 Reclaim policies
 
-6. Scheduling
+#### **6. Scheduling**
 
 Understand:
 
+·      
 Resource requests
 
+·      
 Resource limits
 
+·      
 Taints
 
+·      
 Tolerations
 
+·      
 Node selectors
 
+·      
 Node affinity
 
+·      
 Pod affinity
 
+·      
 Pod anti-affinity
 
+·      
 Scheduling constraints
 
-7. Updates and Deployments
+#### **7. Updates and Deployments**
 
 Understand:
 
+·      
 Rolling updates
 
+·      
 Rollbacks
 
+·      
 Deployment history
 
+·      
 RollingUpdate
 
+·      
 Recreate
 
+·      
 Liveness probes
 
+·      
 Readiness probes
 
+·      
 Startup probes
 
-Pro Tips
+---
 
-✅ Be prepared to explain real-world scenarios.
+### **Pro Tips**
 
-✅ Practice troubleshooting Kubernetes failures.
+·      
+✅ Be prepared to explain
+real-world scenarios.
 
-✅ Understand the “why”, not just the commands.
+·      
+✅ Practice troubleshooting
+Kubernetes failures.
 
+·      
+✅ Understand the **“why”**,
+not just the commands.
+
+·      
 ✅ Know commonly used kubectl commands.
 
-✅ Practice writing Kubernetes YAML manifests.
+·      
+✅ Practice writing Kubernetes
+YAML manifests.
 
-✅ Understand imperative vs. declarative management.
+·      
+✅ Understand imperative
+vs. declarative management.
 
-✅ Learn how Kubernetes components interact with each other.
+·      
+✅ Learn how Kubernetes
+components interact with each other.
 
-✅ Be able to troubleshoot systematically instead of guessing.
+·      
+✅ Be able to troubleshoot
+systematically instead of guessing.
 
-✅ Understand the difference between desired state and current state.
+·      
+✅ Understand the difference
+between desired state and current state.
 
-✅ Practice explaining Kubernetes concepts in simple terms.
+·      
+✅ Practice explaining
+Kubernetes concepts in simple terms.
 
-### Summary
+---
 
-This guide covers essential Kubernetes concepts commonly expected in interviews for candidates with approximately 2–8 years of experience.
+## **Summary**
 
-Quick Reference
+This guide covers essential
+Kubernetes concepts commonly expected in interviews for candidates with
+approximately **2–8 years of experience**.
 
-### Additional Resources
+### **Quick Reference**
 
-Kubernetes Official Documentation
+|      |
+| ---- |
 
-Kubernetes GitHub Repository
+Level
 
-`kubectl Cheat Sheet`
+|      |
+| ---- |
 
-### Final Interview Checklist
+Topics
 
-Before attending a Kubernetes interview, make sure you can confidently explain:
+|     |
+| --- |
 
+**Beginner**
+
+|     |
+| --- |
+
+Pods, Nodes, Clusters, Services, Deployments, ReplicaSets,
+&#x20; Namespaces
+
+|     |
+| --- |
+
+**Intermediate**
+
+|     |
+| --- |
+
+ConfigMaps, Secrets, Ingress, Labels, Selectors, DaemonSets, etcd, kubelet
+
+|     |
+| --- |
+
+**Advanced**
+
+|     |
+| --- |
+
+StatefulSets, Jobs, CronJobs, PV/PVC, StorageClasses, Scheduling,
+&#x20; Taints, Tolerations, Affinity
+
+---
+
+## **Additional Resources**
+
+·      
+[*Kubernetes Official Documentation*](https://kubernetes.io/docs/)
+
+·      
+[*Kubernetes GitHub Repository*](https://github.com/kubernetes/kubernetes)
+
+·      
+[*kubectl Cheat Sheet*](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+---
+
+## **Final Interview Checklist**
+
+Before
+attending a Kubernetes interview, make sure you can confidently explain:
+
+☐       
 Kubernetes architecture
 
+☐       
 Control plane components
 
+☐       
 Worker node components
 
+☐       
 Pods and Pod lifecycle
 
+☐       
 Deployments and ReplicaSets
 
+☐       
 StatefulSets and DaemonSets
 
+☐       
 Jobs and CronJobs
 
+☐       
 Services and service types
 
+☐       
 Ingress
 
+☐       
 ConfigMaps and Secrets
 
+☐       
 Labels and selectors
 
+☐       
 PV, PVC, and StorageClass
 
+☐       
 Resource requests and limits
 
-Liveness, readiness, and startup probes
+☐       
+Liveness, readiness, and
+startup probes
 
+☐       
 Taints and tolerations
 
+☐       
 Node affinity and pod affinity
 
+☐       
 Kubernetes networking and DNS
 
+☐       
 NetworkPolicies
 
+☐       
 Troubleshooting Pending Pods
 
+☐       
 Troubleshooting CrashLoopBackOff
 
-Troubleshooting image pull failures
+☐       
+Troubleshooting image pull
+failures
 
+☐       
 Rolling updates and rollbacks
 
+☐       
 Common kubectl commands
 
+☐       
 YAML manifest structure
 
-Imperative vs. declarative management
-
-
-
-| Service Type | Description |
-
-| --- | --- |
-
-| ClusterIP | Exposes the Service internally within the cluster. This is the default type. |
-
-| NodePort | Exposes the Service on a static port on each node’s IP address. |
-
-| LoadBalancer | Exposes the Service externally through a cloud/provider load balancer when supported. |
-
-| ExternalName | Maps a Service to an external DNS name using a CNAME record. |
-
-
-
-| Pod | Deployment |
-
-| --- | --- |
-
-| Runs one or more containers | Manages Pods |
-
-| Can be created directly | Creates and manages ReplicaSets |
-
-| Does not provide built-in rollout management | Supports rolling updates and rollbacks |
-
-| Not normally used directly for production workloads | Commonly used for stateless applications |
-
-
-
-| Feature | ConfigMap | Secret |
-
-| --- | --- | --- |
-
-| Intended use | Non-sensitive configuration | Sensitive configuration |
-
-| Typical data | URLs, feature flags, settings | Passwords, tokens, certificates |
-
-| Default representation | Plain text | Base64-encoded |
-
-| Encryption | Not inherently encrypted | Can be encrypted at rest when configured |
-
-| Access | Controlled through RBAC | Should be tightly restricted |
-
-
-
-| PV | PVC |
-
-| --- | --- |
-
-| Represents actual storage | Represents a request for storage |
-
-| Cluster-level resource | Namespace-scoped resource |
-
-| Can be statically or dynamically provisioned | Used by workloads to request storage |
-
-| Provides storage capacity | Specifies storage requirements |
-
-
-
-| Command | Description |
-
-| --- | --- |
-
-| kubectl get pods | List Pods |
-
-| kubectl get pods -A | List Pods across all namespaces |
-
-| kubectl get deployments | List Deployments |
-
-| kubectl get services | List Services |
-
-| kubectl get nodes | List Nodes |
-
-| kubectl get namespaces | List Namespaces |
-
-| kubectl describe pod <pod-name> | Show detailed Pod information |
-
-| kubectl describe node <node-name> | Show detailed Node information |
-
-| kubectl logs <pod-name> | View Pod logs |
-
-| kubectl logs <pod-name> --previous | View logs from the previous container instance |
-
-| kubectl exec -it <pod-name> -- /bin/sh | Open a shell inside a running container |
-
-| kubectl apply -f app.yaml | Create or update resources from a manifest |
-
-| kubectl delete -f app.yaml | Delete resources defined in a manifest |
-
-| kubectl scale deployment app --replicas=3 | Scale a Deployment |
-
-| kubectl rollout status deployment/app | Check rollout status |
-
-| kubectl rollout history deployment/app | View Deployment rollout history |
-
-| kubectl rollout undo deployment/app | Roll back a Deployment |
-
-| kubectl top pods | Display Pod resource usage |
-
-| kubectl top nodes | Display Node resource usage |
-
-| kubectl get events | View cluster events |
-
-| kubectl get events --sort-by=.lastTimestamp | Sort events by timestamp |
-
-| kubectl get namespaces | List all Namespaces |
-
-| kubectl get svc | List Services |
-
-| kubectl get endpointslices | List EndpointSlices |
-
-| kubectl get networkpolicies | List NetworkPolicies |
-
-
-
-| Level | Topics |
-
-| --- | --- |
-
-| Beginner | Pods, Nodes, Clusters, Services, Deployments, ReplicaSets, Namespaces |
-
-| Intermediate | ConfigMaps, Secrets, Ingress, Labels, Selectors, DaemonSets, etcd, kubelet |
-
-| Advanced | StatefulSets, Jobs, CronJobs, PV/PVC, StorageClasses, Scheduling, Taints, Tolerations, Affinity |
-
+☐       
+Imperative vs. declarative
+management
