@@ -94,8 +94,8 @@ It provides features such as:
 A **ReplicaSet** ensures that a specified number of Pod replicas
 are running at any given time.
 
-*Example*: If a ReplicaSet is configured
-with three replicas, Kubernetes attempts to maintain three matching Pods.
+#### *Example:* 
+If a ReplicaSet is configured with three replicas, Kubernetes attempts to maintain three matching Pods.
 
 ### **7. What is a Namespace?**
 
@@ -130,7 +130,7 @@ Because Pods are ephemeral and their IP addresses can change, Services provide s
 **kubectl** is the Kubernetes command-line tool used to communicate with the
 Kubernetes API server and manage cluster resources.
 
-**Examples:**
+#### *Example:*
 ```bash
 kubectl get pods
 
@@ -162,17 +162,11 @@ key-value store used by Kubernetes to store cluster state and configuration.
 
 Examples of information stored in **etcd** include:
 
-·      
-Kubernetes resource definitions
-
-·      
-Cluster configuration
-
-·      
-Desired state
-
-·      
-Metadata
+  
+- Kubernetes resource definitions   
+- Cluster configuration    
+- Desired state    
+- Metadata
 
 Protecting and backing up **etcd** is critical for cluster
 recovery.
@@ -185,19 +179,10 @@ recovery.
 
 It runs on every worker node and:
 
-·      
-Communicates with the
-Kubernetes API server
-
-·      
-Ensures assigned Pods are
-running
-
-·      
-Monitors containers
-
-·      
-Reports node and Pod status
+•	Communicates with the Kubernetes API server
+•	Ensures assigned Pods are running
+•	Monitors containers
+•	Reports node and Pod status
 
 ### **13. What is kube-proxy?**
 
@@ -215,31 +200,24 @@ networking implementation.
 A **ConfigMap** stores non-sensitive configuration data as
 key-value pairs.
 
-Examples:
+#### *Example:*
 
-·      
-Application configuration
+- Application configuration   
+- Environment variables  
+- Configuration files
+- Command-line arguments
 
-·      
-Environment variables
-
-·      
-Configuration files
-
-·      
-Command-line arguments
-
-*Example:*
+#### *Example:*
 ```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-config
 data:
-  APP\_ENV: production
-
-  LOG\_LEVEL: info
+  APP_ENV: production
+  LOG_LEVEL: info
 ```
+#### Important: data stores configuration as text. Passwords and other sensitive information should be stored in a Kubernetes Secret, not a ConfigMap.
 
 ### **15. What is a Secret?**
 
