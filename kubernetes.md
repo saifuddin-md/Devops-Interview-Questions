@@ -61,15 +61,9 @@ A **Node** is a physical or virtual machine that runs Kubernetes
 workloads (Pods).
 
 A node typically contains:
-
-·      
-kubelet
-
-·      
-Container runtime
-
-·      
-kube-proxy (where applicable)
+- kubelet
+- Container runtime
+- kube-proxy (where applicable)
 
 ### **4. What is a Cluster?**
 
@@ -120,20 +114,11 @@ cluster.
 
 Namespaces can be used to organize and separate resources such as:
 
-·      
-Pods
-
-·      
-Deployments
-
-·      
-Services
-
-·      
-ConfigMaps
-
-·      
-Secrets
+- Pods
+- Deployments
+- Services
+- ConfigMaps
+- Secrets
 
 ## **8. What is a Service?**
 
