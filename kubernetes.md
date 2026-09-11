@@ -229,8 +229,8 @@ Configuration files
 ·      
 Command-line arguments
 
-**Example:**
-
+*Example:*
+```yaml
 apiVersion: v1
 
 kind: ConfigMap
@@ -244,6 +244,7 @@ data:
   APP\_ENV: production
 
   LOG\_LEVEL: info
+```
 
 ### **15. What is a Secret?**
 
