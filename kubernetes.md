@@ -639,7 +639,7 @@ spec:
       app: my-app
 ```
 
-**41. How do you integrate Kubernetes with Jenkins or pipelines?**
+### **41. How do you integrate Kubernetes with Jenkins or pipelines?**
 
 I integrated Jenkins with Kubernetes using **ServiceAccount**, and **RBAC**. First, I created a ServiceAccount for Jenkins, then Configure RBAC, then I Stored Kubernetes **ServiceAccount token** in Jenkins Credentials, then I used **withKubeConfig** block in pipeline to access Kubernetes, and then I used **kubectl** commands to deploy and manage Kubernetes resources.
 
@@ -647,11 +647,11 @@ I also have worked with the GitOps architecture using GitHub Actions and Argo CD
 
 GitHub Actions handled the CI part, such as building the application, running tests, performing SonarQube and Trivy scans, building Docker image, and pushing it to a container registry. After that, GitHub Actions updates the **K8s manifest** in a Git repository with new Docker image **tag**. Argo CD was connected to that GitOps repository and continuously monitored it. When Argo CD detected the new image tag, it compared the desired state in Git with the actual state in Kubernetes and synchronized the application to the Kubernetes cluster.
 
-**42. What is the base configuration required to connect pipeline with EKS?**
+### **42. What is the base configuration required to connect pipeline with EKS?**
 
 To connect a CI/CD pipeline with EKS, we mainly need AWS credentials, an EKS cluster, kubectl, and proper IAM permissions. The pipeline needs to authenticate with AWS, get the EKS cluster credentials using aws eks update-kubeconfig, and then use kubectl to deploy the application.
 
-**43. What recent issue did you face in Kubernetes/EKS?**
+### **43. What recent issue did you face in Kubernetes/EKS?**
 
 Here are a few more **easy answers** you can use in an interview:
 
@@ -679,11 +679,11 @@ Here are a few more **easy answers** you can use in an interview:
 - **Root Cause:** The EKS worker nodes did not have enough CPU or memory resources available.
 - **Solution:** “We checked the resource usage and increased the cluster capacity by adding more worker nodes or resources. After that, the pods were scheduled successfully.”
 
-**44. How many nodes were there in your cluster?**
+### **44. How many nodes were there in your cluster?**
 
 “We had 3 worker nodes in our EKS cluster. We used them to run the application pods. The cluster was configured with auto-scaling, so additional nodes could be added when the workload increased.”
 
-**45. What was your strategy to manage/upgrade 35 nodes?**
+### **45. What was your strategy to manage/upgrade 35 nodes?**
 
 “We used a **Canary and Rolling Update strategy with Blue/Green node groups**. Instead of upgrading all 35 nodes at once, we created a new node group with the upgraded AMI/version alongside the existing node group.
 
@@ -730,8 +730,9 @@ We check:
 - CPU/memory usage
   
 ---
-<h2 style="color: #f97316;">Frequently Asked Commands</h2>
-## **Frequently Asked Commands**
+
+🟠 ## **Frequently Asked Commands**
+--
 
 | Command | Description |
 | --- | --- |
