@@ -175,7 +175,7 @@ recovery.
 
 It runs on every worker node and:
 
--Communicates with the Kubernetes API server
+- Communicates with the Kubernetes API server
 -	Ensures assigned Pods are running
 -	Monitors containers
 -	Reports node and Pod status
@@ -582,8 +582,7 @@ kubectl describe service \<service-name>
 kubectl get endpointslices
 ```
 4. **Check DNS resolution**
-
-             
+  
 Test DNS from a temporary/debug Pod.
 
 5. **Check NetworkPolicies**
@@ -598,12 +597,9 @@ Use tools such as curl, wget, nslookup, or dig from an appropriate debugging con
          
 Verify that the cluster’s CNI plugin and related components are healthy.
 
-**39. If there are 2 pods in different namespaces (ns1 &
-ns2), how can they communicate? How would you test it?**
+### **39. If there are 2 pods in different namespaces (ns1 & ns2), how can they communicate? How would you test it?**
 
-Yes. Pods in different
-Kubernetes namespaces can communicate with each other by default. A namespace
-is a logical boundary for organizing resources, not a network boundary.
+Yes. Pods in different Kubernetes namespaces can communicate with each other by default. A namespace is a logical boundary for organizing resources, not a network boundary.
 
 I would you test it:
 
@@ -622,535 +618,148 @@ curl http\://\<pod-ip-in-ns2>:8080
 
 ### **40. What is a PodDisruptionBudget?**
 
-A **PodDisruptionBudget (PDB)** is a Kubernetes resource
-that limits the number of Pods of a deployment that can be down simultaneously
-from voluntary disruptions. It ensures application availability during: **Node
-maintenance, Cluster upgrades and Manual Pod deletions.**
+A **PodDisruptionBudget (PDB)** is a Kubernetes resource that limits the number of Pods of a deployment that can be down simultaneously from voluntary disruptions. It ensures application availability during: **Node maintenance, Cluster upgrades and Manual Pod deletions.**
 
 **Key Points:**
 
 - Specifies **minAvailable** or **maxUnavailable**
-- Prevents      voluntary disruptions from breaking application SLAs
-- Does      not protect against involuntary disruptions (node failures, crashes)
+- Prevents voluntary disruptions from breaking application SLAs
+- Does not protect against involuntary disruptions (node failures, crashes)
 
 ***Example:***
-
+```yaml
 apiVersion: policy/v1
-
 kind: PodDisruptionBudget
-
 metadata:
-
   name: app-pdb
-
 spec:
-
   minAvailable: 2
-
   selector:
-
     matchLabels:
-
       app: my-app
+```
 
-**41. How do you
-integrate Kubernetes with Jenkins or pipelines?**
+**41. How do you integrate Kubernetes with Jenkins or pipelines?**
 
-I integrated Jenkins with Kubernetes using **ServiceAccount**, and **RBAC**.
-First, I created a ServiceAccount for Jenkins, then Configure RBAC, then I
-Stored Kubernetes **ServiceAccount token** in Jenkins Credentials, then I
-used **withKubeConfig** block in pipeline to access Kubernetes, and then I used **kubectl** commands to deploy and manage Kubernetes resources.
+I integrated Jenkins with Kubernetes using **ServiceAccount**, and **RBAC**. First, I created a ServiceAccount for Jenkins, then Configure RBAC, then I Stored Kubernetes **ServiceAccount token** in Jenkins Credentials, then I used **withKubeConfig** block in pipeline to access Kubernetes, and then I used **kubectl** commands to deploy and manage Kubernetes resources.
 
-I also have worked with the GitOps architecture using GitHub Actions and
-Argo CD.
+I also have worked with the GitOps architecture using GitHub Actions and Argo CD.
 
-GitHub Actions handled the CI part, such as building the application,
-running tests, performing SonarQube and Trivy scans, building Docker image, and
-pushing it to a container registry. After that, GitHub Actions updates the **K8s
-manifest** in a Git repository with new Docker image **tag**. Argo CD was
-connected to that GitOps repository and continuously monitored it. When Argo CD
-detected the new image tag, it compared the desired state in Git with the
-actual state in Kubernetes and synchronized the application to the Kubernetes
-cluster.
+GitHub Actions handled the CI part, such as building the application, running tests, performing SonarQube and Trivy scans, building Docker image, and pushing it to a container registry. After that, GitHub Actions updates the **K8s manifest** in a Git repository with new Docker image **tag**. Argo CD was connected to that GitOps repository and continuously monitored it. When Argo CD detected the new image tag, it compared the desired state in Git with the actual state in Kubernetes and synchronized the application to the Kubernetes cluster.
 
+**42. What is the base configuration required to connect pipeline with EKS?**
 
+To connect a CI/CD pipeline with EKS, we mainly need AWS credentials, an EKS cluster, kubectl, and proper IAM permissions. The pipeline needs to authenticate with AWS, get the EKS cluster credentials using aws eks update-kubeconfig, and then use kubectl to deploy the application.
 
-**42. What
-is the base configuration required to connect pipeline with EKS?**
+**43. What recent issue did you face in Kubernetes/EKS?**
 
-To connect a CI/CD
-pipeline with EKS, we mainly need AWS credentials, an EKS cluster, kubectl, and
-proper IAM permissions. The pipeline needs to authenticate with AWS, get the
-EKS cluster credentials using aws eks update-kubeconfig, and then use kubectl
-to deploy the application.
+Here are a few more **easy answers** you can use in an interview:
 
+#### **1. Pod Issue: Pod Not Starting**
+     
+- **Issue:** “I faced an issue where a pod was not starting.”
+- **Root Cause:** There was a configuration problem, such as an incorrect environment variable or configuration value. 
+- **Solution:** “I checked the pod logs and events, identified the configuration issue, fixed it, and redeployed the application.”
 
+#### **2. ImagePullBackOff**
 
-
-
-**43.
- What recent issue did you face in Kubernetes/EKS?**
-
-Here are a
-few more **easy answers** you can use in an interview:
-
-### **1. Pod Issue: Pod Not Starting**
-
-·      
-**Issue:** “I faced an issue where a pod was not starting.”
-
-·      
-**Root Cause:** There was a
-configuration problem, such as an incorrect environment variable or
-configuration value.
-
-·      
-**Solution:** “I checked the pod
-logs and events, identified the configuration issue, fixed it, and redeployed
-the application.”
-
-### **2. ImagePullBackOff**
-
-·      
-**Issue:** “I faced an **`ImagePullBackOff`****
-**issue in EKS.”
-
-·      
-**Root Cause:** The container image
-name, image tag, or registry configuration was incorrect, so Kubernetes could
-not pull the image.
-
-·      
-**Solution:** “I checked the pod
-events using **`kubectl describe pod`**,
-corrected the image or registry configuration, and redeployed the application.
-After that, the pod started successfully.”
+- **Issue:** “I faced an **`ImagePullBackOff`**** **issue in EKS.”     
+- **Root Cause:** The container image name, image tag, or registry configuration was incorrect, so Kubernetes could not pull the image. 
+- **Solution:** “I checked the pod events using **`kubectl describe pod`**, corrected the image or registry configuration, and redeployed the application. After that, the pod started successfully.”
 
 ### **3. CrashLoopBackOff**
+  
+- **Issue:** “One application pod was continuously restarting with **`CrashLoopBackOff`**.”    
+- **Root Cause:** The application had a configuration issue and was failing during startup.     
+- **Solution:** “I checked the application logs using **`kubectl logs`**, identified the configuration problem, fixed it, and restarted the deployment. After that, the pod was running normally.”
 
-·      
-**Issue:** “One application pod was
-continuously restarting with **`CrashLoopBackOff`**.”
+### **4. Node Resource Issue**
 
-·      
-**Root Cause:** The application had
-a configuration issue and was failing during startup.
+- **Issue:** “Some pods were not getting scheduled and remained in the Pending state.”
+- **Root Cause:** The EKS worker nodes did not have enough CPU or memory resources available.
+- **Solution:** “We checked the resource usage and increased the cluster capacity by adding more worker nodes or resources. After that, the pods were scheduled successfully.”
 
-·      
-**Solution:** “I checked the
-application logs using **`kubectl
-logs`**, identified the configuration problem, fixed it, and
-restarted the deployment. After that, the pod was running normally.”
+**44. How many nodes were there in your cluster?**
 
-3\.
-Node Resource Issue
+“We had 3 worker nodes in our EKS cluster. We used them to run the application pods. The cluster was configured with auto-scaling, so additional nodes could be added when the workload increased.”
 
-·       **Issue:** “Some pods
-were not getting scheduled and remained in the Pending state.”
+**45. What was your strategy to manage/upgrade 35 nodes?**
 
-·       **Root Cause:** The EKS
-worker nodes did not have enough CPU or memory resources available.
+“We used a **Canary and Rolling Update strategy with Blue/Green node groups**. Instead of upgrading all 35 nodes at once, we created a new node group with the upgraded AMI/version alongside the existing node group.
 
-·       **Solution:** “We checked
-the resource usage and increased the cluster capacity by adding more worker
-nodes or resources. After that, the pods were scheduled successfully.”
+First, we moved a small number of workloads to the new nodes and monitored them. We used **taints, tolerations, and node selectors** to control which workloads ran on the new nodes.
 
-**44.
-How many nodes were there in your cluster?**
+We monitored pod startup time, application errors, latency, and queue depth. If everything was stable, we gradually moved more workloads to the new node group.
 
-“We had 3 worker nodes in
-our EKS cluster. We used them to run the application pods. The cluster was
-configured with auto-scaling, so additional nodes could be added when the
-workload increased.”
-
-**45.
-What was your strategy to manage/upgrade 35 nodes?**
-
-“We used a **Canary
-and Rolling Update strategy with Blue/Green node groups**. Instead of
-upgrading all 35 nodes at once, we created a new node group with the upgraded
-AMI/version alongside the existing node group.
-
-First, we
-moved a small number of workloads to the new nodes and monitored them. We used **taints,
-tolerations, and node selectors** to control which workloads ran on the new
-nodes.
-
-We monitored
-pod startup time, application errors, latency, and queue depth. If everything
-was stable, we gradually moved more workloads to the new node group.
-
-Once all
-workloads were running properly on the new nodes, we removed the old node
-group. This reduced the risk of downtime during the upgrade.”
+Once all workloads were running properly on the new nodes, we removed the old node group. This reduced the risk of downtime during the upgrade.”
 
 **Easy explanation of each term**
 
-**1.
-Blue/Green Node Groups**
-
-·       
-**Blue** = old node
-group 
-
-·       
-**Green** = new
-upgraded node group 
-
-·       
-Both run at the same time during the migration. 
+**1. Blue/Green Node Groups**
+      
+- **Blue** = old node group    
+- **Green** = new upgraded node group 
+- Both run at the same time during the migration. 
 
 **2.Canary**
-
+· 
 We first move a **small number of workloads** to the new nodes.
-
 If there is no issue, we continue.
 
 **3.Rolling Update**
-
+· 
 We gradually move workloads from old nodes to new nodes instead of doing
 everything at once.
 
-**4.Taints &
-Tolerations**
-
+**4.Taints & Tolerations**
+· 
 Used to control which pods are allowed to run on specific nodes.
 
-**5. Node
-Selectors**
-
+**5. Node Selectors**
+· 
 Used to tell Kubernetes: “Run this particular workload on these new nodes.”
 
-**6.
-Monitoring**
+**6. Monitoring**
 
 We check:
-
-·       
-Pod startup time 
-
-·       
-Error rate 
-
-·       
-Application latency 
-
-·       
-Queue depth 
-
-·       
-CPU/memory usage 
-
-
-
+      
+- Pod startup time 
+- Error rate       
+- Application latency      
+- Queue depth     
+- CPU/memory usage
+  
 ---
 
 ## **Frequently Asked Commands**
 
-|      |
-| ---- |
-
-Command
-
-|      |
-| ---- |
-
-Description
-
-|     |
-| --- |
-
-kubectl get
-&#x20; pods
-
-|     |
-| --- |
-
-List Pods
-
-|     |
-| --- |
-
-kubectl get
-&#x20; pods -A
-
-|     |
-| --- |
-
-List Pods
-&#x20; across all namespaces
-
-|     |
-| --- |
-
-kubectl get
-&#x20; deployments
-
-|     |
-| --- |
-
-List
-&#x20; Deployments
-
-|     |
-| --- |
-
-kubectl get
-&#x20; services
-
-|     |
-| --- |
-
-List Services
-
-|     |
-| --- |
-
-kubectl get
-&#x20; nodes
-
-|     |
-| --- |
-
-List Nodes
-
-|     |
-| --- |
-
-kubectl get
-&#x20; namespaces
-
-|     |
-| --- |
-
-List
-&#x20; Namespaces
-
-|     |
-| --- |
-
-kubectl
-&#x20; describe pod \<pod-name>
-
-|     |
-| --- |
-
-Show detailed
-&#x20; Pod information
-
-|     |
-| --- |
-
-kubectl
-&#x20; describe node \<node-name>
-
-|     |
-| --- |
-
-Show detailed
-&#x20; Node information
-
-|     |
-| --- |
-
-kubectl logs
-&#x20; \<pod-name>
-
-|     |
-| --- |
-
-View Pod logs
-
-|     |
-| --- |
-
-kubectl logs
-&#x20; \<pod-name> --previous
-
-|     |
-| --- |
-
-View logs
-&#x20; from the previous container instance
-
-|     |
-| --- |
-
-kubectl exec
-&#x20; -it \<pod-name> -- /bin/sh
-
-|     |
-| --- |
-
-Open a shell
-&#x20; inside a running container
-
-|     |
-| --- |
-
-kubectl apply
-&#x20; -f app.yaml
-
-|     |
-| --- |
-
-Create or
-&#x20; update resources from a manifest
-
-|     |
-| --- |
-
-kubectl delete
-&#x20; -f app.yaml
-
-|     |
-| --- |
-
-Delete
-&#x20; resources defined in a manifest
-
-|     |
-| --- |
-
-kubectl scale
-&#x20; deployment app --replicas=3
-
-|     |
-| --- |
-
-Scale a
-&#x20; Deployment
-
-|     |
-| --- |
-
-kubectl rollout
-&#x20; status deployment/app
-
-|     |
-| --- |
-
-Check rollout
-&#x20; status
-
-|     |
-| --- |
-
-kubectl rollout
-&#x20; history deployment/app
-
-|     |
-| --- |
-
-View
-&#x20; Deployment rollout history
-
-|     |
-| --- |
-
-kubectl rollout
-&#x20; undo deployment/app
-
-|     |
-| --- |
-
-Roll back a
-&#x20; Deployment
-
-|     |
-| --- |
-
-kubectl top
-&#x20; pods
-
-|     |
-| --- |
-
-Display Pod
-&#x20; resource usage
-
-|     |
-| --- |
-
-kubectl top
-&#x20; nodes
-
-|     |
-| --- |
-
-Display Node
-&#x20; resource usage
-
-|     |
-| --- |
-
-kubectl get
-&#x20; events
-
-|     |
-| --- |
-
-View cluster
-&#x20; events
-
-|     |
-| --- |
-
-kubectl get
-&#x20; events --sort-by=.lastTimestamp
-
-|     |
-| --- |
-
-Sort events
-&#x20; by timestamp
-
-|     |
-| --- |
-
-kubectl get
-&#x20; namespaces
-
-|     |
-| --- |
-
-List all
-&#x20; Namespaces
-
-|     |
-| --- |
-
-kubectl get svc
-
-|     |
-| --- |
-
-List Services
-
-|     |
-| --- |
-
-kubectl get
-&#x20; endpointslices
-
-|     |
-| --- |
-
-List
-&#x20; EndpointSlices
-
-|     |
-| --- |
-
-kubectl get
-&#x20; networkpolicies
-
-|     |
-| --- |
-
-List
-&#x20; NetworkPolicies
-
+| Command | Description |
+| --- | --- |
+| `kubectl get pods` | List Pods |
+| `kubectl get pods -A` | List Pods across all namespaces |
+| `kubectl get deployments` | List Deployments |
+| `kubectl get services` | List Services |
+| `kubectl get nodes` | List Nodes |
+| `kubectl get namespaces` | List Namespaces |
+| `kubectl describe pod <pod-name>` | Show detailed Pod information |
+| `kubectl describe node <node-name>` | Show detailed Node information |
+| `kubectl logs <pod-name>` | View Pod logs |
+| `kubectl logs <pod-name> --previous` | View logs from the previous container instance |
+| `kubectl exec -it <pod-name> -- /bin/sh` | Open a shell inside a running container |
+| `kubectl apply -f app.yaml` | Create or update resources from a manifest |
+| `kubectl delete -f app.yaml` | Delete resources defined in a manifest |
+| `kubectl scale deployment app --replicas=3` | Scale a Deployment |
+| `kubectl rollout status deployment/app` | Check rollout status |
+| `kubectl rollout history deployment/app` | View Deployment rollout history |
+| `kubectl rollout undo deployment/app` | Roll back a Deployment |
+| `kubectl top pods` | Display Pod resource usage |
+| `kubectl top nodes` | Display Node resource usage |
+| `kubectl get events` | View cluster events |
+| `kubectl get events --sort-by=.lastTimestamp` | Sort events by timestamp |
+| `kubectl get namespaces` | List all Namespaces |
+| `kubectl get svc` | List Services |
+| `kubectl get endpointslices` | List EndpointSlices |
+| `kubectl get networkpolicies` | List NetworkPolicies |
 ---
 
 ## **Interview Tips**
