@@ -8,8 +8,8 @@ troubleshooting, and frequently used kubectl commands**.
 
 ## Table of Contents
 
-- [1. *Beginner Level*](#Beginner-Level)
-- [2. *Intermediate Level*](#Intermediate-Level)
+- [1. *Beginner Level*](#🟠-Beginner-Level)
+- [2. *Intermediate Level*](#🟠-Intermediate-Level)
 - [3. *Advanced Level*](#Advanced-Level)
 
 4.       
