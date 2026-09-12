@@ -10,17 +10,9 @@ troubleshooting, and frequently used kubectl commands**.
 
 - [1. Beginner Level](#-beginner-level)
 - [2. Intermediate Level](#-intermediate-level)
-- [1. *Beginner Level*](#-🟠-Beginner-Level)
-- [2. *Intermediate Level*](#-🟠-Intermediate-Level)
-- [3. *Advanced Level*](#Advanced-Level)
-
-4.       
-[*Scenario-Based
-Questions*](#X1d767dff697d5b8fc38c8feb8326587f3c7e146)
-
-5.       
-[*Frequently
-Asked Commands*](#Xff1a27ef8bf3a8cf9e8dfb52f08914d77da6559)
+- [3. Advanced Level](#-Advanced-Level)
+- [4. Scenario-Based Questions](#-Scenario-Based-Questions)
+- [5. Frequently Asked Commands](#-Frequently-Asked-Commands)
 
 6.       
 [*Interview
