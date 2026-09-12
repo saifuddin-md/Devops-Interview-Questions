@@ -730,8 +730,7 @@ We check:
 - CPU/memory usage
   
 ---
-
-🟠 ## **Frequently Asked Commands**
+## 🟠 **Frequently Asked Commands**
 --
 
 | Command | Description |
