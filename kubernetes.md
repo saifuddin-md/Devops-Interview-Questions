@@ -9,12 +9,8 @@ troubleshooting, and frequently used kubectl commands**.
 ## Table of Contents
 
 - [1. *Beginner Level*](#Beginner-Level)
-
-2. [*Intermediate Level*](#Intermediate-Level)
-
-3.       
-[*Advanced
-Level*](#X6b9b34952dd6c54d2bcdd9b48600a484d523d8d)
+- [2. *Intermediate Level*](#Intermediate-Level)
+- [3. *Advanced Level*](#Advanced-Level)
 
 4.       
 [*Scenario-Based
@@ -37,7 +33,7 @@ Resources*](#Xb671819c724f1aebc490dd6521d4168e661ca01)
 
 ---
 
-## **Beginner Level**
+## 🟠 **Beginner Level**
 
 ### **1. What is Kubernetes?**
 
@@ -138,7 +134,7 @@ kubectl apply -f app.yaml
 ```
 ---
 
-## **Intermediate Level**
+## 🟠 **Intermediate Level**
 
 ## **10. What is the Difference Between a Pod and a Deployment?**
 
@@ -249,7 +245,7 @@ controls should be used for sensitive environments.
 | **Default representation** | Plain text | Base64-encoded |
 | **Encryption** | Not inherently encrypted | Can be encrypted at rest when configured |
 | **Access** | Controlled through RBAC | Should be tightly restricted |
-### ** **
+
 
 ### **17. What are Labels and Selectors?**
 
@@ -282,7 +278,7 @@ Common use cases include:   
 
 ---
 
-## **Advanced Level**
+## 🟠 **Advanced Level**
 
 ### **19. What is a StatefulSet?**
 
@@ -428,7 +424,7 @@ affinity:
 ```
 ---
 
-## **Scenario-Based Questions**
+## 🟠 **Scenario-Based Questions**
 
 ### **29. A Pod is stuck in Pending state. How do you troubleshoot?**
 
@@ -762,7 +758,7 @@ We check:
 | `kubectl get networkpolicies` | List NetworkPolicies |
 ---
 
-## **Interview Tips**
+## 🟠 **Interview Tips**
 
 ### Key Topics to Master
 
