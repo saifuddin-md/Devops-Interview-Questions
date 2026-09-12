@@ -730,7 +730,7 @@ We check:
 - CPU/memory usage
   
 ---
-## <span style="color:orange">Frequently Asked Commands</span>
+<h2 style="color: #f97316;">Frequently Asked Commands</h2>
 ## **Frequently Asked Commands**
 
 | Command | Description |
