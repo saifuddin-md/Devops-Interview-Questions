@@ -636,26 +636,22 @@ To connect a CI/CD pipeline with EKS, we mainly need AWS credentials, an EKS clu
 
 Here are a few more **easy answers** you can use in an interview:
 
-#### **1. Pod Issue: Pod Not Starting**
-     
+#### **1. Pod Issue: Pod Not Starting** 
 - **Issue:** “I faced an issue where a pod was not starting.”
 - **Root Cause:** There was a configuration problem, such as an incorrect environment variable or configuration value. 
 - **Solution:** “I checked the pod logs and events, identified the configuration issue, fixed it, and redeployed the application.”
 
 #### **2. ImagePullBackOff**
-
 - **Issue:** “I faced an **`ImagePullBackOff`**** **issue in EKS.”     
 - **Root Cause:** The container image name, image tag, or registry configuration was incorrect, so Kubernetes could not pull the image. 
 - **Solution:** “I checked the pod events using **`kubectl describe pod`**, corrected the image or registry configuration, and redeployed the application. After that, the pod started successfully.”
 
 ### **3. CrashLoopBackOff**
-  
 - **Issue:** “One application pod was continuously restarting with **`CrashLoopBackOff`**.”    
 - **Root Cause:** The application had a configuration issue and was failing during startup.     
 - **Solution:** “I checked the application logs using **`kubectl logs`**, identified the configuration problem, fixed it, and restarted the deployment. After that, the pod was running normally.”
 
 ### **4. Node Resource Issue**
-
 - **Issue:** “Some pods were not getting scheduled and remained in the Pending state.”
 - **Root Cause:** The EKS worker nodes did not have enough CPU or memory resources available.
 - **Solution:** “We checked the resource usage and increased the cluster capacity by adding more worker nodes or resources. After that, the pods were scheduled successfully.”
@@ -712,7 +708,6 @@ We check:
   
 ---
 ## 🟠 **Frequently Asked Commands**
---
 
 | Command | Description |
 | --- | --- |
