@@ -1,3 +1,5 @@
+# ArgoCD Interview Questions and Answers
+
 ### Core Concepts & Architecture (Q1–Q10)
 
 **1. What is ArgoCD and why is it used in Kubernetes environments?**
