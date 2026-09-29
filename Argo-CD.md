@@ -1,7 +1,7 @@
 ### Core Concepts & Architecture (Q1–Q10)
 
 **1. What is ArgoCD and why is it used in Kubernetes environments?**
-ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It is used because it treats Git repositories as the single source of truth for defining the desired state of applications. It continuously monitors running applications and compares their live state against the desired state specified in Git, automatically or manually syncing them. It solves the problem of configuration drift and provides a clear audit trail for deployments.
+- ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It is used because it treats Git repositories as the single source of truth for defining the desired state of applications. It continuously monitors running applications and compares their live state against the desired state specified in Git, automatically or manually syncing them. It solves the problem of configuration drift and provides a clear audit trail for deployments.
 
 **2. How does ArgoCD implement GitOps principles?**
 GitOps relies on four principles: 1) Declarative configuration, 2) Versioned and immutable storage (Git), 3) Pulled automatically, and 4) Continuous reconciliation. ArgoCD implements this by storing Kubernetes manifests in Git. The ArgoCD controller (running inside the cluster) *pulls* these manifests, compares them to the cluster state, and reconciles any differences, ensuring the cluster always matches Git.
