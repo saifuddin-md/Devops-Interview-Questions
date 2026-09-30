@@ -12,30 +12,30 @@ We welcome improvements to documentation, interview questions, examples, and bug
 
 ## How to Contribute
 
-1. Fork this repository.
-2. Clone your fork.
-3. Create a new branch.
+### 1. Fork this repository.
+### 2. Clone your fork.
+### 3. Create a new branch.
 
 ```bash
 git checkout -b docs/update-readme
 ```
 
-4. Make your changes.
-5. Commit your work.
+### 4. Make your changes.
+### 5. Commit your work.
 
 ```bash
 git commit -m "docs: improve README"
 ```
 
-6. Push to your fork.
+### 6. Push to your fork.
 
 ```bash
 git push origin docs/update-readme
 ```
 
-7. Open a Pull Request.
+### 7. Open a Pull Request.
 
-## Pull Request Checklist
+**Pull Request Checklist**
 
 - Keep changes focused.
 - Update documentation if needed.
@@ -45,7 +45,7 @@ Example:
 
 Closes #12
 
-## Good First Issues
+**Good First Issues**
 
 Look for issues labeled:
 
