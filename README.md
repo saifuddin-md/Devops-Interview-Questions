@@ -5,12 +5,15 @@
 ## Contents
 
 - AWS
-- Terraform
 - Kubernetes
 - Docker
+- Terraform
 - Linux
 - Jenkins
 - Git
+- CI/CD
+- ArgoCD
+- Monitoring
 
 ## Contributing
 
