@@ -1,6 +1,6 @@
 
 ### `documentation.md`
-```markdown
+
 ---
 name: Documentation Improvement
 about: Suggest improvements to documentation
