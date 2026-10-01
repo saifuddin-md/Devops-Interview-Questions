@@ -1,10 +1,5 @@
 
----
-
-# 💡 `feature_request.md`
-
-Use this when someone wants to **add something new**.
-
+### `feature_request.md`
 ```markdown
 ---
 name: Feature Request
@@ -26,7 +21,7 @@ Explain how this would help DevOps interview preparation.
 
 ## Suggested Content
 
-If you already have an example, add it here.
+If you already have an example, add it here:
 
 ```text
 Add your suggested content here
