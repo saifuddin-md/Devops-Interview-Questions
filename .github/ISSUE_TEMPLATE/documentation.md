@@ -1,20 +1,5 @@
 
----
-
-# 📚 `documentation.md`
-
-Use this when someone wants to improve documentation.
-
-For example:
-
-- Fix a typo
-- Improve README
-- Add explanation
-- Add missing documentation
-- Improve an interview question explanation
-
-Put this inside:
-
+### `documentation.md`
 ```markdown
 ---
 name: Documentation Improvement
@@ -30,9 +15,17 @@ assignees: ""
 
 Describe the documentation that needs to be changed.
 
+Examples:
+
+- Fix a typo
+- Improve README
+- Add explanation
+- Add missing documentation
+- Improve an interview question explanation
+
 ## Where is it?
 
-Example:
+Examples:
 
 ```text
 README.md
