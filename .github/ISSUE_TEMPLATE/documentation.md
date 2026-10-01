@@ -1,6 +1,3 @@
-
-### `documentation.md`
-
 ---
 name: Documentation Improvement
 about: Suggest improvements to documentation
