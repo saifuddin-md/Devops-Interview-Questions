@@ -1,11 +1,9 @@
 
-### `feature_request.md`
-```markdown
 ---
 name: Feature Request
-about: Suggest a new question, topic, example, or improvement
-title: "[FEATURE] "
-labels: enhancement
+about: Suggest a new question, topic, or improvement
+title: "[Feature] "
+labels: "enhancement"
 assignees: ""
 ---
 
