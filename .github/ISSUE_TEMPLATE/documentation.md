@@ -1,12 +1,11 @@
-### `documentation.md`
-```markdown
 ---
 name: Documentation Improvement
-about: Suggest improvements to documentation
-title: "[DOCS] "
-labels: documentation
+about: Suggest an improvement to the documentation
+title: "[Docs] "
+labels: "documentation"
 assignees: ""
 ---
+
 
 # Documentation Improvement
 
