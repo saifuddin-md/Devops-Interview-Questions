@@ -28,18 +28,12 @@ Deployments, Services, ConfigMaps, and Ingress resources.
 
 ### 4. What is the difference between Helm 2 and Helm 3?
 
-  -----------------------------------------------------------------------
-  Helm 2                              Helm 3
-  ----------------------------------- -----------------------------------
-  Uses Tiller                         Does not use Tiller
-
-  Client-server architecture          Client-only architecture
-
-  More complex RBAC setup             Uses Kubernetes RBAC directly
-
-  ConfigMaps commonly used for        Secrets used by default for release
-  release storage                     storage
-  -----------------------------------------------------------------------
+| Helm 2 | Helm 3 |
+|---|---|
+| Uses Tiller | Does not use Tiller |
+| Client-server architecture | Client-only architecture |
+| More complex RBAC setup | Uses Kubernetes RBAC directly |
+| ConfigMaps commonly used for release storage | Secrets used by default for release storage |
 
 ### 5. What is the purpose of values.yaml?
 
