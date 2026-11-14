@@ -127,13 +127,12 @@ I also configure lifecycle policies to automatically transition or expire old ob
 
 **Answer:** Tune memory and timeout settings based on execution metrics. Optimize code performance to reduce execution time.
 
+---
 
-## 16. Kubernetes / EKS Cost Optimization
+## Kubernetes / EKS Cost Optimization
+*These questions are particularly useful for DevOps and Platform Engineer interviews.*
 
-**Answer:** These questions are particularly useful for DevOps and Platform Engineer
-interviews.
-
-### 17. How do you optimize AWS EKS costs?
+### 16. How do you optimize AWS EKS costs?
 
 **Answer:** I focus on:
 
@@ -144,19 +143,21 @@ interviews.
 -   Scaling down unused workloads.
 -   Monitoring resource utilization.
 
-### 18. How can you reduce costs in a Kubernetes cluster?
+### 17. How can you reduce costs in a Kubernetes cluster?
 
 **Answer:** We can reduce costs by avoiding over-provisioning, optimizing pod resource requests and limits, using horizontal pod autoscaling, and scaling down unused nodes.
 
-### 19. What is Karpenter?
+### 18. What is Karpenter?
 
 **Answer:** Karpenter is a Kubernetes node provisioning tool that automatically launches and terminates nodes based on workload requirements. It helps improve resource utilization and optimize infrastructure costs.
 
-## 20. Scenario-Based Interview Questions
+---
 
-**Answer:** These are particularly important because interviewers want to know how you handle real-world situations.
+## Scenario-Based Interview Questions
 
-### 21. Suddenly, your AWS bill increases by 40%. How will you investigate?
+*These are particularly important because interviewers want to know how you handle real-world situations.*
+
+### 19. Suddenly, your AWS bill increases by 40%. How will you investigate?
 
 **Answer:** My approach would be:
 
@@ -167,38 +168,28 @@ interviews.
 - 5.  Investigate unexpected resources or increased traffic.
 - 6.  Take corrective action and configure AWS Budgets alerts.
 
-### 22. Your development team is using EC2 instances 24/7, but they only work during business hours. How would you optimize costs?
+### 20. Your development team is using EC2 instances 24/7, but they only work during business hours. How would you optimize costs?
 
 **Answer:** I would suggest scheduling non-production EC2 instances to stop after working hours and start again before business hours. This would reduce unnecessary running costs.
 
-### 23. How do you prevent unexpected AWS bills?
+### 21. How do you prevent unexpected AWS bills?
 
 **Answer:** I would configure AWS Budgets, billing alerts, Cost Explorer, and anomaly detection. I would also regularly review resource utilization and unused resources.
 
-### 24. Your EC2 CPU utilization is consistently below 10%. What would you do?
+### 22. Your EC2 CPU utilization is consistently below 10%. What would you do?
 
 **Answer:** I would analyze CPU and memory utilization over a reasonable period and check the application's actual requirements. If the instance is over provisioned, I would recommend a smaller instance type after testing.
 
-### 25. How would you design a cost-efficient new application?
+### 23. How would you design a cost-efficient new application?
 
 **Answer:** Use serverless or containerized architecture, right-size resources, implement Auto Scaling, optimize storage, and monitor continuously with CloudWatch and Budgets.
 
 
-## 26. Important AWS Cost Optimization Services
+---
 
-  AWS service                    Purpose
-  ------------------------------ ---------------------------------------
-  Cost Explorer                  Analyze AWS spending
-  AWS Budgets                    Set budgets and alerts
-  Cost and Usage Reports (CUR)   Detailed billing data
-  Cost Anomaly Detection         Detect unusual spending
-  Trusted Advisor                Cost optimization recommendations
-  Compute Optimizer              Resource right-sizing recommendations
-  CloudWatch                     Monitor resource utilization
+## Real-world Interview Question -- Most Important
 
-## 6. Real-world Interview Question -- Most Important
-
-### 27. As a DevOps Engineer, what steps do you take to optimize AWS infrastructure costs?
+### 24. As a DevOps Engineer, what steps do you take to optimize AWS infrastructure costs?
 
 **Answer:** You can use this natural interview answer:
 
@@ -214,11 +205,11 @@ interviews.
 > unnecessary spending without affecting application performance or
 > availability."
 
-### 28. How do you monitor and control your AWS costs effectively?
+### 25. How do you monitor and control your AWS costs effectively?
 
 **Answer:** AWS provides tools like AWS Cost Explorer and AWS Budgets. Setting up billing alerts, regularly reviewing cost reports, and tagging resources for better tracking are effective strategies.
 
-### 29.How does AWS Budgets help in managing and controlling costs?
+### 26.How does AWS Budgets help in managing and controlling costs?
 
 **Answer:** AWS Budgets allows you to set custom cost and usage budgets, receive alerts, and take action to control costs effectively.
 
@@ -226,7 +217,7 @@ interviews.
 
 ## Real-World Use Case:
 
-### 30. Describe a time you identified and fixed an unexpected AWS cost spike
+### 27. Describe a time you identified and fixed an unexpected AWS cost spike
 
 **Answer:**-1: In one ECS on EC2 project, we noticed an unexpected increase in AWS costs even though application traffic was stable. issue was identified through **AWS Cost Explorer and the billing dashboard**. On analysis, we found two main causes:
 * The **Auto Scaling Group** was over-provisioned, leading to idle EC2 instances 
@@ -257,4 +248,18 @@ This small change had a big impact  especially across multiple non-production 
 * Set up start/stop schedules for development and testing environments that don't require 24/7 availability.
 * Use Lambda and EventBridge (formerly CloudWatch Events) to schedule resource start/stop events.
 
+
+
+
+## Important AWS Cost Optimization Services
+
+  AWS service                    Purpose
+  ------------------------------ ---------------------------------------
+  Cost Explorer                  Analyze AWS spending
+  AWS Budgets                    Set budgets and alerts
+  Cost and Usage Reports (CUR)   Detailed billing data
+  Cost Anomaly Detection         Detect unusual spending
+  Trusted Advisor                Cost optimization recommendations
+  Compute Optimizer              Resource right-sizing recommendations
+  CloudWatch                     Monitor resource utilization
 
