@@ -1,6 +1,5 @@
 # AWS Cost Optimization -- Interview Questions & Answers
 
-
 ## Table of Contents
 
 - [1. Basic AWS Cost Questions](#-Basic-AWS-Cost-Questions)
@@ -260,20 +259,10 @@ This small change had a big impact  especially across multiple non-production 
 * Set up start/stop schedules for development and testing environments that don't require 24/7 availability.
 * Use Lambda and EventBridge (formerly CloudWatch Events) to schedule resource start/stop events.
 
-
 ---
 
 ## Important AWS Cost Optimization Services
 
-  AWS service                    Purpose
-  ------------------------------ ---------------------------------------
-  Cost Explorer                  Analyze AWS spending
-  AWS Budgets                    Set budgets and alerts
-  Cost and Usage Reports (CUR)   Detailed billing data
-  Cost Anomaly Detection         Detect unusual spending
-  Trusted Advisor                Cost optimization recommendations
-  Compute Optimizer              Resource right-sizing recommendations
-  CloudWatch                     Monitor resource utilization
 
 | AWS Service                  | Purpose                              |
 | ---------------------------- | ------------------------------------ |
