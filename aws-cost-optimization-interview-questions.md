@@ -5,12 +5,12 @@
 
 - [1. Basic AWS Cost Questions](#-Basic-AWS-Cost-Questions)
 - [2. Practical DevOps Interview Questions](#-Practical-DevOps-Interview-Questions)
-- [3. Advanced Level](#-Advanced-Level)
-- [4. Scenario-Based Questions](#-Scenario-Based-Questions)
-- [5. Frequently Asked Commands](#-Frequently-Asked-Commands)
-- [6. Additional Resources](#-Additional-Resources)
-- [7. Final Interview Checklist](#-Final-Interview-Checklist)
+- [3. Kubernetes / EKS Cost Optimization](#-EKS-Cost-Optimization)
+- [4. Scenario-Based Interview Questions](#-Scenario-Based-Interview-Questions)
+- [5. Real-world Interview Questions](#-Real-world-Interview-Question)
+- [6. Real-World Use Case](#-Real-World-Use-Case)
 
+---
 
 ## 🟠 Basic AWS Cost Questions
 
@@ -73,11 +73,11 @@ when spending reaches 80% or 100%.
 
 ## 🟠 Practical DevOps Interview Questions
 
-###   How do you determine if an EC2 instance is over-provisioned?
+### 8.  How do you determine if an EC2 instance is over-provisioned?
 
 **Answer:** Monitor CPU, memory, and network utilization using CloudWatch. If an instance consistently uses <30% CPU and memory, it may be oversized.
 
-### 8. How do you reduce EC2 costs?
+### 9. How do you reduce EC2 costs?
 
 **Answer:** I follow these steps:
 
@@ -89,13 +89,13 @@ when spending reaches 80% or 100%.
 6.  Purchase Savings Plans or Reserved Instances for predictable
     workloads.
 
-### 9. What is EC2 Right Sizing?
+### 10. What is EC2 Right Sizing?
 
 **Answer:** Right-sizing means selecting an appropriate EC2 instance type based on actual resource utilization.
 
 **For example:** if an instance has 2 vCPUs but consistently uses only **5--10%** CPU, I evaluate whether a smaller instance can handle the workload.
 
-### 10. What are Savings Plans and Reserved Instances?
+### 11. What are Savings Plans and Reserved Instances?
 
 **Answer:** Both help reduce AWS costs compared to On-Demand pricing.
 
@@ -104,13 +104,13 @@ when spending reaches 80% or 100%.
 -   **Reserved Instances:** Provide discounted pricing for eligible EC2
     usage with a commitment.
 
-### 11. What are Spot Instances?
+### 12. What are Spot Instances?
 
 **Answer:** Spot Instances use spare AWS EC2 capacity at discounted prices. They are suitable for batch processing, testing, CI/CD workloads, and fault-tolerant applications.
 
 However, AWS can interrupt them when capacity is needed.
 
-### 12. How do you reduce EBS costs?
+### 13. How do you reduce EBS costs?
 
 **Answer:**
 -   Identify unattached EBS volumes.
@@ -119,7 +119,7 @@ However, AWS can interrupt them when capacity is needed.
 -   Right-size oversized volumes.
 -   Monitor volume usage.
 
-### 13. How do you reduce S3 costs?
+### 14. How do you reduce S3 costs?
 
 **Answer:** I use S3 Storage Classes according to data access patterns.
 
@@ -131,20 +131,20 @@ However, AWS can interrupt them when capacity is needed.
 
 I also configure lifecycle policies to automatically transition or expire old objects.
 
-### 14. How do you optimize database costs in AWS?
+### 15. How do you optimize database costs in AWS?
 
 **Answer:** Monitor CPU, memory, and storage usage. Resize instances during low demand, switch to Aurora Serverless for variable workloads, and choose cost-effective storage types.
 
-### 15. How do you reduce AWS Lambda costs?
+### 16. How do you reduce AWS Lambda costs?
 
 **Answer:** Tune memory and timeout settings based on execution metrics. Optimize code performance to reduce execution time.
 
 ---
 
-## Kubernetes / EKS Cost Optimization
+## 🟠 Kubernetes / EKS Cost Optimization
 *These questions are particularly useful for DevOps and Platform Engineer interviews.*
 
-### 16. How do you optimize AWS EKS costs?
+### 17. How do you optimize AWS EKS costs?
 
 **Answer:** I focus on:
 
@@ -155,21 +155,21 @@ I also configure lifecycle policies to automatically transition or expire old ob
 -   Scaling down unused workloads.
 -   Monitoring resource utilization.
 
-### 17. How can you reduce costs in a Kubernetes cluster?
+### 18. How can you reduce costs in a Kubernetes cluster?
 
 **Answer:** We can reduce costs by avoiding over-provisioning, optimizing pod resource requests and limits, using horizontal pod autoscaling, and scaling down unused nodes.
 
-### 18. What is Karpenter?
+### 19. What is Karpenter?
 
 **Answer:** Karpenter is a Kubernetes node provisioning tool that automatically launches and terminates nodes based on workload requirements. It helps improve resource utilization and optimize infrastructure costs.
 
 ---
 
-## Scenario-Based Interview Questions
+## 🟠 Scenario-Based Interview Questions
 
 *These are particularly important because interviewers want to know how you handle real-world situations.*
 
-### 19. Suddenly, your AWS bill increases by 40%. How will you investigate?
+### 20. Suddenly, your AWS bill increases by 40%. How will you investigate?
 
 **Answer:** My approach would be:
 
@@ -180,28 +180,28 @@ I also configure lifecycle policies to automatically transition or expire old ob
 - 5.  Investigate unexpected resources or increased traffic.
 - 6.  Take corrective action and configure AWS Budgets alerts.
 
-### 20. Your development team is using EC2 instances 24/7, but they only work during business hours. How would you optimize costs?
+### 21. Your development team is using EC2 instances 24/7, but they only work during business hours. How would you optimize costs?
 
 **Answer:** I would suggest scheduling non-production EC2 instances to stop after working hours and start again before business hours. This would reduce unnecessary running costs.
 
-### 21. How do you prevent unexpected AWS bills?
+### 22. How do you prevent unexpected AWS bills?
 
 **Answer:** I would configure AWS Budgets, billing alerts, Cost Explorer, and anomaly detection. I would also regularly review resource utilization and unused resources.
 
-### 22. Your EC2 CPU utilization is consistently below 10%. What would you do?
+### 23. Your EC2 CPU utilization is consistently below 10%. What would you do?
 
 **Answer:** I would analyze CPU and memory utilization over a reasonable period and check the application's actual requirements. If the instance is over provisioned, I would recommend a smaller instance type after testing.
 
-### 23. How would you design a cost-efficient new application?
+### 24. How would you design a cost-efficient new application?
 
 **Answer:** Use serverless or containerized architecture, right-size resources, implement Auto Scaling, optimize storage, and monitor continuously with CloudWatch and Budgets.
 
 
 ---
 
-## Real-world Interview Question -- Most Important
+## 🟠 Real-world Interview Question -- Most Important
 
-### 24. As a DevOps Engineer, what steps do you take to optimize AWS infrastructure costs?
+### 25. As a DevOps Engineer, what steps do you take to optimize AWS infrastructure costs?
 
 **Answer:** You can use this natural interview answer:
 
@@ -217,19 +217,19 @@ I also configure lifecycle policies to automatically transition or expire old ob
 > unnecessary spending without affecting application performance or
 > availability."
 
-### 25. How do you monitor and control your AWS costs effectively?
+### 26. How do you monitor and control your AWS costs effectively?
 
 **Answer:** AWS provides tools like AWS Cost Explorer and AWS Budgets. Setting up billing alerts, regularly reviewing cost reports, and tagging resources for better tracking are effective strategies.
 
-### 26.How does AWS Budgets help in managing and controlling costs?
+### 27.How does AWS Budgets help in managing and controlling costs?
 
 **Answer:** AWS Budgets allows you to set custom cost and usage budgets, receive alerts, and take action to control costs effectively.
 
 ---
 
-## Real-World Use Case:
+## 🟠 Real-World Use Case
 
-### 27. Describe a time you identified and fixed an unexpected AWS cost spike
+### 28. Describe a time you identified and fixed an unexpected AWS cost spike
 
 **Answer:**-1: In one ECS on EC2 project, we noticed an unexpected increase in AWS costs even though application traffic was stable. issue was identified through **AWS Cost Explorer and the billing dashboard**. On analysis, we found two main causes:
 * The **Auto Scaling Group** was over-provisioned, leading to idle EC2 instances 
@@ -261,7 +261,7 @@ This small change had a big impact  especially across multiple non-production 
 * Use Lambda and EventBridge (formerly CloudWatch Events) to schedule resource start/stop events.
 
 
-
+---
 
 ## Important AWS Cost Optimization Services
 
