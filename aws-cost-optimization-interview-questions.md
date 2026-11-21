@@ -4,7 +4,7 @@
 
 - [1. Basic AWS Cost Questions](#-Basic-AWS-Cost-Questions)
 - [2. Practical DevOps Interview Questions](#-Practical-DevOps-Interview-Questions)
-- [3. Kubernetes / EKS Cost Optimization](#-EKS-Cost-Optimization)
+- [3. EKS Cost Optimization](#-EKS-Cost-Optimization)
 - [4. Scenario-Based Interview Questions](#-Scenario-Based-Interview-Questions)
 - [5. Real-world Interview Questions](#-Real-world-Interview-Question)
 - [6. Real-World Use Case](#-Real-World-Use-Case)
@@ -140,7 +140,7 @@ I also configure lifecycle policies to automatically transition or expire old ob
 
 ---
 
-## 🟠 Kubernetes / EKS Cost Optimization
+## 🟠 EKS Cost Optimization
 *These questions are particularly useful for DevOps and Platform Engineer interviews.*
 
 ### 17. How do you optimize AWS EKS costs?
