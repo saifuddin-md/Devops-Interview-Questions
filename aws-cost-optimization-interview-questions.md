@@ -1,6 +1,18 @@
 # AWS Cost Optimization -- Interview Questions & Answers
 
-## 1. Basic AWS Cost Questions
+
+## Table of Contents
+
+- [1. Basic AWS Cost Questions](#-Basic-AWS-Cost-Questions)
+- [2. Practical DevOps Interview Questions](#-Practical-DevOps-Interview-Questions)
+- [3. Advanced Level](#-Advanced-Level)
+- [4. Scenario-Based Questions](#-Scenario-Based-Questions)
+- [5. Frequently Asked Commands](#-Frequently-Asked-Commands)
+- [6. Additional Resources](#-Additional-Resources)
+- [7. Final Interview Checklist](#-Final-Interview-Checklist)
+
+
+## 🟠 Basic AWS Cost Questions
 
 ### 1. What is AWS Cost Optimization?
 
@@ -59,7 +71,7 @@ when spending reaches 80% or 100%.
 
 ---
 
-## 2. Practical DevOps Interview Questions
+## 🟠 Practical DevOps Interview Questions
 
 ###   How do you determine if an EC2 instance is over-provisioned?
 
