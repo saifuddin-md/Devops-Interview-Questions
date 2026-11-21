@@ -195,10 +195,9 @@ I also configure lifecycle policies to automatically transition or expire old ob
 
 **Answer:** Use serverless or containerized architecture, right-size resources, implement Auto Scaling, optimize storage, and monitor continuously with CloudWatch and Budgets.
 
-
 ---
 
-## 🟠 Real-world Interview Question -- Most Important
+## 🟠 Real-world Interview Question 
 
 ### 25. As a DevOps Engineer, what steps do you take to optimize AWS infrastructure costs?
 
