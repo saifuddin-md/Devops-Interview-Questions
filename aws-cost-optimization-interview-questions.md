@@ -275,3 +275,12 @@ This small change had a big impact  especially across multiple non-production 
   Compute Optimizer              Resource right-sizing recommendations
   CloudWatch                     Monitor resource utilization
 
+| AWS Service                  | Purpose                              |
+| ---------------------------- | ------------------------------------ |
+| Cost Explorer                | Analyze AWS spending                 |
+| AWS Budgets                  | Set budgets and alerts               |
+| Cost and Usage Reports (CUR) | Detailed billing data                |
+| Cost Anomaly Detection       | Detect unusual spending              |
+| Trusted Advisor              | Cost optimization recommendations    |
+| Compute Optimizer            | Resource right-sizing recommendations|
+| CloudWatch                   | Monitor resource utilization         |
