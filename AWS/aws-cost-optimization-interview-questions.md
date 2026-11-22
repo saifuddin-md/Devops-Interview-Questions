@@ -141,7 +141,6 @@ I also configure lifecycle policies to automatically transition or expire old ob
 ---
 
 ## 🟠 EKS Cost Optimization
-*These questions are particularly useful for DevOps and Platform Engineer interviews.*
 
 ### 17. How do you optimize AWS EKS costs?
 
