@@ -46,20 +46,14 @@ with a particular EC2 instance.
 
 ### 6. What is the difference between metrics and logs?
 
-  -----------------------------------------------------------------------
-  Metrics                             Logs
-  ----------------------------------- -----------------------------------
-  Usually numerical measurements      Text or structured records
+ ### 6. What is the difference between metrics and logs?
 
-  Used to track performance and       Used to investigate events and
-  trends                              troubleshoot
-
-  Can be monitored with alarms        Can be searched and analyzed with
-                                      Logs Insights
-
-  Example: CPU utilization is 80%     Example: "Database connection
-                                      failed"
-  -----------------------------------------------------------------------
+| Metrics | Logs |
+|---|---|
+| Usually numerical measurements. | Text or structured records. |
+| Used to track performance and trends. | Used to investigate events and troubleshoot issues. |
+| Can be monitored using CloudWatch Alarms. | Can be searched and analyzed using CloudWatch Logs Insights. |
+| Example: CPU utilization is 80%. | Example: Database connection failed. |
 
 ### 7. What is the default monitoring interval for EC2?
 
@@ -233,21 +227,13 @@ cross-account destinations.
 
 ### 30. What is the difference between CloudWatch Logs and CloudTrail?
 
-  -----------------------------------------------------------------------
-  CloudWatch Logs                     AWS CloudTrail
-  ----------------------------------- -----------------------------------
-  Collects and analyzes application,  Records AWS account activity and
-  system, and service logs            API events
 
-  Helps troubleshoot application      Helps audit who performed an AWS
-  behavior                            action, when, and from where
-
-  Can ingest application error        Records management events and, when
-  messages                            configured, data events
-
-  Provides Logs Insights queries      Provides event history and
-                                      trail-based event delivery
-  -----------------------------------------------------------------------
+| CloudWatch Logs | AWS CloudTrail |
+|---|---|
+| Collects and analyzes application, system, and service logs. | Records AWS account activity and API events. |
+| Helps troubleshoot application behavior. | Helps audit who performed an AWS action, when, and from where. |
+| Can ingest application error messages. | Records management events and, when configured, data events. |
+| Provides Logs Insights queries for log analysis. | Provides Event History and trail-based event delivery. |
 
 ## Section 4: Advanced CloudWatch concepts (31--40)
 
@@ -315,21 +301,12 @@ outside the CloudWatch console.
 
 ### 40. What is the difference between CloudWatch and AWS Config?
 
-  -----------------------------------------------------------------------
-  CloudWatch                          AWS Config
-  ----------------------------------- -----------------------------------
-  Monitors operational performance    Tracks resource configuration and
-  and health                          configuration changes
-
-  Collects metrics and logs           Records configuration history and
-                                      evaluates compliance
-
-  Creates metric and composite alarms Uses rules to assess resource
-                                      configurations
-
-  Example: EC2 CPU utilization        Example: Whether an S3 bucket has
-                                      encryption enabled
-  -----------------------------------------------------------------------
+| CloudWatch | AWS Config |
+|---|---|
+| Monitors operational performance and health. | Tracks resource configurations and configuration changes. |
+| Collects metrics and logs. | Records configuration history and evaluates compliance. |
+| Creates metric and composite alarms. | Uses rules to assess resource configurations. |
+| Example: Monitoring EC2 CPU utilization. | Example: Checking whether an S3 bucket has encryption enabled. |
 
 ## Section 5: Real-time scenario-based interview questions (41--50)
 
