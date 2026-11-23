@@ -10,6 +10,16 @@
 - [Section 6: Monitoring and Troubleshooting](#-Section-6:-Monitoring-and -Troubleshooting)
 - [Section 7: Advanced and Scenario-Based ECS Questions](#-Section-7:-Advanced-and-Scenario-Based-ECS-Questions)
 
+## Table of Contents
+
+- [Section 1: ECS Fundamentals](#section-1-ecs-fundamentals)
+- [Section 2: ECS EC2, Fargate and Architecture](#section-2-ecs-ec2-fargate-and-architecture)
+- [Section 3: ECR, IAM and Security](#section-3-ecr-iam-and-security)
+- [Section 4: ECS Networking and Load Balancing](#section-4-ecs-networking-and-load-balancing)
+- [Section 5: ECS Deployment and Auto Scaling](#section-5-ecs-deployment-and-auto-scaling)
+- [Section 6: Monitoring and Troubleshooting](#section-6-monitoring-and-troubleshooting)
+- [Section 7: Advanced and Scenario-Based ECS Questions](#section-7-advanced-and-scenario-based-ecs-questions)
+
 
 ## Section 1: ECS Fundamentals
 
