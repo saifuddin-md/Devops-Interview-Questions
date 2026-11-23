@@ -2,16 +2,6 @@
 
 ## Table of Contents
 
-- [Section 1: ECS Fundamentals](#-Section-1-ECS-Fundamentals)
-- [Section 2: ECS EC2, Fargate and Architecture](#-Section-2-ECS-EC2,-Fargate-and-Architecture)
-- [Section 3: ECR, IAM and Security](#-Section-3-ECR,-IAM-and-Security)
-- [Section 4: ECS Networking and Load Balancing](#-ECS-Networking-and-Load-Balancing)
-- [Section 5: ECS Deployment and Auto Scaling](#-Section-5:-ECS-Deployment-and-Auto-Scaling)
-- [Section 6: Monitoring and Troubleshooting](#-Section-6:-Monitoring-and -Troubleshooting)
-- [Section 7: Advanced and Scenario-Based ECS Questions](#-Section-7:-Advanced-and-Scenario-Based-ECS-Questions)
-
-## Table of Contents
-
 - [Section 1: ECS Fundamentals](#section-1-ecs-fundamentals)
 - [Section 2: ECS EC2, Fargate and Architecture](#section-2-ecs-ec2-fargate-and-architecture)
 - [Section 3: ECR, IAM and Security](#section-3-ecr-iam-and-security)
