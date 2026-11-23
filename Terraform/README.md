@@ -214,22 +214,35 @@ Terraform supports several looping mechanisms:
 ## 17. What are locals in Terraform and how do you use them?
 
 **Answer:**  
-Locals define reusable local values within a Terraform module.  
-They improve readability and reduce repetition.
+
+Locals in Terraform are used to define reusable values or expressions that can be referenced multiple times in our configuration.
+ 
+**Example:** If I am using the same project name, environment name, or instance type in multiple resources, I can define them in a locals block and reference them using local.variable_name.
 
 **Example:**
 
 ```hcl
 locals {
+  project_name  = "my-project"
+  environment   = "dev"
   instance_type = "t2.micro"
-  ami_id        = "ami-123456789"
 }
 
-resource "aws_instance" "example" {
-  ami           = local.ami_id
+resource "aws_instance" "my_ec2" {
+  ami           = "ami-123456"
   instance_type = local.instance_type
+
+  tags = {
+    Name        = local.project_name
+    Environment = local.environment
+  }
 }
 ```
+
+- **variable** = Takes input from the user.
+- **locals** = Defines reusable values inside Terraform.
+- **output** = Displays useful information after Terraform execution.
+
 
 ---
 
