@@ -42,23 +42,15 @@ availability, scale workloads, and recover from failures.
 
 ### 3. What is the difference between Kubernetes and Amazon EKS?
 
-  -----------------------------------------------------------------------
-  Kubernetes                          Amazon EKS
-  ----------------------------------- -----------------------------------
-  Open-source container orchestration AWS managed Kubernetes service
-  platform                            
+### 3. What is the difference between Kubernetes and Amazon EKS?
 
-  Can be installed on our own         AWS manages the control plane
-  infrastructure                      
-
-  In a self-managed setup, we         AWS manages control-plane
-  maintain the control plane          availability
-
-  Requires us to configure cloud      Provides AWS integrations
-  integrations                        
-
-  Can run on different platforms      Runs on AWS infrastructure
-  -----------------------------------------------------------------------
+| Kubernetes | Amazon EKS |
+|---|---|
+| Open-source container orchestration platform. | AWS-managed Kubernetes service. |
+| Can be installed on our own infrastructure. | AWS manages the Kubernetes control plane. |
+| In a self-managed setup, we maintain the control plane. | AWS manages control-plane availability. |
+| Requires us to configure cloud integrations. | Provides built-in AWS integrations. |
+| Can run on different platforms, including on-premises and cloud environments. | Runs Kubernetes control planes managed by AWS, with workloads on AWS infrastructure or supported hybrid environments. |
 
 ### 4. What are the main components of Amazon EKS architecture?
 
@@ -145,19 +137,12 @@ updates. It simplifies worker-node management.
 
 ### 12. What is the difference between Managed Node Groups and Self-Managed Nodes?
 
-  -----------------------------------------------------------------------
-  Managed Node Groups                 Self-Managed Nodes
-  ----------------------------------- -----------------------------------
-  Managed through EKS                 Managed by us
-
-  AWS automates several lifecycle     We handle more lifecycle operations
-  operations                          
-
-  Integrated with EKS update          Requires more manual configuration
-  workflows                           
-
-  Easier to maintain                  Offers more infrastructure control
-  -----------------------------------------------------------------------
+| Managed Node Groups | Self-Managed Nodes |
+|---|---|
+| Managed through Amazon EKS. | Managed by us. |
+| AWS automates several node lifecycle operations. | We handle more node lifecycle operations. |
+| Integrated with EKS update workflows. | Requires more manual configuration and updates. |
+| Easier to maintain and operate. | Offers greater infrastructure control and flexibility. |
 
 ### 13. What is AWS Fargate in EKS?
 
@@ -170,20 +155,12 @@ limitations.
 
 ### 14. What is the difference between EC2 and Fargate in EKS?
 
-  -----------------------------------------------------------------------
-  EC2                                 Fargate
-  ----------------------------------- -----------------------------------
-  We manage worker nodes              AWS manages the underlying compute
-
-  Multiple Pods can run on a node     Each Fargate Pod gets its own
-                                      isolated compute environment
-
-  More control over node              Less infrastructure management
-  configuration                       
-
-  Suitable for workloads requiring    Suitable for workloads that fit
-  node-level customization            Fargate limitations
-  -----------------------------------------------------------------------
+| EC2 | Fargate |
+|---|---|
+| We manage the worker nodes. | AWS manages the underlying compute infrastructure. |
+| Multiple Pods can run on a single worker node. | Each Fargate Pod runs in its own isolated compute environment. |
+| Provides greater control over node configuration. | Requires less infrastructure management. |
+| Suitable for workloads requiring node-level customization. | Suitable for workloads that fit Fargate's supported configurations and limitations. |
 
 ### 15. What is a VPC in EKS?
 
@@ -223,19 +200,12 @@ for Pods.
 
 ### 20. What is the difference between a Security Group and a Network ACL?
 
-  -----------------------------------------------------------------------
-  Security Group                      Network ACL
-  ----------------------------------- -----------------------------------
-  Applied at the network-interface    Applied at the subnet level
-  level                               
-
-  Stateful                            Stateless
-
-  Supports allow rules only           Supports allow and deny rules
-
-  Return traffic is automatically     Return traffic must be allowed by
-  allowed                             applicable rules
-  -----------------------------------------------------------------------
+| Security Group | Network ACL |
+|---|---|
+| Applied at the network interface (ENI) level. | Applied at the subnet level. |
+| Stateful. | Stateless. |
+| Supports allow rules only. | Supports both allow and deny rules. |
+| Return traffic is automatically allowed, regardless of inbound or outbound rules. | Return traffic must be explicitly allowed by the applicable inbound and outbound rules. |
 
 ------------------------------------------------------------------------
 
@@ -294,20 +264,13 @@ and configures load balancers based on Kubernetes resources.
 
 ### 27. What is the difference between Ingress and LoadBalancer Service?
 
-  -----------------------------------------------------------------------
-  Ingress                             LoadBalancer Service
-  ----------------------------------- -----------------------------------
-  Defines HTTP/HTTPS routing rules    Exposes a Service through a cloud
-                                      load balancer
-
-  Can route multiple applications     Commonly provisions a load balancer
-  using host- or path-based rules     for each Service
-
-  Often uses one ALB for multiple     Provides direct load-balancer
-  routes                              access to a Service
-
-  Requires an Ingress controller      Uses cloud-provider integration
-  -----------------------------------------------------------------------
+| Ingress | LoadBalancer Service |
+|---|---|
+| Defines HTTP/HTTPS routing rules. | Exposes a Kubernetes Service through a cloud load balancer. |
+| Can route traffic to multiple applications using host-based or path-based rules. | Typically exposes one Service through a dedicated load balancer. |
+| Can use a single ALB to route traffic to multiple applications. | Commonly provisions a separate load balancer for each Service. |
+| Requires an Ingress controller to implement routing rules. | Uses cloud-provider integration or an appropriate load balancer implementation. |
+| Supports advanced HTTP routing, such as host-based and path-based routing. | Primarily provides external access to a Service. |
 
 ### 28. What is a ConfigMap in Kubernetes?
 
@@ -371,20 +334,13 @@ nodes and helps provide credentials to supported workloads.
 
 ### 34. What is the difference between IRSA and EKS Pod Identity?
 
-  -----------------------------------------------------------------------
-  IRSA                                EKS Pod Identity
-  ----------------------------------- -----------------------------------
-  Uses an IAM OIDC provider           Uses the EKS Pod Identity service
-                                      and agent
-
-  Requires OIDC provider              Does not require us to configure an
-  configuration                       OIDC provider for each cluster
-
-  Uses web identity federation        Uses the EKS Pod Identity
-                                      credential flow
-
-  Established integration             Newer AWS-native approach
-  -----------------------------------------------------------------------
+| IRSA (IAM Roles for Service Accounts) | EKS Pod Identity |
+|---|---|
+| Uses an IAM OIDC identity provider associated with the EKS cluster. | Uses the EKS Pod Identity service and Pod Identity Agent. |
+| Requires an OIDC provider to be configured for the cluster. | Does not require us to configure an IAM OIDC provider for each cluster specifically for Pod Identity. |
+| Uses OIDC-based web identity federation. | Uses the EKS Pod Identity credential delivery mechanism. |
+| Requires IAM role trust policies referencing the cluster's OIDC provider. | Uses Pod Identity associations to map Kubernetes service accounts to IAM roles. |
+| Established approach for granting AWS permissions to Kubernetes workloads. | Newer AWS-native approach for granting AWS permissions to Kubernetes workloads. |
 
 Both provide temporary IAM credentials to applications running in Pods.
 
@@ -404,17 +360,12 @@ development namespace without allowing them to delete resources.
 
 ### 36. What is the difference between IAM and Kubernetes RBAC?
 
-  -----------------------------------------------------------------------
-  IAM                                 Kubernetes RBAC
-  ----------------------------------- -----------------------------------
-  Controls access to AWS resources    Controls access to Kubernetes
-  and APIs                            resources
-
-  Uses IAM users, groups, roles, and  Uses Roles, ClusterRoles, and
-  policies                            bindings
-
-  Example: Access an S3 bucket        Example: View or delete Pods
-  -----------------------------------------------------------------------
+| IAM | Kubernetes RBAC |
+|---|---|
+| Controls access to AWS resources and AWS APIs. | Controls access to Kubernetes resources and API operations. |
+| Uses IAM users, groups, roles, and policies. | Uses Roles, ClusterRoles, RoleBindings, and ClusterRoleBindings. |
+| Defines permissions for AWS services and resources. | Defines permissions within a Kubernetes cluster or namespace. |
+| Example: Allow access to an S3 bucket. | Example: Allow a user to view, create, or delete Pods. |
 
 Both are important for securing EKS. IAM commonly handles AWS identity
 and authentication, while Kubernetes RBAC authorizes actions against
@@ -435,19 +386,14 @@ services with Kubernetes.
 
 ### 38. What is the difference between EBS and EFS in EKS?
 
-  -----------------------------------------------------------------------
-  Amazon EBS                          Amazon EFS
-  ----------------------------------- -----------------------------------
-  Block storage                       Network file storage
-
-  Commonly used for workloads needing Supports shared file access from
-  block devices                       multiple clients
-
-  Often used for databases and        Often used for shared files and
-  application data                    content
-
-  Uses the EBS CSI Driver             Uses the EFS CSI Driver
-  -----------------------------------------------------------------------
+| Amazon EBS | Amazon EFS |
+|---|---|
+| Provides block storage. | Provides shared network file storage. |
+| Commonly used for workloads requiring block devices. | Supports shared file access from multiple clients. |
+| Suitable for databases and applications requiring persistent block storage. | Suitable for shared files, application content, and shared data. |
+| Uses the Amazon EBS CSI Driver. | Uses the Amazon EFS CSI Driver. |
+| Typically supports ReadWriteOnce access mode for a volume. | Supports ReadWriteMany access mode for shared access. |
+| Generally tied to a specific Availability Zone. | Regional file system that can be accessed across multiple Availability Zones. |
 
 ### 39. What is a PersistentVolumeClaim (PVC)?
 
@@ -567,19 +513,13 @@ underutilized nodes when workloads can be moved safely.
 
 ### 46. What is the difference between HPA and Cluster Autoscaler?
 
-  -----------------------------------------------------------------------
-  HPA                                 Cluster Autoscaler
-  ----------------------------------- -----------------------------------
-  Scales the number of Pods           Scales the number of worker nodes
-
-  Works at the application level      Works at the infrastructure level
-
-  Uses CPU, memory, or custom metrics Responds to unschedulable Pods and
-                                      node utilization
-
-  Needs available cluster capacity    Helps provide additional node
-                                      capacity
-  -----------------------------------------------------------------------
+| HPA (Horizontal Pod Autoscaler) | Cluster Autoscaler |
+|---|---|
+| Scales the number of Pods. | Scales the number of worker nodes. |
+| Works at the application level. | Works at the infrastructure level. |
+| Uses CPU, memory, or custom metrics to scale Pods. | Adds nodes when Pods cannot be scheduled due to insufficient resources and removes eligible underutilized nodes. |
+| Requires sufficient cluster capacity to schedule additional Pods. | Helps provide additional node capacity when needed. |
+| Example: Increases Pods from 2 to 5 when CPU utilization is high. | Example: Adds a worker node when existing nodes cannot accommodate pending Pods. |
 
 **Example:** HPA increases application replicas from two to six. If
 existing nodes do not have enough resources, Cluster Autoscaler can add
@@ -647,23 +587,23 @@ issue and verify that the Pod becomes healthy.
 
 ### 50. How do you monitor an EKS cluster?
 
-We can monitor EKS using AWS services and Kubernetes tools.
+We can monitor an Amazon EKS cluster using AWS services and Kubernetes monitoring tools.
 
-  -----------------------------------------------------------------------
-  Tool                                Purpose
-  ----------------------------------- -----------------------------------
-  Amazon CloudWatch                   Monitor logs, metrics, and alarms
+| Tool | Purpose |
+|---|---|
+| Amazon CloudWatch | Monitors logs, metrics, and alarms. |
+| CloudWatch Container Insights | Monitors cluster, node, and Pod performance. |
+| Prometheus | Collects and stores Kubernetes and application metrics. |
+| Grafana | Visualizes metrics using dashboards. |
+| kubectl | Inspects Pod, node, and cluster status. |
+| AWS CloudTrail | Tracks EKS-related AWS API activity for auditing. |
 
-  CloudWatch Container Insights       Monitor cluster, node, and Pod
-                                      performance
+**Example: Useful kubectl monitoring commands**
 
-  Prometheus                          Collect and store metrics
+Check cluster nodes:
 
-  Grafana                             Visualize metrics using dashboards
-
-  kubectl                             Inspect Pod, node, and cluster
-                                      status
-  -----------------------------------------------------------------------
+```bash
+kubectl get nodes
 
 Useful commands:
 
