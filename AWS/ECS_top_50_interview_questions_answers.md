@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Section 1: ECS Fundamentals](#-Section-1:-ECS-Fundamentals)
+- [Section 1: ECS Fundamentals](#-Section-1-ECS-Fundamentals)
 - [1. Section 1: ECS Fundamentals](#1-section-1-ecs-fundamentals)
 - [2. Section 2: ECS EC2, Fargate and Architecture](#-Section-2:-ECS-EC2,-Fargate-and-Architecture)
 - [3. EKS Cost Optimization](#-EKS-Cost-Optimization)
