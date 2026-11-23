@@ -254,6 +254,8 @@ The `terraform taint` command is deprecated.
 
 In modern Terraform, `terraform apply -replace` is generally preferred.
 
+It is used to force Terraform to destroy and recreate a particular resource, even when there are no configuration changes.
+
 **Example:**
 
 ```bash
