@@ -1,10 +1,4 @@
-# Top 50 AWS ECS Interview Questions and Answers for DevOps Engineers
-
-These 50 questions cover Amazon ECS fundamentals, Docker, ECR, Fargate,
-EC2, IAM, networking, load balancing, scaling, CI/CD, monitoring, and
-troubleshooting.
-
-Answers are written in simple, interview-friendly English.
+# Top 50 AWS ECS Interview Questions and Answers 
 
 ## Section 1: ECS Fundamentals
 
@@ -14,16 +8,17 @@ Amazon ECS (Elastic Container Service) is a fully managed container
 orchestration service provided by AWS. It is used to deploy, manage, and
 scale containerized applications.
 
-For example, we can deploy a web application inside a Docker container
+**Example:** we can deploy a web application inside a Docker container
 using ECS without managing the container orchestration platform
 ourselves.
 
 ### 2. Why do we use Amazon ECS?
 
-We use Amazon ECS to: - Deploy containerized applications. - Manage
-Docker containers. - Scale applications automatically. - Maintain
-application availability. - Integrate containers with AWS services. -
-Simplify container management.
+- We use Amazon ECS to: - Deploy containerized applications.
+- Manage Docker containers. - Scale applications automatically.
+- Maintain application availability.
+- Integrate containers with AWS services.
+- Simplify container management.
 
 ### 3. What are the main components of ECS?
 
@@ -101,15 +96,16 @@ manages the underlying infrastructure.
 
 ### 12. What is the difference between ECS and EKS?
 
-ECS is an AWS container orchestration service, whereas EKS is a managed
-Kubernetes service.
+ECS is an AWS container orchestration service, whereas EKS is a managed Kubernetes service.
 
-  ECS                         EKS
-  --------------------------- ---------------------------------
-  AWS-native orchestration.   Kubernetes-based orchestration.
-  Uses task definitions.      Uses Kubernetes manifests.
-  Easier to get started.      Requires Kubernetes knowledge.
-  AWS-specific platform.      Kubernetes ecosystem.
+## Difference Between ECS and EKS
+
+| ECS | EKS |
+|---|---|
+| AWS-native container orchestration service. | Kubernetes-based container orchestration service. |
+| Uses Task Definitions. | Uses Kubernetes manifests (YAML files). |
+| Easier to get started and manage. | Requires Kubernetes knowledge. |
+| AWS-specific platform. | Supports the Kubernetes ecosystem. |
 
 ### 13. Can we run multiple containers in a single ECS task?
 
