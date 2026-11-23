@@ -169,6 +169,10 @@ Terraform configuration files can be formatted using the `terraform fmt` command
 **Answer:**  
 `count` is used when creating multiple similar resources using a number, while `for_each` is used when creating resources from a map or set.
 
+- `count` is used when we want to create multiple similar resources, whereas `for_each` is used when we want to create multiple resources with different configurations or unique identifiers."
+
+- **One important point:** Both can create similar or different configurations. The main technical difference is that count identifies resources using numeric indexes, while for_each identifies them using unique keys.
+
 **Example (count):**
 
 ```hcl
