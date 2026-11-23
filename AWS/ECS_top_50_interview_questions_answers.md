@@ -64,18 +64,14 @@ attempts to launch a replacement task.
 
 ### 8. What is the difference between ECS Task and ECS Service?
 
-  -----------------------------------------------------------------------
-  ECS Task                            ECS Service
-  ----------------------------------- -----------------------------------
-  Runs containers.                    Manages and maintains tasks.
+### **8. What is the difference between ECS Task and ECS Service?**
 
-  Can run independently.              Maintains the desired task count.
-
-  Represents a running task instance. Provides service-level management.
-
-  Does not independently maintain a   Supports deployment and scaling.
-  desired count.                      
-  -----------------------------------------------------------------------
+| ECS Task | ECS Service |
+|---|---|
+| Runs containers. | Manages and maintains tasks. |
+| Can run independently. | Maintains the desired task count. |
+| Represents a running task instance. | Provides service-level management. |
+| Does not independently maintain a desired count. | Supports deployment and scaling. |
 
 ### 9. What are the different launch types in ECS?
 
