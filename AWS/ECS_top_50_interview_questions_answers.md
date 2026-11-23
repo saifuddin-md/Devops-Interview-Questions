@@ -6,9 +6,9 @@
 - [Section 2: ECS EC2, Fargate and Architecture](#-Section-2-ECS-EC2,-Fargate-and-Architecture)
 - [Section 3: ECR, IAM and Security](#-Section-3-ECR,-IAM-and-Security)
 - [Section 4: ECS Networking and Load Balancing](#-ECS-Networking-and-Load-Balancing)
-- [5. Real-world Interview Questions](#-Real-world-Interview-Question)
-- [6. Real-World Use Case](#-Real-World-Use-Case)
-
+- [Section 5: ECS Deployment and Auto Scaling](#-Section-5:-ECS-Deployment-and-Auto-Scaling)
+- [Section 6: Monitoring and Troubleshooting](#-Section-6:-Monitoring-and -Troubleshooting)
+- [Section 7: Advanced and Scenario-Based ECS Questions](#-Section-7:-Advanced-and-Scenario-Based-ECS-Questions)
 
 
 ## Section 1: ECS Fundamentals
