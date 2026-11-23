@@ -5,7 +5,7 @@
 - [Section 1: ECS Fundamentals](#-Section-1-ECS-Fundamentals)
 - [Section 2: ECS EC2, Fargate and Architecture](#-Section-2-ECS-EC2,-Fargate-and-Architecture)
 - [Section 3: ECR, IAM and Security](#-Section-3-ECR,-IAM-and-Security)
-- [4. Scenario-Based Interview Questions](#-Scenario-Based-Interview-Questions)
+- [Section 4: ECS Networking and Load Balancing](#-Section-4-:-ECS-Networking-and-Load-Balancing)
 - [5. Real-world Interview Questions](#-Real-world-Interview-Question)
 - [6. Real-World Use Case](#-Real-World-Use-Case)
 
