@@ -64,8 +64,6 @@ attempts to launch a replacement task.
 
 ### 8. What is the difference between ECS Task and ECS Service?
 
-### **8. What is the difference between ECS Task and ECS Service?**
-
 | ECS Task | ECS Service |
 |---|---|
 | Runs containers. | Manages and maintains tasks. |
@@ -93,20 +91,13 @@ manages the underlying infrastructure.
 
 ### 11. What is the difference between ECS EC2 and Fargate?
 
-  -----------------------------------------------------------------------
-  ECS EC2                             ECS Fargate
-  ----------------------------------- -----------------------------------
-  We manage EC2 instances.            AWS manages infrastructure.
-
-  We manage instance capacity.        No EC2 capacity management.
-
-  More infrastructure control.        Less infrastructure management.
-
-  Can optimize instance utilization.  Pay for allocated task resources
-                                      and runtime.
-
-  Requires instance maintenance.      No EC2 maintenance.
-  -----------------------------------------------------------------------
+| ECS EC2 | ECS Fargate |
+|---|---|
+| We manage EC2 instances. | AWS manages the infrastructure. |
+| We manage instance capacity. | No EC2 capacity management is required. |
+| Provides more infrastructure control. | Requires less infrastructure management. |
+| We can optimize instance utilization. | Pay for allocated task resources and runtime. |
+| Requires EC2 instance maintenance. | No EC2 instance maintenance is required. |
 
 ### 12. What is the difference between ECS and EKS?
 
