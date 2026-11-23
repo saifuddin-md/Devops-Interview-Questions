@@ -73,7 +73,8 @@ terraform {
 ## 7. What is the purpose of the terraform destroy command?
 
 **Answer:**  
-`terraform destroy` removes the infrastructure managed by the current Terraform configuration.
+- `terraform destroy` removes the infrastructure managed by the current Terraform configuration.
+- Terraform destroy is used to delete the infrastructure resources that were provisioned and are managed by Terraform.
 
 ---
 
